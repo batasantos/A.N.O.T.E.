@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Nome que aparece no celular (ícone, apps recentes e notificação) -->
+    <string name="app_name">A.N.O.T.E.</string>
+
+    <!-- Login -->
+    <string name="brand">A.N.O.T.E.</string>
+    <string name="tagline">Suas anotações, sempre com você</string>
+    <string name="label_email">E-MAIL</string>
+    <string name="label_password">SENHA</string>
+    <string name="hint_email">seu@email.com</string>
+    <string name="hint_password">••••••••</string>
+    <string name="forgot_password">Esqueci minha senha</string>
+    <string name="login_button">Entrar</string>
+    <string name="or_divider">ou</string>
+    <string name="google">Google</string>
+    <string name="apple">Apple</string>
+    <string name="no_account">Não tem uma conta?</string>
+    <string name="create_account">Criar conta</string>
+    <string name="error_email">Informe um e-mail válido</string>
+    <string name="error_password">Informe a senha</string>
+    <string name="forgot_info">Enviaremos as instruções para o seu e-mail.</string>
+
+    <!-- Primeiro acesso (cadastro, contatos, permissoes) -->
+    <string name="step_indicator">PASSO %1$d DE 3</string>
+    <string name="onb1_title">Crie sua conta</string>
+    <string name="onb1_subtitle">Leva menos de um minuto. Seus dados ficam só neste celular.</string>
+    <string name="label_name">NOME</string>
+    <string name="hint_name">Como você se chama?</string>
+    <string name="error_name">Informe seu nome</string>
+    <string name="onb_continue">Continuar</string>
+    <string name="onb2_title">Contatos de confiança</string>
+    <string name="onb2_subtitle">Essas pessoas recebem o seu alerta com a localização. Adicione pelo menos uma.</string>
+    <string name="add_contact_button">Adicionar contato</string>
+    <string name="error_contact">Informe o nome e o telefone com DDD</string>
+    <string name="onb2_need_one">Adicione ao menos um contato para continuar.</string>
+    <string name="onb3_title">Permissões</string>
+    <string name="onb3_subtitle">Para o alerta funcionar rápido quando você precisar, libere:</string>
+    <string name="perm_location">Localização</string>
+    <string name="perm_location_desc">Enviar onde você está para os seus contatos.</string>
+    <string name="perm_mic">Microfone</string>
+    <string name="perm_mic_desc">Gravar o áudio do ambiente como registro.</string>
+    <string name="perm_sms">Mensagens (SMS)</string>
+    <string name="perm_sms_desc">Mandar o alerta mesmo sem internet.</string>
+    <string name="perm_notif">Notificações</string>
+    <string name="perm_notif_desc">Manter o envio funcionando em segundo plano.</string>
+    <string name="allow_and_finish">Permitir e concluir</string>
+    <string name="skip_permissions">Configurar depois</string>
+    <string name="back">Voltar</string>
+    <string name="sos_message_named">%1$s: preciso de ajuda. Estou em perigo. Minha localização:</string>
+
+    <!-- Lista -->
+    <string name="title_notes">Notas</string>
+    <string name="search_hint">Buscar notas…</string>
+    <string name="section_pinned">FIXADAS</string>
+    <string name="section_recent">RECENTES</string>
+    <string name="empty_notes">Nenhuma nota ainda.\nToque em + para criar.</string>
+    <string name="new_note">Nova nota</string>
+    <string name="sort">Ordenar</string>
+    <string name="today">hoje</string>
+    <string name="yesterday">ontem</string>
+    <string name="untitled">(sem título)</string>
+
+    <!-- Editor -->
+    <string name="back_notes">Notas</string>
+    <string name="done">Concluído</string>
+    <string name="hint_title">Título</string>
+    <string name="hint_content">Comece a escrever…</string>
+    <string name="pin">Fixar</string>
+    <string name="pinned">Fixada</string>
+    <string name="action_delete">Excluir</string>
+    <string name="delete_confirm">Excluir esta nota?</string>
+    <string name="cancel">Cancelar</string>
+    <string name="note_saved">Nota salva</string>
+
+    <!-- Painel de emergência -->
+    <string name="emergency_title">Painel de Emergência</string>
+    <string name="emergency_subtitle">A.N.O.T.E. • Modo Seguro</string>
+    <string name="protected_label">PROTEGIDA</string>
+    <string name="close">Fechar</string>
+    <string name="sos_title">SOS Silencioso</string>
+    <string name="sos_subtitle">SMS com localização em tempo real</string>
+    <string name="record_start">Iniciar Gravação de Áudio</string>
+    <string name="record_stop">Parar Gravação de Áudio</string>
+    <string name="record_subtitle">Captação de áudio ambiente</string>
+    <string name="record_running">Gravando… toque para parar</string>
+    <string name="ddm_title">DDM mais próxima</string>
+    <string name="ddm_open_map">Abrir no mapa</string>
+    <string name="ddm_name">Delegacia de Defesa da Mulher</string>
+    <string name="ddm_hint">Encontrada pelo mapa, perto de você</string>
+    <string name="by_foot">A pé</string>
+    <string name="by_car">De carro</string>
+    <string name="by_bus">Ônibus</string>
+    <string name="contacts_title">CONTATOS DE CONFIANÇA</string>
+    <string name="add_contact">+ Adicionar</string>
+    <string name="no_contacts">Nenhum contato ainda. Adicione alguém de confiança para receber seus alertas.</string>
+    <string name="dispatch">Disparar</string>
+    <string name="contact_name">Nome</string>
+    <string name="contact_phone">Telefone com DDD</string>
+    <string name="save">Salvar</string>
+    <string name="remove_contact">Remover este contato?</string>
+    <string name="remove">Remover</string>
+    <string name="change_trigger">Alterar título de acesso ao painel</string>
+    <string name="trigger_dialog_title">Título de acesso</string>
+    <string name="trigger_dialog_hint">Ex.: ...</string>
+    <string name="sos_message">Preciso de ajuda. Estou em perigo. Minha localização:</string>
+    <string name="need_contacts">Cadastre ao menos um contato de confiança.</string>
+
+    <!-- Notificação neutra do serviço -->
+    <string name="notif_channel">Sincronização</string>
+    <string name="notif_title">Notas</string>
+    <string name="notif_text">Sincronizando…</string>
+</resources>

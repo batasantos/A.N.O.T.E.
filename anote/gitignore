@@ -1,0 +1,22 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Arquivos locais do Android Studio (cada pessoa tem os seus)
+local.properties
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# APKs e chaves de assinatura
+*.apk
+*.aab
+*.jks
+*.keystore

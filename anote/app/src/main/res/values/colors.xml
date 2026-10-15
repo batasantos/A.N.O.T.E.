@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fachada (claro, lilás) -->
+    <color name="purple_primary">#7C3AED</color>
+    <color name="purple_light">#A78BFA</color>
+    <color name="purple_dark">#5B21B6</color>
+    <color name="ink">#1F1B3A</color>
+    <color name="muted">#7B7494</color>
+    <color name="hint">#A59DBD</color>
+    <color name="card_stroke">#EADFFB</color>
+    <color name="bg_top">#FDF0FA</color>
+    <color name="bg_bottom">#EFE7FF</color>
+    <color name="search_bg">#F1E8FD</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Painel de emergência (escuro) -->
+    <color name="dark_top">#0E0A1F</color>
+    <color name="dark_bottom">#1B1236</color>
+    <color name="dark_card">#1E1838</color>
+    <color name="dark_chip">#2A2150</color>
+    <color name="dark_stroke">#32285A</color>
+    <color name="dark_text">#F4F0FF</color>
+    <color name="dark_muted">#9C93C0</color>
+    <color name="amber">#FFD98A</color>
+    <color name="danger">#FF4D5E</color>
+    <color name="danger_dark">#D6203A</color>
+    <color name="danger_soft">#FF8794</color>
+</resources>
