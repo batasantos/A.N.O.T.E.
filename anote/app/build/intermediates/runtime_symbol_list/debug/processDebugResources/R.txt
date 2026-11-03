@@ -3114,9 +3114,11 @@ int drawable ic_mtrl_chip_checked_circle 0x7f0700d1
 int drawable ic_mtrl_chip_close_circle 0x7f0700d2
 int drawable ic_note 0x7f0700d3
 int drawable ic_pin 0x7f0700d4
+int drawable ic_play 0x7f070125
 int drawable ic_search 0x7f0700d5
 int drawable ic_search_black_24 0x7f0700d6
 int drawable ic_send 0x7f0700d7
+int drawable ic_stop 0x7f070126
 int drawable ic_walk 0x7f0700d8
 int drawable indeterminate_static 0x7f0700d9
 int drawable m3_avd_hide_password 0x7f0700da
@@ -3267,6 +3269,7 @@ int id action_mode_bar_stub 0x7f080045
 int id action_mode_close_button 0x7f080046
 int id action_permissions 0x7f080047
 int id action_profile 0x7f080048
+int id action_recordings 0x7f080240
 int id action_sort 0x7f080049
 int id action_text 0x7f08004a
 int id action_trigger 0x7f08004b
@@ -3615,6 +3618,10 @@ int id progress_circular 0x7f0801a1
 int id progress_horizontal 0x7f0801a2
 int id radio 0x7f0801a3
 int id ratio 0x7f0801a4
+int id rec_icon 0x7f080241
+int id rec_subtitle 0x7f080242
+int id rec_title 0x7f080243
+int id recordings_list 0x7f080244
 int id rectangles 0x7f0801a5
 int id recycler 0x7f0801a6
 int id report_drawn 0x7f0801a7
@@ -3890,6 +3897,7 @@ int layout activity_emergency 0x7f0b001d
 int layout activity_main 0x7f0b001e
 int layout activity_note_editor 0x7f0b001f
 int layout activity_onboarding 0x7f0b0020
+int layout activity_recordings 0x7f0b0075
 int layout custom_dialog 0x7f0b0021
 int layout design_bottom_navigation_item 0x7f0b0022
 int layout design_bottom_sheet_dialog 0x7f0b0023
@@ -3913,6 +3921,7 @@ int layout item_contact 0x7f0b0034
 int layout item_contact_onboarding 0x7f0b0035
 int layout item_header 0x7f0b0036
 int layout item_note 0x7f0b0037
+int layout item_recording 0x7f0b0076
 int layout m3_alert_dialog 0x7f0b0038
 int layout m3_alert_dialog_actions 0x7f0b0039
 int layout m3_alert_dialog_title 0x7f0b003a
@@ -4153,6 +4162,7 @@ int string menu_delete_all 0x7f1000aa
 int string menu_help 0x7f1000ab
 int string menu_permissions 0x7f1000ac
 int string menu_profile 0x7f1000ad
+int string menu_recordings 0x7f100138
 int string menu_sort 0x7f1000ae
 int string menu_trigger 0x7f1000af
 int string more_options 0x7f1000b0
@@ -4257,10 +4267,27 @@ int string pinned 0x7f100112
 int string profile_saved 0x7f100113
 int string profile_title 0x7f100114
 int string protected_label 0x7f100115
+int string rec_date_format 0x7f100139
+int string rec_delete 0x7f10013a
+int string rec_delete_confirm 0x7f10013b
+int string rec_export 0x7f10013c
+int string rec_export_done 0x7f10013d
+int string rec_export_fail 0x7f10013e
+int string rec_format 0x7f10013f
+int string rec_play 0x7f100140
+int string rec_play_fail 0x7f100141
+int string rec_recording_now 0x7f100142
+int string rec_share 0x7f100143
+int string rec_share_title 0x7f100144
+int string rec_stop 0x7f100145
+int string rec_stop_first 0x7f100146
 int string record_running 0x7f100116
 int string record_start 0x7f100117
 int string record_stop 0x7f100118
 int string record_subtitle 0x7f100119
+int string recordings_empty 0x7f100147
+int string recordings_hint 0x7f100148
+int string recordings_title 0x7f100149
 int string remove 0x7f10011a
 int string remove_contact 0x7f10011b
 int string save 0x7f10011c
@@ -7510,3 +7537,4 @@ int styleable ViewTransition_upDuration 13
 int styleable ViewTransition_viewTransitionMode 14
 int[] styleable include { 0x7f030135 }
 int styleable include_constraintSet 0
+int xml file_paths 0x7f130000

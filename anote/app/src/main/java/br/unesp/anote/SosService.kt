@@ -166,7 +166,7 @@ class SosService : Service() {
             isRecording = recorder != null
             return
         }
-        val dir = File(filesDir, "evidence").apply { mkdirs() }
+        val dir = Recordings.dir(this)
         val file = File(dir, "audio_${System.currentTimeMillis()}.m4a")
 
         val r = if (Build.VERSION.SDK_INT >= 31) MediaRecorder(this) else {

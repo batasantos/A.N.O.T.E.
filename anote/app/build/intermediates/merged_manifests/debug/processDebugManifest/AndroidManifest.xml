@@ -66,6 +66,21 @@
             android:name="br.unesp.anote.ContactsActivity"
             android:excludeFromRecents="true"
             android:exported="false" />
+        <activity
+            android:name="br.unesp.anote.RecordingsActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+
+        <!-- Permite compartilhar um audio gravado (e so ele) com outro app, de forma temporaria -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="br.unesp.anote.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <service
             android:name="br.unesp.anote.SosService"

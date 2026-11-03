@@ -89,6 +89,10 @@ class EmergencyActivity : GuardedActivity() {
                         keepOnStop = true // troca de tela dentro do app: o painel nao deve se fechar
                         startActivity(Intent(this@EmergencyActivity, ContactsActivity::class.java))
                     }
+                    R.id.action_recordings -> {
+                        keepOnStop = true
+                        startActivity(Intent(this@EmergencyActivity, RecordingsActivity::class.java))
+                    }
                     R.id.action_permissions ->
                         MenuDialogs.showPermissions(this@EmergencyActivity) { keepOnStop = true }
                     R.id.action_help -> MenuDialogs.showHelp(this@EmergencyActivity)

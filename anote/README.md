@@ -12,6 +12,8 @@ Na primeira vez que abre, o app pede três coisas, uma de cada vez: um cadastro 
 
 As notas funcionam como em qualquer app: dá para criar, editar, fixar, apagar, buscar e mudar a ordem. Tudo fica salvo no próprio celular.
 
+No topo da lista de notas há um menu (⋮) com o que se espera de um app de notas: **Meu perfil** (para corrigir nome e e-mail), **Ordenar notas** (mais recentes ou ordem alfabética, e o app lembra a escolha), **Apagar todas as notas** e **Sobre o app**. Nada ali fala de emergência, de propósito.
+
 O painel de emergência tem quatro coisas:
 
 - **SOS Silencioso**, que manda um SMS com o link da localização para todos os contatos. A mensagem começa com o nome cadastrado.
@@ -19,7 +21,13 @@ O painel de emergência tem quatro coisas:
 - **Delegacia mais próxima**, com atalhos para abrir no Google Maps a rota a pé, de carro ou de ônibus até a Delegacia de Defesa da Mulher mais próxima.
 - **Contatos de confiança**, onde dá adicionar mais gente, remover (segurando o dedo no contato) ou usar o botão Disparar para avisar só uma pessoa.
 
-No rodapé do painel também dá para trocar o título secreto.
+O painel tem o seu próprio menu (⋮), só com o que é da emergência:
+
+- **Contatos de confiança:** uma tela para adicionar, editar e remover contatos.
+- **Gravações:** lista os áudios gravados (data, duração e tamanho) e deixa ouvir, exportar, compartilhar ou apagar. Os áudios ficam privados dentro do app; só saem dele quando a pessoa decide: em **Exportar** ela escolhe a pasta do celular onde salvar a cópia, e em **Compartilhar** manda por qualquer app (WhatsApp, e-mail...).
+- **Permissões:** mostra o que está liberado (localização, microfone, SMS e notificações), deixa pedir o que falta e abre as configurações do Android quando o sistema já não pergunta mais.
+- **Ajuda e telefones:** explica rapidamente o que o app faz e abre o discador já com o 180 ou o 190.
+- **Título de acesso:** troca a palavra secreta que abre o painel.
 
 ## Cuidados com a discrição
 
@@ -42,7 +50,9 @@ O código fica em `app/src/main/java/br/unesp/anote/`. Os arquivos principais s�
 
 - `OnboardingActivity`: os três passos do primeiro acesso.
 - `MainActivity` e `NoteEditorActivity`: a lista de notas e o editor, que também detecta o título secreto.
-- `EmergencyActivity`: o painel de emergência.
+- `EmergencyActivity` e `ContactsActivity`: o painel de emergência e a tela de contatos. As duas herdam de `GuardedActivity`, que cuida da proteção (sem captura de tela, fecha ao apagar a tela ou sair do app).
+- `MenuDialogs`: os diálogos dos menus (perfil, sobre, permissões e ajuda).
+- `RecordingsActivity` e `Recordings`: a tela de gravações e o acesso à pasta privada onde os áudios ficam.
 - `SosService`: o serviço que pega a localização, manda os SMS e grava o áudio em segundo plano.
 - `NotesDbHelper`: o banco SQLite das notas.
 - `SecurePrefs`: onde ficam, criptografados, o cadastro, os contatos e o título secreto.
@@ -57,4 +67,4 @@ O editor de notas tem só os botões de fixar e excluir. Negrito, itálico e os 
 
 ## Limitações
 
-Em alguns aparelhos e operadoras o envio de SMS pode ser bloqueado, por isso vale testar em mais de um celular. Ainda não existe uma tela para ouvir os áudios gravados. E o app é um complemento: em perigo, os canais oficiais continuam sendo o 190 e o Ligue 180.
+Em alguns aparelhos e operadoras o envio de SMS pode ser bloqueado, por isso vale testar em mais de um celular. Se o celular desligar ou o app for encerrado à força no meio de uma gravação, esse arquivo pode ficar incompleto e não tocar. Os áudios também são apagados se o app for desinstalado, então exporte o que for importante. E o app é um complemento: em perigo, os canais oficiais continuam sendo o 190 e o Ligue 180.

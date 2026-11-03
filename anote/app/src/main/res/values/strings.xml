@@ -147,4 +147,24 @@
     <string name="contacts_screen_hint">Toque em um contato para editar ou remover.</string>
     <string name="add_contact_full">+ Adicionar contato</string>
     <string name="edit_contact">Editar contato</string>
+
+    <!-- Gravacoes -->
+    <string name="menu_recordings">Gravações</string>
+    <string name="recordings_title">Gravações</string>
+    <string name="recordings_hint">Toque em uma gravação para ouvir, exportar, compartilhar ou apagar.</string>
+    <string name="recordings_empty">Nenhuma gravação ainda.</string>
+    <string name="rec_format">%1$s • %2$s</string>
+    <string name="rec_date_format">dd/MM/yyyy \'às\' HH:mm</string>
+    <string name="rec_recording_now">Gravando agora…</string>
+    <string name="rec_stop_first">Pare a gravação antes de abrir este áudio.</string>
+    <string name="rec_play">Ouvir</string>
+    <string name="rec_stop">Parar de ouvir</string>
+    <string name="rec_export">Exportar para o celular…</string>
+    <string name="rec_share">Compartilhar…</string>
+    <string name="rec_delete">Apagar</string>
+    <string name="rec_delete_confirm">Apagar esta gravação? Isso não pode ser desfeito.</string>
+    <string name="rec_share_title">Compartilhar gravação</string>
+    <string name="rec_export_done">Gravação exportada</string>
+    <string name="rec_export_fail">Não foi possível exportar a gravação</string>
+    <string name="rec_play_fail">Não foi possível reproduzir esta gravação</string>
 </resources>

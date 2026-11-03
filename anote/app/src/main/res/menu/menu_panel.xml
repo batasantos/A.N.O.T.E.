@@ -4,6 +4,9 @@
         android:id="@+id/action_contacts"
         android:title="@string/menu_contacts" />
     <item
+        android:id="@+id/action_recordings"
+        android:title="@string/menu_recordings" />
+    <item
         android:id="@+id/action_permissions"
         android:title="@string/menu_permissions" />
     <item
