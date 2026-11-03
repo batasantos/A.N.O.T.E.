@@ -1,4 +1,6 @@
-# A.N.O.T.E.
+<p align="center">
+  <img src="docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
+</p>
 
 A.N.O.T.E. é um aplicativo Android que parece um bloco de notas comum, mas guarda dentro dele um pedido de socorro discreto. Pensei nele para mulheres em situação de violência doméstica, que muitas vezes não podem abrir um aplicativo de emergência sem que o agressor perceba.
 
@@ -45,7 +47,7 @@ O código fica em `app/src/main/java/br/unesp/anote/`. Os arquivos principais s�
 - `NotesDbHelper`: o banco SQLite das notas.
 - `SecurePrefs`: onde ficam, criptografados, o cadastro, os contatos e o título secreto.
 
-Os scripts do banco (criação das tabelas e exemplos de inserção, consulta, atualização e exclusão) estão em `database/schema.sql`.
+Os scripts do banco (criação das tabelas e exemplos de inserção, consulta, atualização e exclusão) estão em `database/schema.sql`. O logo e o ícone do app, em SVG e PNG, estão em `docs/logo/`.
 
 ## O que ficou diferente do protótipo
 

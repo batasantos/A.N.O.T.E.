@@ -53,6 +53,15 @@ class SecurePrefs(context: Context) {
         saveContacts(contacts() + contact)
     }
 
+    fun updateContact(index: Int, contact: TrustedContact) {
+        saveContacts(contacts().mapIndexed { i, c -> if (i == index) contact else c })
+    }
+
+    /** Preferencia da lista de notas: false = mais recentes primeiro, true = ordem alfabetica. */
+    var sortAlphabetical: Boolean
+        get() = prefs.getBoolean(KEY_SORT_ALPHA, false)
+        set(value) = prefs.edit().putBoolean(KEY_SORT_ALPHA, value).apply()
+
     fun removeContact(index: Int) {
         saveContacts(contacts().filterIndexed { i, _ -> i != index })
     }
@@ -66,6 +75,7 @@ class SecurePrefs(context: Context) {
     companion object {
         private const val KEY_TRIGGER = "trigger_title"
         private const val KEY_CONTACTS = "contacts"
+        private const val KEY_SORT_ALPHA = "sort_alpha"
         private const val KEY_USER_NAME = "user_name"
         private const val KEY_USER_EMAIL = "user_email"
         private const val KEY_ONBOARDING_DONE = "onboarding_done"

@@ -8,7 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,13 +26,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: NotesAdapter
     private lateinit var empty: TextView
     private lateinit var search: EditText
-    private var alphabetical = false
+    private lateinit var prefs: SecurePrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         db = NotesDbHelper(this)
+        prefs = SecurePrefs(this)
         empty = findViewById(R.id.empty)
         search = findViewById(R.id.edit_search)
 
@@ -40,9 +44,10 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<View>(R.id.fab).setOnClickListener { openEditor(0L) }
         findViewById<View>(R.id.btn_sort).setOnClickListener {
-            alphabetical = !alphabetical
+            prefs.sortAlphabetical = !prefs.sortAlphabetical
             refresh()
         }
+        findViewById<View>(R.id.btn_menu).setOnClickListener { showMenu(it) }
         search.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
@@ -60,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         var notes = db.listAll().filter {
             q.isEmpty() || it.title.lowercase().contains(q) || it.content.lowercase().contains(q)
         }
-        if (alphabetical) notes = notes.sortedBy { it.title.lowercase() }
+        if (prefs.sortAlphabetical) notes = notes.sortedBy { it.title.lowercase() }
 
         val pinned = notes.filter { it.pinned }
         val recent = notes.filter { !it.pinned }
@@ -75,6 +80,48 @@ class MainActivity : AppCompatActivity() {
         }
         adapter.submit(rows)
         empty.visibility = if (notes.isEmpty()) View.VISIBLE else View.GONE
+    }
+
+    // ---------- Menu (conta e ajustes das notas) ----------
+
+    private fun showMenu(anchor: View) {
+        PopupMenu(this, anchor).apply {
+            menuInflater.inflate(R.menu.menu_notes, menu)
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_profile -> MenuDialogs.showProfile(this@MainActivity)
+                    R.id.action_sort -> showSortDialog()
+                    R.id.action_delete_all -> confirmDeleteAll()
+                    R.id.action_about -> MenuDialogs.showAbout(this@MainActivity)
+                }
+                true
+            }
+        }.show()
+    }
+
+    private fun showSortDialog() {
+        val options = arrayOf(getString(R.string.sort_recent), getString(R.string.sort_alpha))
+        AlertDialog.Builder(this)
+            .setTitle(R.string.sort_title)
+            .setSingleChoiceItems(options, if (prefs.sortAlphabetical) 1 else 0) { dialog, which ->
+                prefs.sortAlphabetical = which == 1
+                refresh()
+                dialog.dismiss()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
+    private fun confirmDeleteAll() {
+        AlertDialog.Builder(this)
+            .setMessage(R.string.delete_all_confirm)
+            .setPositiveButton(R.string.action_delete) { _, _ ->
+                db.deleteAll()
+                refresh()
+                Toast.makeText(this, R.string.delete_all_done, Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
     }
 
     private fun openEditor(noteId: Long) {

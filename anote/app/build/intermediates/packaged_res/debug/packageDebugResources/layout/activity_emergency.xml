@@ -57,10 +57,36 @@
                     android:textStyle="bold" />
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/btn_menu"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/bg_chip_dark"
+                        android:clickable="true"
+                        android:contentDescription="@string/more_options"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_more"
+                            android:tint="@color/dark_text" />
+                    </FrameLayout>
+
+                <LinearLayout
                     android:id="@+id/btn_close"
                     android:layout_width="wrap_content"
                     android:layout_height="34dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/bg_chip_dark"
                     android:clickable="true"
                     android:focusable="true"
@@ -84,6 +110,7 @@
                         android:text="@string/close"
                         android:textColor="@color/dark_text"
                         android:textSize="13sp" />
+                </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -412,14 +439,5 @@
             android:textColor="@color/dark_muted"
             android:textSize="13sp" />
 
-        <TextView
-            android:id="@+id/tv_change_trigger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:padding="6dp"
-            android:text="@string/change_trigger"
-            android:textColor="@color/dark_muted"
-            android:textSize="12sp" />
     </LinearLayout>
 </ScrollView>

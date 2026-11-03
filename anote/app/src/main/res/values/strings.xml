@@ -110,4 +110,41 @@
     <string name="notif_channel">Sincronização</string>
     <string name="notif_title">Notas</string>
     <string name="notif_text">Sincronizando…</string>
+
+    <!-- Menus -->
+    <string name="more_options">Mais opções</string>
+    <string name="menu_profile">Meu perfil</string>
+    <string name="menu_sort">Ordenar notas</string>
+    <string name="menu_delete_all">Apagar todas as notas</string>
+    <string name="menu_about">Sobre o app</string>
+    <string name="menu_contacts">Contatos de confiança</string>
+    <string name="menu_permissions">Permissões</string>
+    <string name="menu_help">Ajuda e telefones</string>
+    <string name="menu_trigger">Título de acesso</string>
+
+    <string name="profile_title">Meu perfil</string>
+    <string name="profile_saved">Perfil atualizado</string>
+    <string name="sort_title">Ordenar notas por</string>
+    <string name="sort_recent">Mais recentes</string>
+    <string name="sort_alpha">Ordem alfabética</string>
+    <string name="delete_all_confirm">Apagar todas as notas? Isso não pode ser desfeito.</string>
+    <string name="delete_all_done">Notas apagadas</string>
+    <string name="about_text">Suas anotações, sempre com você.</string>
+    <string name="about_version">Versão %1$s</string>
+
+    <string name="permissions_title">Permissões</string>
+    <string name="permissions_all_ok">Tudo liberado.</string>
+    <string name="permissions_missing">Libere o que falta para o alerta funcionar.</string>
+    <string name="allow">Permitir</string>
+    <string name="open_settings">Configurações</string>
+
+    <string name="help_title">Ajuda e telefones</string>
+    <string name="help_text">O A.N.O.T.E. manda a sua localização por SMS para os contatos de confiança e pode gravar o áudio do ambiente.\n\nEm perigo imediato, ligue:\n\n180 – Central de Atendimento à Mulher\n190 – Polícia Militar</string>
+    <string name="call_180">Ligar 180</string>
+    <string name="call_190">Ligar 190</string>
+
+    <string name="contacts_screen_title">Contatos de confiança</string>
+    <string name="contacts_screen_hint">Toque em um contato para editar ou remover.</string>
+    <string name="add_contact_full">+ Adicionar contato</string>
+    <string name="edit_contact">Editar contato</string>
 </resources>

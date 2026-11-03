@@ -45,6 +45,26 @@
                     android:src="@drawable/ic_filter"
                     android:tint="@color/purple_primary" />
             </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/btn_menu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_search"
+                android:clickable="true"
+                android:contentDescription="@string/more_options"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_more"
+                    android:tint="@color/purple_primary" />
+            </FrameLayout>
         </LinearLayout>
 
         <LinearLayout

@@ -1,198 +1,238 @@
 [
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_bus.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_bus.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_input.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_input.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_circle_dark.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_circle_dark.xml"
+        "merged": "br.unesp.anote.app-debug-35:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_search.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_search.xml"
+        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_launcher_background.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_pin.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_pin.xml"
+        "merged": "br.unesp.anote.app-debug-35:/layout_activity_contacts.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/layout/activity_contacts.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_pill_primary.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_pill_primary.xml"
+        "merged": "br.unesp.anote.app-debug-35:/menu_menu_panel.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/menu/menu_panel.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_mic.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_mic.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_mic.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_mic.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_chevron_right.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_chevron_right.xml"
+        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_more.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/drawable/ic_more.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_search.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_search.xml"
     },
     {
         "merged": "br.unesp.anote.app-debug-35:/layout_activity_emergency.xml.flat",
         "source": "br.unesp.anote.app-main-37:/layout/activity_emergency.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_circle_light.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_circle_light.xml"
+        "merged": "br.unesp.anote.app-debug-35:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_search.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_search.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_car.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_car.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_message.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_message.xml"
+        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_chevron_left.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_chevron_left.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_launcher.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_launcher.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_dot_off.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_dot_off.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_map_preview.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_map_preview.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_dialog_contact.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/dialog_contact.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_item_note.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\item_note.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_send.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_send.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_bell.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_bell.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_item_header.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/item_header.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_message.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_message.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_add.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_add.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_item_contact.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\item_contact.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_btn_dispatch.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_btn_dispatch.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_pin.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_pin.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_close.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_close.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_add.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_add.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_lock.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_lock.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_chevron_left.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_chevron_left.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_card.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_card.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_walk.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_walk.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_logo.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_logo.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_activity_onboarding.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\activity_onboarding.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_activity_onboarding.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/activity_onboarding.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_mail.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_mail.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_launcher.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_launcher.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_search.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_search.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_item_contact.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/item_contact.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_circle_light.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_circle_light.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_dot_on.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_dot_on.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_dialog_contact.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\dialog_contact.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_toolbar.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_toolbar.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_chip_dark.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_chip_dark.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_delete.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_delete.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_dark_card.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_dark_card.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_sos_card.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_sos_card.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_fab.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_fab.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_item_contact_onboarding.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/item_contact_onboarding.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_location.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_location.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_activity_note_editor.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/activity_note_editor.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_note.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_activity_note_editor.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\activity_note_editor.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_chevron_right.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_chevron_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_screen.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_btn_dispatch.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_btn_dispatch.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_toolbar.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_send.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_send.xml"
     },
     {
         "merged": "br.unesp.anote.app-debug-35:/layout_activity_main.xml.flat",
         "source": "br.unesp.anote.app-main-37:/layout/activity_main.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_screen.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_screen.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_card.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_card.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_input.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_input.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_activity_emergency.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\activity_emergency.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_chip_dark.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_chip_dark.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_delete.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_delete.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_fab.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_fab.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_filter.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_filter.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_filter.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_filter.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_dot_on.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_dot_on.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_dark_screen.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_dark_screen.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_circle_soft.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_circle_soft.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_car.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_car.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_logo.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_logo.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_circle_soft.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_circle_soft.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_dot_off.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_dot_off.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_mail.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_mail.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_close.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_close.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_location.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_location.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_dark_screen.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_dark_screen.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_bell.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_bell.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_item_header.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\item_header.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_map_preview.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_map_preview.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_circle_dark.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_circle_dark.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_note.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_note.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_pill_primary.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_pill_primary.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_ic_walk.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/ic_walk.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\activity_main.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_dark_card.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_dark_card.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_lock.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_lock.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/layout_item_note.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/layout/item_note.xml"
+        "merged": "br.unesp.anote.app-debug-35:/menu_menu_notes.xml.flat",
+        "source": "br.unesp.anote.app-main-37:/menu/menu_notes.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-35:/drawable_bg_button_primary.xml.flat",
-        "source": "br.unesp.anote.app-main-37:/drawable/bg_button_primary.xml"
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_ic_bus.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\ic_bus.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\layout_item_contact_onboarding.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\layout\\item_contact_onboarding.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_sos_card.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_sos_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-debug-35:\\drawable_bg_button_primary.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\9.3.0\\br.unesp.anote.app-main-37:\\drawable\\bg_button_primary.xml"
     }
 ]

@@ -2,38 +2,30 @@ package br.unesp.anote
 
 import android.Manifest
 import android.content.ActivityNotFoundException
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.WindowInsetsControllerCompat
 
 /**
  * Painel oculto de emergencia (Figura 11). So e aberto pelo gatilho da "nota falsa".
+ * A protecao (sem captura de tela, fecha ao apagar a tela ou sair do app) vem de [GuardedActivity].
  *
- * Medidas de discricao:
- *  - FLAG_SECURE: impede captura de tela e esconde o conteudo na lista de recentes;
- *  - fecha sozinho quando a tela do celular e apagada (ACTION_SCREEN_OFF);
- *  - fecha em onStop (ao sair do app) e nao aparece nos recentes (excludeFromRecents).
+ * O menu (⋮) reune as configuracoes de emergencia: contatos, permissoes, ajuda e titulo de acesso.
  */
-class EmergencyActivity : AppCompatActivity() {
+class EmergencyActivity : GuardedActivity() {
 
     private enum class Pending { SOS, RECORD, ONE }
 
@@ -44,25 +36,11 @@ class EmergencyActivity : AppCompatActivity() {
     private lateinit var recordSubtitle: TextView
     private lateinit var recordIcon: ImageView
 
-    private var askingPermission = false
     private var pending: Pending? = null
     private var pendingPhone: String? = null
 
-    private val screenOffReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            finishAndRemoveTask()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-        window.statusBarColor = Color.parseColor("#0E0A1F")
-        window.navigationBarColor = Color.parseColor("#1B1236")
-        WindowInsetsControllerCompat(window, window.decorView).apply {
-            isAppearanceLightStatusBars = false
-            isAppearanceLightNavigationBars = false
-        }
         setContentView(R.layout.activity_emergency)
 
         prefs = SecurePrefs(this)
@@ -73,6 +51,7 @@ class EmergencyActivity : AppCompatActivity() {
         recordIcon = findViewById(R.id.img_record)
 
         findViewById<View>(R.id.btn_close).setOnClickListener { finishAndRemoveTask() }
+        findViewById<View>(R.id.btn_menu).setOnClickListener { showMenu(it) }
         findViewById<View>(R.id.card_sos).setOnClickListener { requestThen(Pending.SOS) }
         findViewById<View>(R.id.card_record).setOnClickListener {
             if (SosService.isRecording) {
@@ -88,27 +67,36 @@ class EmergencyActivity : AppCompatActivity() {
         findViewById<View>(R.id.chip_car).setOnClickListener { openRoute("driving") }
         findViewById<View>(R.id.chip_bus).setOnClickListener { openRoute("transit") }
         findViewById<View>(R.id.tv_add_contact).setOnClickListener { showAddContactDialog() }
-        findViewById<View>(R.id.tv_change_trigger).setOnClickListener { showTriggerDialog() }
 
-        registerReceiver(screenOffReceiver, IntentFilter(Intent.ACTION_SCREEN_OFF))
         renderContacts()
     }
 
     override fun onResume() {
         super.onResume()
+        // Ao voltar da tela de contatos a lista pode ter mudado.
+        renderContacts()
         renderRecording()
     }
 
-    override fun onStop() {
-        super.onStop()
-        // Se o app sair da frente (por exemplo, o agressor pegou o celular), o painel some.
-        // Excecao: o pedido de permissoes do sistema tambem dispara onStop.
-        if (!askingPermission) finishAndRemoveTask()
-    }
+    // ---------- Menu ----------
 
-    override fun onDestroy() {
-        super.onDestroy()
-        runCatching { unregisterReceiver(screenOffReceiver) }
+    private fun showMenu(anchor: View) {
+        PopupMenu(this, anchor).apply {
+            menuInflater.inflate(R.menu.menu_panel, menu)
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_contacts -> {
+                        keepOnStop = true // troca de tela dentro do app: o painel nao deve se fechar
+                        startActivity(Intent(this@EmergencyActivity, ContactsActivity::class.java))
+                    }
+                    R.id.action_permissions ->
+                        MenuDialogs.showPermissions(this@EmergencyActivity) { keepOnStop = true }
+                    R.id.action_help -> MenuDialogs.showHelp(this@EmergencyActivity)
+                    R.id.action_trigger -> showTriggerDialog()
+                }
+                true
+            }
+        }.show()
     }
 
     // ---------- Interface ----------
@@ -160,9 +148,11 @@ class EmergencyActivity : AppCompatActivity() {
             .setPositiveButton(R.string.save) { _, _ ->
                 val name = nameField.text.toString().trim()
                 val phone = phoneField.text.toString().filter { it.isDigit() || it == '+' }
-                if (name.isNotEmpty() && phone.length >= 8) {
+                if (name.isNotEmpty() && phone.length >= 10) {
                     prefs.addContact(TrustedContact(name, phone))
                     renderContacts()
+                } else {
+                    Toast.makeText(this, R.string.error_contact, Toast.LENGTH_SHORT).show()
                 }
             }
             .setNegativeButton(R.string.cancel, null)
@@ -216,7 +206,7 @@ class EmergencyActivity : AppCompatActivity() {
         if (missing.isEmpty()) {
             runPending()
         } else {
-            askingPermission = true
+            keepOnStop = true // o pedido de permissao do sistema nao deve fechar o painel
             ActivityCompat.requestPermissions(this, missing.toTypedArray(), REQ_PERMS)
         }
     }
@@ -225,7 +215,7 @@ class EmergencyActivity : AppCompatActivity() {
         requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        askingPermission = false
+        keepOnStop = false
         if (requestCode == REQ_PERMS) runPending() // o servico usa so o que foi concedido
     }
 

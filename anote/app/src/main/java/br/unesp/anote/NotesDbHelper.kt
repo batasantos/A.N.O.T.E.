@@ -81,4 +81,8 @@ class NotesDbHelper(context: Context) :
     fun delete(id: Long) {
         writableDatabase.delete("notes", "id = ?", arrayOf(id.toString()))
     }
+
+    fun deleteAll() {
+        writableDatabase.delete("notes", null, null)
+    }
 }
