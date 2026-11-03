@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- folha de caderno -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,29L60,29L72,41L72,75A4,4 0 0 1 68,79L40,79A4,4 0 0 1 36,75L36,33A4,4 0 0 1 40,29Z" />
+    <!-- canto dobrado -->
+    <path
+        android:fillColor="#D9CCF5"
+        android:pathData="M60,29L72,41L60,41Z" />
+    <!-- linhas de texto -->
+    <path
+        android:fillColor="#7C3AED"
+        android:pathData="M43,48h22v3h-22zM43,56h22v3h-22zM43,64h14v3h-14z" />
+</vector>

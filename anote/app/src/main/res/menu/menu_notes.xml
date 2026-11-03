@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_profile"
+        android:title="@string/menu_profile" />
+    <item
+        android:id="@+id/action_sort"
+        android:title="@string/menu_sort" />
+    <item
+        android:id="@+id/action_delete_all"
+        android:title="@string/menu_delete_all" />
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/menu_about" />
+</menu>
