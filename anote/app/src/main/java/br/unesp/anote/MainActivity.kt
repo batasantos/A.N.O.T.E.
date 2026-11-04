@@ -8,10 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -85,43 +83,50 @@ class MainActivity : AppCompatActivity() {
     // ---------- Menu (conta e ajustes das notas) ----------
 
     private fun showMenu(anchor: View) {
-        PopupMenu(this, anchor).apply {
-            menuInflater.inflate(R.menu.menu_notes, menu)
-            setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.action_profile -> MenuDialogs.showProfile(this@MainActivity)
-                    R.id.action_sort -> showSortDialog()
-                    R.id.action_delete_all -> confirmDeleteAll()
-                    R.id.action_about -> MenuDialogs.showAbout(this@MainActivity)
+        Ui.showMenu(
+            anchor, dark = false,
+            entries = listOf(
+                Ui.MenuEntry(R.drawable.ic_person, R.string.menu_profile) {
+                    MenuDialogs.showProfile(this)
+                },
+                Ui.MenuEntry(R.drawable.ic_filter, R.string.menu_sort) { showSortDialog() },
+                Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_all, danger = true) {
+                    confirmDeleteAll()
+                },
+                Ui.MenuEntry(R.drawable.ic_info, R.string.menu_about) {
+                    MenuDialogs.showAbout(this)
                 }
-                true
-            }
-        }.show()
+            )
+        )
     }
 
     private fun showSortDialog() {
         val options = arrayOf(getString(R.string.sort_recent), getString(R.string.sort_alpha))
-        AlertDialog.Builder(this)
-            .setTitle(R.string.sort_title)
-            .setSingleChoiceItems(options, if (prefs.sortAlphabetical) 1 else 0) { dialog, which ->
-                prefs.sortAlphabetical = which == 1
-                refresh()
-                dialog.dismiss()
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        Ui.show(
+            Ui.dialog(this, dark = false)
+                .setTitle(R.string.sort_title)
+                .setSingleChoiceItems(options, if (prefs.sortAlphabetical) 1 else 0) { dialog, which ->
+                    prefs.sortAlphabetical = which == 1
+                    refresh()
+                    dialog.dismiss()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = false
+        )
     }
 
     private fun confirmDeleteAll() {
-        AlertDialog.Builder(this)
-            .setMessage(R.string.delete_all_confirm)
-            .setPositiveButton(R.string.action_delete) { _, _ ->
-                db.deleteAll()
-                refresh()
-                Toast.makeText(this, R.string.delete_all_done, Toast.LENGTH_SHORT).show()
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        Ui.show(
+            Ui.dialog(this, dark = false)
+                .setMessage(R.string.delete_all_confirm)
+                .setPositiveButton(R.string.action_delete) { _, _ ->
+                    db.deleteAll()
+                    refresh()
+                    Toast.makeText(this, R.string.delete_all_done, Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = false
+        )
     }
 
     private fun openEditor(noteId: Long) {

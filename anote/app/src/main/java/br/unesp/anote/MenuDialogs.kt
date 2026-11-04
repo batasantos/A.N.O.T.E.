@@ -1,71 +1,84 @@
 package br.unesp.anote
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
-import android.text.InputType
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Patterns
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
-/** Dialogos dos menus: os da tela de notas (perfil, sobre) e os do painel (permissoes, ajuda). */
+/**
+ * Dialogos dos menus. Os da tela de notas (perfil, sobre) sao claros; os do painel
+ * (permissoes, ajuda) sao escuros e bloqueiam captura de tela. Ver [Ui].
+ */
 object MenuDialogs {
 
     const val REQ_MENU_PERMS = 77
 
     // ---------- Tela de notas ----------
 
-    /** Edita o cadastro feito no primeiro acesso (nome e e-mail). */
+    /** Edita o cadastro feito no primeiro acesso (nome e e-mail), com erros ao lado do campo. */
     fun showProfile(activity: AppCompatActivity) {
         val prefs = SecurePrefs(activity)
-        val pad = (24 * activity.resources.displayMetrics.density).toInt()
+        val builder = Ui.dialog(activity, dark = false)
+        val view = LayoutInflater.from(builder.context).inflate(R.layout.dialog_profile, null)
 
-        val name = EditText(activity).apply {
-            hint = activity.getString(R.string.hint_name)
-            setText(prefs.userName)
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_WORDS
-            setSingleLine()
-        }
-        val email = EditText(activity).apply {
-            hint = activity.getString(R.string.hint_email)
-            setText(prefs.userEmail)
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-            setSingleLine()
-        }
-        val container = LinearLayout(activity).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(pad, pad / 2, pad, 0)
-            addView(name)
-            addView(email)
-        }
+        val avatar = view.findViewById<TextView>(R.id.profile_avatar)
+        val name = view.findViewById<EditText>(R.id.profile_name)
+        val email = view.findViewById<EditText>(R.id.profile_email)
+        val nameError = view.findViewById<TextView>(R.id.profile_name_error)
+        val emailError = view.findViewById<TextView>(R.id.profile_email_error)
+        name.setText(prefs.userName)
+        email.setText(prefs.userEmail)
 
-        val dialog = AlertDialog.Builder(activity)
-            .setTitle(R.string.profile_title)
-            .setView(container)
-            .setPositiveButton(R.string.save, null) // tratado abaixo, para o dialogo nao fechar com erro
-            .setNegativeButton(R.string.cancel, null)
-            .create()
-        dialog.setOnShowListener {
-            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
-                val n = name.text.toString().trim()
-                val e = email.text.toString().trim()
-                when {
-                    n.isEmpty() -> name.error = activity.getString(R.string.error_name)
-                    !Patterns.EMAIL_ADDRESS.matcher(e).matches() -> email.error = activity.getString(R.string.error_email)
-                    else -> {
-                        prefs.userName = n
-                        prefs.userEmail = e
-                        Toast.makeText(activity, R.string.profile_saved, Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    }
-                }
+        fun updateAvatar() {
+            avatar.text = name.text.toString().trim().firstOrNull()?.uppercase() ?: "?"
+        }
+        updateAvatar()
+        name.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) = Unit
+            override fun afterTextChanged(s: Editable?) {
+                updateAvatar()
+                nameError.visibility = View.GONE
+                name.setBackgroundResource(R.drawable.bg_input)
+            }
+        })
+        email.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) = Unit
+            override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) = Unit
+            override fun afterTextChanged(s: Editable?) {
+                emailError.visibility = View.GONE
+                email.setBackgroundResource(R.drawable.bg_input)
+            }
+        })
+
+        val dialog = builder.setView(view).create()
+        Ui.prepare(dialog, dark = false)
+        view.findViewById<View>(R.id.profile_cancel).setOnClickListener { dialog.dismiss() }
+        view.findViewById<View>(R.id.profile_save).setOnClickListener {
+            val n = name.text.toString().trim()
+            val e = email.text.toString().trim()
+            val nameOk = n.isNotEmpty()
+            val emailOk = Patterns.EMAIL_ADDRESS.matcher(e).matches()
+            nameError.visibility = if (nameOk) View.GONE else View.VISIBLE
+            emailError.visibility = if (emailOk) View.GONE else View.VISIBLE
+            if (!nameOk) name.setBackgroundResource(R.drawable.bg_input_error)
+            if (!emailOk) email.setBackgroundResource(R.drawable.bg_input_error)
+            if (nameOk && emailOk) {
+                prefs.userName = n
+                prefs.userEmail = e
+                Toast.makeText(activity, R.string.profile_saved, Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
             }
         }
         dialog.show()
@@ -76,14 +89,16 @@ object MenuDialogs {
         val version = runCatching {
             activity.packageManager.getPackageInfo(activity.packageName, 0).versionName
         }.getOrNull() ?: "1.0"
-        AlertDialog.Builder(activity)
-            .setTitle(R.string.brand)
-            .setMessage(
-                activity.getString(R.string.about_text) + "\n\n" +
-                    activity.getString(R.string.about_version, version)
-            )
-            .setPositiveButton(R.string.close, null)
-            .show()
+        Ui.show(
+            Ui.dialog(activity, dark = false)
+                .setTitle(R.string.brand)
+                .setMessage(
+                    activity.getString(R.string.about_text) + "\n\n" +
+                        activity.getString(R.string.about_version, version)
+                )
+                .setPositiveButton(R.string.close, null),
+            dark = false
+        )
     }
 
     // ---------- Painel de emergencia ----------
@@ -112,7 +127,7 @@ object MenuDialogs {
             if (missing.isEmpty()) R.string.permissions_all_ok else R.string.permissions_missing
         )
 
-        val builder = AlertDialog.Builder(activity)
+        val builder = Ui.dialog(activity, dark = true)
             .setTitle(R.string.permissions_title)
             .setMessage("$lines\n\n$footer")
             .setNegativeButton(R.string.close, null)
@@ -128,18 +143,20 @@ object MenuDialogs {
                 ActivityCompat.requestPermissions(activity, missing.toTypedArray(), REQ_MENU_PERMS)
             }
         }
-        builder.show()
+        Ui.show(builder, dark = true)
     }
 
     /** O que o app faz e os telefones de apoio. Abre o discador (nao liga sozinho). */
     fun showHelp(activity: AppCompatActivity) {
-        AlertDialog.Builder(activity)
-            .setTitle(R.string.help_title)
-            .setMessage(R.string.help_text)
-            .setPositiveButton(R.string.call_180) { _, _ -> dial(activity, "180") }
-            .setNegativeButton(R.string.call_190) { _, _ -> dial(activity, "190") }
-            .setNeutralButton(R.string.close, null)
-            .show()
+        Ui.show(
+            Ui.dialog(activity, dark = true)
+                .setTitle(R.string.help_title)
+                .setMessage(R.string.help_text)
+                .setPositiveButton(R.string.call_180) { _, _ -> dial(activity, "180") }
+                .setNegativeButton(R.string.call_190) { _, _ -> dial(activity, "190") }
+                .setNeutralButton(R.string.close, null),
+            dark = true
+        )
     }
 
     private fun dial(activity: AppCompatActivity, number: String) {

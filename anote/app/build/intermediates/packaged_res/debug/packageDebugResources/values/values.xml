@@ -121,7 +121,10 @@
     <string name="permissions_title">Permissões</string>
     <string name="pin">Fixar</string>
     <string name="pinned">Fixada</string>
+    <string name="profile_label_email">E-MAIL</string>
+    <string name="profile_label_name">NOME</string>
     <string name="profile_saved">Perfil atualizado</string>
+    <string name="profile_sub">Seus dados de cadastro neste aparelho</string>
     <string name="profile_title">Meu perfil</string>
     <string name="protected_label">PROTEGIDA</string>
     <string name="rec_date_format">dd/MM/yyyy \'às\' HH:mm</string>
@@ -168,6 +171,20 @@
     <string name="trigger_dialog_title">Título de acesso</string>
     <string name="untitled">(sem título)</string>
     <string name="yesterday">ontem</string>
+    <style name="Anote.Dialog.Dark" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/amber</item>
+        <item name="colorOnSurface">@color/dark_text</item>
+        <item name="colorOnSurfaceVariant">@color/dark_muted</item>
+        <item name="android:textColorPrimary">@color/dark_text</item>
+        <item name="android:textColorHint">@color/dark_muted</item>
+    </style>
+    <style name="Anote.Dialog.Light" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/purple_primary</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorOnSurfaceVariant">@color/muted</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+        <item name="android:textColorHint">@color/hint</item>
+    </style>
     <style name="Theme.Anote" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/purple_primary</item>
         <item name="colorOnPrimary">@color/white</item>

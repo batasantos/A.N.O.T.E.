@@ -12,10 +12,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -81,26 +79,26 @@ class EmergencyActivity : GuardedActivity() {
     // ---------- Menu ----------
 
     private fun showMenu(anchor: View) {
-        PopupMenu(this, anchor).apply {
-            menuInflater.inflate(R.menu.menu_panel, menu)
-            setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.action_contacts -> {
-                        keepOnStop = true // troca de tela dentro do app: o painel nao deve se fechar
-                        startActivity(Intent(this@EmergencyActivity, ContactsActivity::class.java))
-                    }
-                    R.id.action_recordings -> {
-                        keepOnStop = true
-                        startActivity(Intent(this@EmergencyActivity, RecordingsActivity::class.java))
-                    }
-                    R.id.action_permissions ->
-                        MenuDialogs.showPermissions(this@EmergencyActivity) { keepOnStop = true }
-                    R.id.action_help -> MenuDialogs.showHelp(this@EmergencyActivity)
-                    R.id.action_trigger -> showTriggerDialog()
-                }
-                true
-            }
-        }.show()
+        Ui.showMenu(
+            anchor, dark = true,
+            entries = listOf(
+                Ui.MenuEntry(R.drawable.ic_people, R.string.menu_contacts) {
+                    keepOnStop = true // troca de tela dentro do app: o painel nao deve se fechar
+                    startActivity(Intent(this, ContactsActivity::class.java))
+                },
+                Ui.MenuEntry(R.drawable.ic_mic, R.string.menu_recordings) {
+                    keepOnStop = true
+                    startActivity(Intent(this, RecordingsActivity::class.java))
+                },
+                Ui.MenuEntry(R.drawable.ic_shield, R.string.menu_permissions) {
+                    MenuDialogs.showPermissions(this) { keepOnStop = true }
+                },
+                Ui.MenuEntry(R.drawable.ic_help, R.string.menu_help) {
+                    MenuDialogs.showHelp(this)
+                },
+                Ui.MenuEntry(R.drawable.ic_key, R.string.menu_trigger) { showTriggerDialog() }
+            )
+        )
     }
 
     // ---------- Interface ----------
@@ -128,14 +126,16 @@ class EmergencyActivity : GuardedActivity() {
                 requestThen(Pending.ONE, contact.phone)
             }
             row.setOnLongClickListener {
-                AlertDialog.Builder(this)
-                    .setMessage(R.string.remove_contact)
-                    .setPositiveButton(R.string.remove) { _, _ ->
-                        prefs.removeContact(index)
-                        renderContacts()
-                    }
-                    .setNegativeButton(R.string.cancel, null)
-                    .show()
+                Ui.show(
+                    Ui.dialog(this, dark = true)
+                        .setMessage(R.string.remove_contact)
+                        .setPositiveButton(R.string.remove) { _, _ ->
+                            prefs.removeContact(index)
+                            renderContacts()
+                        }
+                        .setNegativeButton(R.string.cancel, null),
+                    dark = true
+                )
                 true
             }
             contactsContainer.addView(row)
@@ -143,45 +143,52 @@ class EmergencyActivity : GuardedActivity() {
     }
 
     private fun showAddContactDialog() {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_contact, null)
+        val builder = Ui.dialog(this, dark = true)
+        // Infla com o contexto do dialogo para os campos usarem as cores escuras.
+        val view = LayoutInflater.from(builder.context).inflate(R.layout.dialog_contact, null)
         val nameField = view.findViewById<EditText>(R.id.dialog_name)
         val phoneField = view.findViewById<EditText>(R.id.dialog_phone)
-        AlertDialog.Builder(this)
-            .setTitle(R.string.add_contact)
-            .setView(view)
-            .setPositiveButton(R.string.save) { _, _ ->
-                val name = nameField.text.toString().trim()
-                val phone = phoneField.text.toString().filter { it.isDigit() || it == '+' }
-                if (name.isNotEmpty() && phone.length >= 10) {
-                    prefs.addContact(TrustedContact(name, phone))
-                    renderContacts()
-                } else {
-                    Toast.makeText(this, R.string.error_contact, Toast.LENGTH_SHORT).show()
+        Ui.show(
+            builder
+                .setTitle(R.string.add_contact)
+                .setView(view)
+                .setPositiveButton(R.string.save) { _, _ ->
+                    val name = nameField.text.toString().trim()
+                    val phone = phoneField.text.toString().filter { it.isDigit() || it == '+' }
+                    if (name.isNotEmpty() && phone.length >= 10) {
+                        prefs.addContact(TrustedContact(name, phone))
+                        renderContacts()
+                    } else {
+                        Toast.makeText(this, R.string.error_contact, Toast.LENGTH_SHORT).show()
+                    }
                 }
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+                .setNegativeButton(R.string.cancel, null),
+            dark = true
+        )
     }
 
     private fun showTriggerDialog() {
-        val field = EditText(this).apply {
+        val builder = Ui.dialog(this, dark = true)
+        val field = EditText(builder.context).apply {
             setText(prefs.triggerTitle)
             hint = getString(R.string.trigger_dialog_hint)
             setSingleLine()
         }
-        val container = LinearLayout(this).apply {
+        val container = LinearLayout(builder.context).apply {
             setPadding(64, 24, 64, 0)
             addView(field, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         }
-        AlertDialog.Builder(this)
-            .setTitle(R.string.trigger_dialog_title)
-            .setView(container)
-            .setPositiveButton(R.string.save) { _, _ ->
-                val t = field.text.toString().trim()
-                if (t.isNotEmpty()) prefs.triggerTitle = t
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        Ui.show(
+            builder
+                .setTitle(R.string.trigger_dialog_title)
+                .setView(container)
+                .setPositiveButton(R.string.save) { _, _ ->
+                    val t = field.text.toString().trim()
+                    if (t.isNotEmpty()) prefs.triggerTitle = t
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = true
+        )
     }
 
     // ---------- Permissoes e acoes ----------

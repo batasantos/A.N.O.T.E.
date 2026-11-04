@@ -13,7 +13,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
 import java.io.File
 import java.text.SimpleDateFormat
@@ -124,17 +123,19 @@ class RecordingsActivity : GuardedActivity() {
             getString(R.string.rec_share),
             getString(R.string.rec_delete)
         )
-        AlertDialog.Builder(this)
-            .setTitle(formatDate(file))
-            .setItems(items) { _, which ->
-                when (which) {
-                    0 -> togglePlay(file)
-                    1 -> export(file)
-                    2 -> share(file)
-                    3 -> confirmDelete(file)
-                }
-            }
-            .show()
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setTitle(formatDate(file))
+                .setItems(items) { _, which ->
+                    when (which) {
+                        0 -> togglePlay(file)
+                        1 -> export(file)
+                        2 -> share(file)
+                        3 -> confirmDelete(file)
+                    }
+                },
+            dark = true
+        )
     }
 
     private fun togglePlay(file: File) {
@@ -208,14 +209,16 @@ class RecordingsActivity : GuardedActivity() {
     }
 
     private fun confirmDelete(file: File) {
-        AlertDialog.Builder(this)
-            .setMessage(R.string.rec_delete_confirm)
-            .setPositiveButton(R.string.rec_delete) { _, _ ->
-                if (playingFile == file) stopPlayback()
-                file.delete()
-                render()
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setMessage(R.string.rec_delete_confirm)
+                .setPositiveButton(R.string.rec_delete) { _, _ ->
+                    if (playingFile == file) stopPlayback()
+                    file.delete()
+                    render()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = true
+        )
     }
 }

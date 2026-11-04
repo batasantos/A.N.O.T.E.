@@ -123,6 +123,9 @@
     <string name="menu_trigger">Título de acesso</string>
 
     <string name="profile_title">Meu perfil</string>
+    <string name="profile_sub">Seus dados de cadastro neste aparelho</string>
+    <string name="profile_label_name">NOME</string>
+    <string name="profile_label_email">E-MAIL</string>
     <string name="profile_saved">Perfil atualizado</string>
     <string name="sort_title">Ordenar notas por</string>
     <string name="sort_recent">Mais recentes</string>

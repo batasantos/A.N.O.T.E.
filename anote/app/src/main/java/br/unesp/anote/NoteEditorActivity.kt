@@ -9,7 +9,6 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
@@ -110,14 +109,16 @@ class NoteEditorActivity : AppCompatActivity() {
             finish()
             return
         }
-        AlertDialog.Builder(this)
-            .setMessage(R.string.delete_confirm)
-            .setPositiveButton(R.string.action_delete) { _, _ ->
-                db.delete(noteId)
-                finish()
-            }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        Ui.show(
+            Ui.dialog(this, dark = false)
+                .setMessage(R.string.delete_confirm)
+                .setPositiveButton(R.string.action_delete) { _, _ ->
+                    db.delete(noteId)
+                    finish()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = false
+        )
     }
 
     companion object {

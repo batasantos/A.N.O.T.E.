@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 
 /**
  * Gerenciar contatos de confianca (menu do painel de emergencia): adicionar, editar e remover.
@@ -51,7 +50,9 @@ class ContactsActivity : GuardedActivity() {
 
     /** index < 0 = novo contato; senao edita o contato daquela posicao (com opcao de remover). */
     private fun showEditDialog(index: Int) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_contact, null)
+        val builder = Ui.dialog(this, dark = true)
+        // Infla com o contexto do dialogo para os campos usarem as cores escuras.
+        val view = LayoutInflater.from(builder.context).inflate(R.layout.dialog_contact, null)
         val nameField = view.findViewById<EditText>(R.id.dialog_name)
         val phoneField = view.findViewById<EditText>(R.id.dialog_phone)
         val editing = index >= 0
@@ -61,7 +62,7 @@ class ContactsActivity : GuardedActivity() {
             phoneField.setText(current.phone)
         }
 
-        val builder = AlertDialog.Builder(this)
+        builder
             .setTitle(if (editing) R.string.edit_contact else R.string.add_contact)
             .setView(view)
             .setPositiveButton(R.string.save, null) // tratado abaixo, para nao fechar com erro
@@ -73,6 +74,7 @@ class ContactsActivity : GuardedActivity() {
             }
         }
         val dialog = builder.create()
+        Ui.prepare(dialog, dark = true)
         dialog.setOnShowListener {
             dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
                 val name = nameField.text.toString().trim()
