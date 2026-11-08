@@ -39,6 +39,10 @@ class EmergencyActivity : GuardedActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Session.isActive(this)) { // sessao encerrada: nao ha conta para mostrar
+            finishAndRemoveTask()
+            return
+        }
         setContentView(R.layout.activity_emergency)
 
         prefs = SecurePrefs(this)

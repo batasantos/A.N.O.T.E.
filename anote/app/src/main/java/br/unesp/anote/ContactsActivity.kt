@@ -21,6 +21,10 @@ class ContactsActivity : GuardedActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Session.isActive(this)) { // sessao encerrada: nao ha conta para mostrar
+            finishAndRemoveTask()
+            return
+        }
         setContentView(R.layout.activity_contacts)
 
         prefs = SecurePrefs(this)

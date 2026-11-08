@@ -35,10 +35,23 @@ class SosService : Service() {
     private var recorder: MediaRecorder? = null
     private var pendingSms = 0
 
+    /** Conta que acionou o servico: contatos, nome e gravacoes sao sempre os dela. */
+    private var accountId: String? = null
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        when (intent?.action) {
+        val action = intent?.action
+        if (action == ACTION_RECORD || action == ACTION_SOS || action == ACTION_SOS_ONE) {
+            accountId = Session.activeId(this)
+            if (accountId == null) { // sem sessao aberta nao ha contatos nem pasta de gravacao
+                enterForeground()
+                stopForeground(STOP_FOREGROUND_REMOVE)
+                stopSelf()
+                return START_NOT_STICKY
+            }
+        }
+        when (action) {
             ACTION_STOP_RECORD -> {
                 stopRecording()
                 finishIfIdle()
@@ -131,7 +144,14 @@ class SosService : Service() {
     }
 
     private fun sendSms(location: Location?, onlyPhone: String?) {
-        val userName = SecurePrefs(this).userName
+        val account = accountId
+        if (account == null) {
+            pendingSms--
+            finishIfIdle()
+            return
+        }
+        val userPrefs = SecurePrefs(this, account)
+        val userName = userPrefs.userName
         val text = buildString {
             append(
                 if (userName.isNotBlank()) getString(R.string.sos_message_named, userName)
@@ -148,7 +168,7 @@ class SosService : Service() {
         } else {
             @Suppress("DEPRECATION") SmsManager.getDefault()
         }
-        val targets = if (onlyPhone != null) listOf(onlyPhone) else SecurePrefs(this).contacts().map { it.phone }
+        val targets = if (onlyPhone != null) listOf(onlyPhone) else userPrefs.contacts().map { it.phone }
         targets.forEach { phone ->
             runCatching {
                 val parts = smsManager.divideMessage(text)
@@ -166,7 +186,7 @@ class SosService : Service() {
             isRecording = recorder != null
             return
         }
-        val dir = Recordings.dir(this)
+        val dir = Recordings.dir(this, accountId ?: return)
         val file = File(dir, "audio_${System.currentTimeMillis()}.m4a")
 
         val r = if (Build.VERSION.SDK_INT >= 31) MediaRecorder(this) else {

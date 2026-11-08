@@ -41,22 +41,22 @@
 22-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:13:61-85
 23
 24    <permission
-24-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+24-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
 25        android:name="br.unesp.anote.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-25-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+25-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
 26        android:protectionLevel="signature" />
-26-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+26-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
 27
 28    <uses-permission android:name="br.unesp.anote.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-28-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-28-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+28-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+28-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 29
 30    <application
-30-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:15:5-74:19
+30-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:15:5-80:19
 31        android:allowBackup="false"
 31-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:16:9-36
 32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-32-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\abeb515357a7db3fd22e844d1e55f2be\workspace\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+32-->[androidx.core:core:1.13.1] C:\Users\tha_b\.gradle\caches\transforms-4\8e0a0bff2d388b6446750efdf4a5758f\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 33        android:debuggable="true"
 34        android:extractNativeLibs="false"
 35        android:icon="@mipmap/ic_launcher"
@@ -70,176 +70,242 @@
 39        android:testOnly="true"
 40        android:theme="@style/Theme.Anote" >
 40-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:21:9-43
-41        <activity
-41-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:23:9-31:20
-42            android:name="br.unesp.anote.OnboardingActivity"
-42-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:24:13-47
-43            android:exported="true"
-43-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:25:13-36
-44            android:windowSoftInputMode="adjustResize" >
-44-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:26:13-55
-45            <intent-filter>
-45-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:27:13-30:29
-46                <action android:name="android.intent.action.MAIN" />
-46-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:28:17-69
-46-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:28:25-66
-47
-48                <category android:name="android.intent.category.LAUNCHER" />
-48-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:29:17-77
-48-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:29:27-74
-49            </intent-filter>
-50        </activity>
-51        <activity
-51-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:33:9-35:40
-52            android:name="br.unesp.anote.MainActivity"
-52-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:34:13-41
-53            android:exported="false" />
-53-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:35:13-37
-54
-55        <!-- excludeFromRecents: a tela nao aparece na lista de apps recentes -->
-56        <activity
-56-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:38:9-42:58
-57            android:name="br.unesp.anote.NoteEditorActivity"
-57-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:39:13-47
-58            android:excludeFromRecents="true"
-58-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:41:13-46
-59            android:exported="false"
-59-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:40:13-37
-60            android:windowSoftInputMode="adjustResize" />
-60-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:42:13-55
-61        <activity
-61-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:44:9-47:49
-62            android:name="br.unesp.anote.EmergencyActivity"
-62-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:45:13-46
-63            android:excludeFromRecents="true"
-63-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:47:13-46
-64            android:exported="false" />
-64-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:46:13-37
-65        <activity
-65-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:49:9-52:49
-66            android:name="br.unesp.anote.ContactsActivity"
-66-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:50:13-45
-67            android:excludeFromRecents="true"
-67-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:52:13-46
-68            android:exported="false" />
-68-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:51:13-37
-69        <activity
-69-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:54:9-57:49
-70            android:name="br.unesp.anote.RecordingsActivity"
-70-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:55:13-47
-71            android:excludeFromRecents="true"
-71-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:57:13-46
-72            android:exported="false" />
-72-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:56:13-37
-73
-74        <!-- Permite compartilhar um audio gravado (e so ele) com outro app, de forma temporaria -->
-75        <provider
-76            android:name="androidx.core.content.FileProvider"
-76-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:61:13-62
-77            android:authorities="br.unesp.anote.fileprovider"
-77-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:62:13-64
-78            android:exported="false"
-78-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:63:13-37
-79            android:grantUriPermissions="true" >
-79-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:64:13-47
-80            <meta-data
-80-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:65:13-67:54
-81                android:name="android.support.FILE_PROVIDER_PATHS"
-81-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:66:17-67
-82                android:resource="@xml/file_paths" />
-82-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:67:17-51
-83        </provider>
-84
-85        <service
-85-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:70:9-73:67
-86            android:name="br.unesp.anote.SosService"
-86-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:71:13-39
-87            android:exported="false"
-87-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:72:13-37
-88            android:foregroundServiceType="location|microphone" />
-88-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:73:13-64
-89
-90        <provider
-90-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-91            android:name="androidx.startup.InitializationProvider"
-91-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-92            android:authorities="br.unesp.anote.androidx-startup"
-92-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-93            android:exported="false" >
-93-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-94            <meta-data
-94-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-95                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-95-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-96                android:value="androidx.startup" />
-96-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\95780f02b2275237aa6108cd7760d99c\workspace\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-97            <meta-data
-97-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\23c2303162c167c103c9cda3a36522d0\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-98                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-98-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\23c2303162c167c103c9cda3a36522d0\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-99                android:value="androidx.startup" />
-99-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\23c2303162c167c103c9cda3a36522d0\workspace\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+41
+42        <!-- Porta de entrada: abre as notas (sessao aberta), o login ou o primeiro cadastro -->
+43        <activity
+43-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:24:9-32:20
+44            android:name="br.unesp.anote.LoginActivity"
+44-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:25:13-42
+45            android:exported="true"
+45-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:26:13-36
+46            android:windowSoftInputMode="adjustResize" >
+46-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:27:13-55
+47            <intent-filter>
+47-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:28:13-31:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:29:17-69
+48-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:29:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:30:17-77
+50-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:30:27-74
+51            </intent-filter>
+52        </activity>
+53        <activity
+53-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:34:9-37:58
+54            android:name="br.unesp.anote.OnboardingActivity"
+54-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:35:13-47
+55            android:exported="false"
+55-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:36:13-37
+56            android:windowSoftInputMode="adjustResize" />
+56-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:37:13-55
+57        <activity
+57-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:39:9-41:40
+58            android:name="br.unesp.anote.MainActivity"
+58-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:40:13-41
+59            android:exported="false" />
+59-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:41:13-37
+60
+61        <!-- excludeFromRecents: a tela nao aparece na lista de apps recentes -->
+62        <activity
+62-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:44:9-48:58
+63            android:name="br.unesp.anote.NoteEditorActivity"
+63-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:45:13-47
+64            android:excludeFromRecents="true"
+64-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:47:13-46
+65            android:exported="false"
+65-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:46:13-37
+66            android:windowSoftInputMode="adjustResize" />
+66-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:48:13-55
+67        <activity
+67-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:50:9-53:49
+68            android:name="br.unesp.anote.EmergencyActivity"
+68-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:51:13-46
+69            android:excludeFromRecents="true"
+69-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:53:13-46
+70            android:exported="false" />
+70-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:52:13-37
+71        <activity
+71-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:55:9-58:49
+72            android:name="br.unesp.anote.ContactsActivity"
+72-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:56:13-45
+73            android:excludeFromRecents="true"
+73-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:58:13-46
+74            android:exported="false" />
+74-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:57:13-37
+75        <activity
+75-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:60:9-63:49
+76            android:name="br.unesp.anote.RecordingsActivity"
+76-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:61:13-47
+77            android:excludeFromRecents="true"
+77-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:63:13-46
+78            android:exported="false" />
+78-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:62:13-37
+79
+80        <!-- Permite compartilhar um audio gravado (e so ele) com outro app, de forma temporaria -->
+81        <provider
+82            android:name="androidx.core.content.FileProvider"
+82-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:67:13-62
+83            android:authorities="br.unesp.anote.fileprovider"
+83-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:68:13-64
+84            android:exported="false"
+84-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:69:13-37
+85            android:grantUriPermissions="true" >
+85-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:70:13-47
+86            <meta-data
+86-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:71:13-73:54
+87                android:name="android.support.FILE_PROVIDER_PATHS"
+87-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:72:17-67
+88                android:resource="@xml/file_paths" />
+88-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:73:17-51
+89        </provider>
+90
+91        <service
+91-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:76:9-79:67
+92            android:name="br.unesp.anote.SosService"
+92-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:77:13-39
+93            android:exported="false"
+93-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:78:13-37
+94            android:foregroundServiceType="location|microphone" />
+94-->C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:79:13-64
+95
+96        <provider
+96-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+97            android:name="androidx.startup.InitializationProvider"
+97-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+98            android:authorities="br.unesp.anote.androidx-startup"
+98-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+99            android:exported="false" >
+99-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
 100            <meta-data
-100-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
-101                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-101-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+100-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+101                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+101-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
 102                android:value="androidx.startup" />
-102-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
-103        </provider>
-104
-105        <activity
-105-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\41ff8bd06694f3310dc1fe4ccc919d7f\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
-106            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-106-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\41ff8bd06694f3310dc1fe4ccc919d7f\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
-107            android:exported="false"
-107-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\41ff8bd06694f3310dc1fe4ccc919d7f\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
-108            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-108-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\41ff8bd06694f3310dc1fe4ccc919d7f\workspace\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
-109
-110        <meta-data
-110-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\7b04b2e59e813ff2a48654ce28bed7f4\workspace\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
-111            android:name="com.google.android.gms.version"
-111-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\7b04b2e59e813ff2a48654ce28bed7f4\workspace\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
-112            android:value="@integer/google_play_services_version" />
-112-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\7b04b2e59e813ff2a48654ce28bed7f4\workspace\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
-113
-114        <receiver
-114-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
-115            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-115-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
-116            android:directBootAware="false"
-116-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
-117            android:enabled="true"
-117-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
-118            android:exported="true"
-118-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
-119            android:permission="android.permission.DUMP" >
-119-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
-120            <intent-filter>
-120-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
-121                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
-121-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
-122            </intent-filter>
-123            <intent-filter>
-123-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
-124                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
-124-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
-125            </intent-filter>
-126            <intent-filter>
-126-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
-127                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
-127-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
-128            </intent-filter>
-129            <intent-filter>
-129-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
-130                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
-130-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\9.3.0\transforms\89db838c835554f984765d2fc4287670\workspace\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
-131            </intent-filter>
-132        </receiver>
-133    </application>
-134
-135</manifest>
+102-->[androidx.emoji2:emoji2:1.3.0] C:\Users\tha_b\.gradle\caches\transforms-4\192474c036ec43764acdf6f3e34ae042\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+103            <meta-data
+103-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\transforms-4\44d9374c2fc79a1ce870385ec114cea5\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+104                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+104-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\transforms-4\44d9374c2fc79a1ce870385ec114cea5\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+105                android:value="androidx.startup" />
+105-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\tha_b\.gradle\caches\transforms-4\44d9374c2fc79a1ce870385ec114cea5\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+106            <meta-data
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+107                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+108                android:value="androidx.startup" />
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+109        </provider>
+110
+111        <service
+111-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:24:9-32:19
+112            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+112-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:25:13-94
+113            android:enabled="true"
+113-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:26:13-35
+114            android:exported="false" >
+114-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:27:13-37
+115            <meta-data
+115-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:29:13-31:104
+116                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+116-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:30:17-76
+117                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+117-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:31:17-101
+118        </service>
+119
+120        <activity
+120-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:34:9-41:20
+121            android:name="androidx.credentials.playservices.HiddenActivity"
+121-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:35:13-76
+122            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+122-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:36:13-87
+123            android:enabled="true"
+123-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:37:13-35
+124            android:exported="false"
+124-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:38:13-37
+125            android:fitsSystemWindows="true"
+125-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:39:13-45
+126            android:theme="@style/Theme.Hidden" >
+126-->[androidx.credentials:credentials-play-services-auth:1.3.0-beta01] C:\Users\tha_b\.gradle\caches\transforms-4\2f434f8fe0f65812d57eb5a61bbba770\transformed\credentials-play-services-auth-1.3.0-beta01\AndroidManifest.xml:40:13-48
+127        </activity>
+128        <activity
+128-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:23:9-27:75
+129            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+129-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:24:13-93
+130            android:excludeFromRecents="true"
+130-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:25:13-46
+131            android:exported="false"
+131-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:26:13-37
+132            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+132-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:27:13-72
+133        <!--
+134            Service handling Google Sign-In user revocation. For apps that do not integrate with
+135            Google Sign-In, this service will never be started.
+136        -->
+137        <service
+137-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:33:9-37:51
+138            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+138-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:34:13-89
+139            android:exported="true"
+139-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:35:13-36
+140            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+140-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:36:13-107
+141            android:visibleToInstantApps="true" />
+141-->[com.google.android.gms:play-services-auth:21.1.1] C:\Users\tha_b\.gradle\caches\transforms-4\64b6bc88c9efeac5e3c615235a86d524\transformed\play-services-auth-21.1.1\AndroidManifest.xml:37:13-48
+142
+143        <activity
+143-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\transforms-4\db3e207e8cdea149435fa399a0395321\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+144            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+144-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\transforms-4\db3e207e8cdea149435fa399a0395321\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+145            android:exported="false"
+145-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\transforms-4\db3e207e8cdea149435fa399a0395321\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+146            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+146-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\tha_b\.gradle\caches\transforms-4\db3e207e8cdea149435fa399a0395321\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+147
+148        <meta-data
+148-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\transforms-4\03233ce612030785a644ea85f8aa2e65\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+149            android:name="com.google.android.gms.version"
+149-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\transforms-4\03233ce612030785a644ea85f8aa2e65\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+150            android:value="@integer/google_play_services_version" />
+150-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\tha_b\.gradle\caches\transforms-4\03233ce612030785a644ea85f8aa2e65\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+151
+152        <receiver
+152-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+153            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+153-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+154            android:directBootAware="false"
+154-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+155            android:enabled="true"
+155-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+156            android:exported="true"
+156-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+157            android:permission="android.permission.DUMP" >
+157-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+158            <intent-filter>
+158-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+159                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+159-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+159-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+160            </intent-filter>
+161            <intent-filter>
+161-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+162                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+162-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+162-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+163            </intent-filter>
+164            <intent-filter>
+164-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+165                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+165-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+165-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+166            </intent-filter>
+167            <intent-filter>
+167-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+168                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+168-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+168-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\tha_b\.gradle\caches\transforms-4\4e16cc280eaa0a1f5277c41379c36ea2\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+169            </intent-filter>
+170        </receiver>
+171    </application>
+172
+173</manifest>

@@ -30,6 +30,10 @@ class NoteEditorActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Session.isActive(this)) { // sessao encerrada: nao ha conta para mostrar
+            finish()
+            return
+        }
         setContentView(R.layout.activity_note_editor)
 
         db = NotesDbHelper(this)

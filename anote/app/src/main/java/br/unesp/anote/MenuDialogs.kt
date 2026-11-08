@@ -1,15 +1,18 @@
 package br.unesp.anote
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +31,8 @@ object MenuDialogs {
 
     /** Edita o cadastro feito no primeiro acesso (nome e e-mail), com erros ao lado do campo. */
     fun showProfile(activity: AppCompatActivity) {
-        val prefs = SecurePrefs(activity)
+        val accountId = Session.activeId(activity) ?: return
+        val account = Accounts.get(activity, accountId) ?: return
         val builder = Ui.dialog(activity, dark = false)
         val view = LayoutInflater.from(builder.context).inflate(R.layout.dialog_profile, null)
 
@@ -37,8 +41,8 @@ object MenuDialogs {
         val email = view.findViewById<EditText>(R.id.profile_email)
         val nameError = view.findViewById<TextView>(R.id.profile_name_error)
         val emailError = view.findViewById<TextView>(R.id.profile_email_error)
-        name.setText(prefs.userName)
-        email.setText(prefs.userEmail)
+        name.setText(account.name)
+        email.setText(account.email)
 
         fun updateAvatar() {
             avatar.text = name.text.toString().trim().firstOrNull()?.uppercase() ?: "?"
@@ -71,14 +75,146 @@ object MenuDialogs {
             val nameOk = n.isNotEmpty()
             val emailOk = Patterns.EMAIL_ADDRESS.matcher(e).matches()
             nameError.visibility = if (nameOk) View.GONE else View.VISIBLE
+            emailError.setText(R.string.error_email)
             emailError.visibility = if (emailOk) View.GONE else View.VISIBLE
             if (!nameOk) name.setBackgroundResource(R.drawable.bg_input_error)
             if (!emailOk) email.setBackgroundResource(R.drawable.bg_input_error)
             if (nameOk && emailOk) {
-                prefs.userName = n
-                prefs.userEmail = e
-                Toast.makeText(activity, R.string.profile_saved, Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
+                if (Accounts.updateProfile(activity, accountId, n, e)) {
+                    Toast.makeText(activity, R.string.profile_saved, Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                } else { // o e-mail ja pertence a outra conta
+                    emailError.setText(R.string.error_email_taken)
+                    emailError.visibility = View.VISIBLE
+                    email.setBackgroundResource(R.drawable.bg_input_error)
+                }
+            }
+        }
+        dialog.show()
+    }
+
+    /** Troca de senha: pede a atual (com o mesmo bloqueio por tentativas do login), a nova e a confirmacao. */
+    fun showChangePassword(activity: AppCompatActivity) {
+        val accountId = Session.activeId(activity) ?: return
+        val builder = Ui.dialog(activity, dark = false)
+        val view = LayoutInflater.from(builder.context).inflate(R.layout.dialog_password, null)
+
+        val current = view.findViewById<EditText>(R.id.pw_current)
+        val fresh = view.findViewById<EditText>(R.id.pw_new)
+        val confirm = view.findViewById<EditText>(R.id.pw_confirm)
+        val currentError = view.findViewById<TextView>(R.id.pw_current_error)
+        val freshError = view.findViewById<TextView>(R.id.pw_new_error)
+        val confirmError = view.findViewById<TextView>(R.id.pw_confirm_error)
+        val save = view.findViewById<TextView>(R.id.pw_save)
+
+        // Ao digitar de novo no campo, o erro dele some.
+        fun clearOnType(field: EditText, error: TextView) {
+            field.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, st: Int, c: Int, a: Int) = Unit
+                override fun onTextChanged(s: CharSequence?, st: Int, b: Int, c: Int) = Unit
+                override fun afterTextChanged(s: Editable?) {
+                    error.visibility = View.GONE
+                    field.setBackgroundResource(R.drawable.bg_input)
+                }
+            })
+        }
+        clearOnType(current, currentError)
+        clearOnType(fresh, freshError)
+        clearOnType(confirm, confirmError)
+
+        fun fail(field: EditText, error: TextView, message: String) {
+            error.text = message
+            error.visibility = View.VISIBLE
+            field.setBackgroundResource(R.drawable.bg_input_error)
+        }
+
+        val dialog = builder.setView(view).create()
+        Ui.prepare(dialog, dark = false)
+        view.findViewById<View>(R.id.pw_cancel).setOnClickListener { dialog.dismiss() }
+        save.setOnClickListener {
+            val cur = current.text.toString()
+            val new = fresh.text.toString()
+            val again = confirm.text.toString()
+            var valid = true
+            if (cur.isEmpty()) {
+                fail(current, currentError, activity.getString(R.string.error_password)); valid = false
+            }
+            if (new.length < Accounts.MIN_PASSWORD) {
+                fail(fresh, freshError, activity.getString(R.string.error_password_short)); valid = false
+            } else if (new == cur) {
+                fail(fresh, freshError, activity.getString(R.string.error_password_same)); valid = false
+            }
+            if (new != again) {
+                fail(confirm, confirmError, activity.getString(R.string.error_password_mismatch)); valid = false
+            }
+            if (!valid) return@setOnClickListener
+
+            save.isEnabled = false
+            // O hash da senha e lento de proposito: roda fora da thread da tela.
+            activity.inBackground({ Accounts.changePassword(activity, accountId, cur, new) }) { result ->
+                save.isEnabled = true
+                when (result) {
+                    is Accounts.AuthResult.Success -> {
+                        Toast.makeText(activity, R.string.password_changed, Toast.LENGTH_SHORT).show()
+                        dialog.dismiss()
+                    }
+                    is Accounts.AuthResult.Locked -> {
+                        current.setText("")
+                        fail(current, currentError, activity.getString(R.string.login_locked, result.seconds))
+                    }
+                    Accounts.AuthResult.Wrong -> {
+                        current.setText("")
+                        fail(current, currentError, activity.getString(R.string.error_password_current))
+                    }
+                }
+            }
+        }
+        dialog.show()
+    }
+
+    /**
+     * Pede a senha antes de excluir a conta (evita exclusao por toque acidental ou por outra
+     * pessoa com o celular desbloqueado). [onConfirmed] roda so se a senha estiver certa.
+     */
+    fun showDeleteAccount(activity: AppCompatActivity, onConfirmed: () -> Unit) {
+        val accountId = Session.activeId(activity) ?: return
+        val builder = Ui.dialog(activity, dark = false)
+        val field = EditText(builder.context).apply {
+            hint = activity.getString(R.string.hint_password)
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            setSingleLine()
+        }
+        val container = LinearLayout(builder.context).apply {
+            setPadding(64, 24, 64, 0)
+            addView(field, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+        val dialog = builder
+            .setTitle(R.string.delete_account_title)
+            .setMessage(R.string.delete_account_message)
+            .setView(container)
+            .setPositiveButton(R.string.delete_account_confirm, null) // tratado abaixo, para nao fechar com erro
+            .setNegativeButton(R.string.cancel, null)
+            .create()
+        Ui.prepare(dialog, dark = false)
+        dialog.setOnShowListener {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                val typed = field.text.toString()
+                activity.inBackground({ Accounts.verifyPassword(activity, accountId, typed) }) { result ->
+                    when (result) {
+                        is Accounts.AuthResult.Success -> {
+                            dialog.dismiss()
+                            onConfirmed()
+                        }
+                        is Accounts.AuthResult.Locked -> {
+                            field.setText("")
+                            field.error = activity.getString(R.string.login_locked, result.seconds)
+                        }
+                        Accounts.AuthResult.Wrong -> {
+                            field.setText("")
+                            field.error = activity.getString(R.string.delete_account_wrong)
+                        }
+                    }
+                }
             }
         }
         dialog.show()

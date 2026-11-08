@@ -28,10 +28,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Session.isActive(this)) { // sem sessao aberta: volta para o login
+            goToLogin()
+            return
+        }
+        prefs = SecurePrefs(this)
         setContentView(R.layout.activity_main)
 
         db = NotesDbHelper(this)
-        prefs = SecurePrefs(this)
         empty = findViewById(R.id.empty)
         search = findViewById(R.id.edit_search)
 
@@ -89,12 +93,19 @@ class MainActivity : AppCompatActivity() {
                 Ui.MenuEntry(R.drawable.ic_person, R.string.menu_profile) {
                     MenuDialogs.showProfile(this)
                 },
+                Ui.MenuEntry(R.drawable.ic_lock, R.string.menu_change_password) {
+                    MenuDialogs.showChangePassword(this)
+                },
                 Ui.MenuEntry(R.drawable.ic_filter, R.string.menu_sort) { showSortDialog() },
                 Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_all, danger = true) {
                     confirmDeleteAll()
                 },
                 Ui.MenuEntry(R.drawable.ic_info, R.string.menu_about) {
                     MenuDialogs.showAbout(this)
+                },
+                Ui.MenuEntry(R.drawable.ic_logout, R.string.menu_logout) { confirmLogout() },
+                Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_account, danger = true) {
+                    MenuDialogs.showDeleteAccount(this) { deleteAccount() }
                 }
             )
         )
@@ -113,6 +124,39 @@ class MainActivity : AppCompatActivity() {
                 .setNegativeButton(R.string.cancel, null),
             dark = false
         )
+    }
+
+    private fun confirmLogout() {
+        Ui.show(
+            Ui.dialog(this, dark = false)
+                .setMessage(R.string.logout_message)
+                .setPositiveButton(R.string.logout_confirm) { _, _ ->
+                    db.close()
+                    Session.logout(this)
+                    goToLogin()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = false
+        )
+    }
+
+    /** Chamado depois de a senha ser conferida: apaga a conta e tudo que ela guarda. */
+    private fun deleteAccount() {
+        val id = Session.activeId(this) ?: return
+        db.close()
+        Session.logout(this)
+        Accounts.delete(this, id)
+        Toast.makeText(this, R.string.delete_account_done, Toast.LENGTH_LONG).show()
+        goToLogin()
+    }
+
+    /** Volta para a tela de entrada limpando as telas anteriores. */
+    private fun goToLogin() {
+        startActivity(
+            Intent(this, LoginActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        )
+        finish()
     }
 
     private fun confirmDeleteAll() {

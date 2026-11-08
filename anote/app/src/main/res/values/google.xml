@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Client ID do tipo "Aplicativo da Web" criado no Google Cloud Console
+        (termina em .apps.googleusercontent.com). Enquanto estiver vazio, o botao
+        "Continuar com o Google" nao aparece e o cadastro funciona so com e-mail e senha.
+        Esse identificador nao e segredo (so identifica o app), mas NAO use o Client ID do tipo Android aqui.
+    -->
+    <string name="google_web_client_id" translatable="false"></string>
+</resources>

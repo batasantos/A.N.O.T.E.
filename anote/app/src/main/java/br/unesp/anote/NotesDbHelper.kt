@@ -7,12 +7,17 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 /**
- * Banco SQLite local com as notas (CRUD).
+ * Banco SQLite local com as notas (CRUD). Cada conta tem o seu proprio arquivo de banco
+ * (notes_<id da conta>.db); sem informar a conta, abre o da conta com sessao aberta.
  * O esquema abaixo e o mesmo do script database/schema.sql.
  * v1: notas simples | v2: coluna "pinned" (notas fixadas).
  */
-class NotesDbHelper(context: Context) :
-    SQLiteOpenHelper(context, "notes.db", null, 2) {
+class NotesDbHelper(context: Context, accountId: String = Session.requireActive(context)) :
+    SQLiteOpenHelper(context, dbName(accountId), null, 2) {
+
+    companion object {
+        fun dbName(accountId: String) = "notes_$accountId.db"
+    }
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(

@@ -10,32 +10,39 @@ import org.json.JSONObject
 data class TrustedContact(val name: String, val phone: String)
 
 /**
- * Guarda de forma criptografada o cadastro, o titulo-gatilho e os contatos de confianca.
+ * Preferencias criptografadas de UMA conta: titulo-gatilho, contatos de confianca, ordem das notas
+ * e se o cadastro foi concluido. Cada conta tem o seu proprio arquivo, entao uma conta nunca enxerga
+ * os dados de outra. A senha NAO fica aqui (ver [Accounts]).
+ *
+ * `SecurePrefs(context)` usa a conta com sessao aberta; `SecurePrefs(context, id)` uma conta especifica
+ * (cadastro em andamento, servico de SOS).
  */
-class SecurePrefs(context: Context) {
+class SecurePrefs(context: Context, val accountId: String) {
+
+    constructor(context: Context) : this(context, Session.requireActive(context))
+
+    private val appContext = context.applicationContext
 
     private val prefs: SharedPreferences = EncryptedSharedPreferences.create(
-        context,
-        "anote_secure",
-        MasterKey.Builder(context).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build(),
+        appContext,
+        fileName(accountId),
+        MasterKey.Builder(appContext).setKeyScheme(MasterKey.KeyScheme.AES256_GCM).build(),
         EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
+
+    /** Nome e e-mail ficam no registro de contas; aqui so a leitura. */
+    val userName: String
+        get() = Accounts.get(appContext, accountId)?.name ?: ""
+
+    val userEmail: String
+        get() = Accounts.get(appContext, accountId)?.email ?: ""
 
     var triggerTitle: String
         get() = prefs.getString(KEY_TRIGGER, DEFAULT_TRIGGER) ?: DEFAULT_TRIGGER
         set(value) = prefs.edit().putString(KEY_TRIGGER, value.trim()).apply()
 
-    /** Dados do cadastro basico (primeiro acesso). */
-    var userName: String
-        get() = prefs.getString(KEY_USER_NAME, "") ?: ""
-        set(value) = prefs.edit().putString(KEY_USER_NAME, value.trim()).apply()
-
-    var userEmail: String
-        get() = prefs.getString(KEY_USER_EMAIL, "") ?: ""
-        set(value) = prefs.edit().putString(KEY_USER_EMAIL, value.trim()).apply()
-
-    /** true depois que os 3 passos do primeiro acesso foram concluidos; dai em diante o app abre direto nas notas. */
+    /** true depois que os 3 passos do cadastro foram concluidos. */
     var onboardingDone: Boolean
         get() = prefs.getBoolean(KEY_ONBOARDING_DONE, false)
         set(value) = prefs.edit().putBoolean(KEY_ONBOARDING_DONE, value).apply()
@@ -76,10 +83,11 @@ class SecurePrefs(context: Context) {
         private const val KEY_TRIGGER = "trigger_title"
         private const val KEY_CONTACTS = "contacts"
         private const val KEY_SORT_ALPHA = "sort_alpha"
-        private const val KEY_USER_NAME = "user_name"
-        private const val KEY_USER_EMAIL = "user_email"
         private const val KEY_ONBOARDING_DONE = "onboarding_done"
         const val DEFAULT_TRIGGER = "..."
+
+        /** Nome do arquivo de preferencias de uma conta. */
+        fun fileName(accountId: String) = "anote_acc_$accountId"
 
         /** Compara títulos sem depender de maiúsculas, espaços nas pontas ou do "…" (um caractere) do teclado. */
         fun normalize(s: String): String = s.trim().replace("…", "...").lowercase()
