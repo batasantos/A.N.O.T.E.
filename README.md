@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
+  <img src="main/anote/docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
 </p>
 
 A.N.O.T.E. é um aplicativo Android que parece um bloco de notas comum, mas guarda dentro dele um pedido de socorro discreto. Pensei nele para mulheres em situação de violência doméstica, que muitas vezes não podem abrir um aplicativo de emergência sem que o agressor perceba.
