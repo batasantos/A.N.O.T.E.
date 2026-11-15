@@ -59,7 +59,7 @@ object QuickSos {
     }
 
     @Suppress("DEPRECATION")
-    private fun vibrate(context: Context, times: Int) {
+    internal fun vibrate(context: Context, times: Int) {
         runCatching {
             val vibrator = if (Build.VERSION.SDK_INT >= 31) {
                 (context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
@@ -68,6 +68,19 @@ object QuickSos {
             }
             val pattern = if (times == 1) longArrayOf(0, 250) else longArrayOf(0, 120, 100, 120)
             vibrator.vibrate(VibrationEffect.createWaveform(pattern, -1))
+        }
+    }
+
+    /** Vibracao bem curta: "toque registrado, falta confirmar" (widget). */
+    @Suppress("DEPRECATION")
+    internal fun tick(context: Context) {
+        runCatching {
+            val vibrator = if (Build.VERSION.SDK_INT >= 31) {
+                (context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
+            } else {
+                context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+            }
+            vibrator.vibrate(VibrationEffect.createOneShot(60, VibrationEffect.DEFAULT_AMPLITUDE))
         }
     }
 }

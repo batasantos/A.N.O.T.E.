@@ -126,7 +126,7 @@
     <string name="guide2_title">Suas notas</string>
     <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nTroque esse título por um só seu, no painel, em Título de acesso: o padrão é fácil de adivinhar.</string>
     <string name="guide3_title">Como abrir o painel</string>
-    <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança e continua atualizando a cada 5 minutos, até você tocar no cartão de novo para parar.\n\nSe algum contato não receber, o painel avisa e deixa tentar de novo. A notificação é discreta e não mostra a palavra SOS.\n\nAtalho rápido: nas telas de notas, aperte o volume para baixo 3 vezes e o SOS é enviado sem abrir o painel (o celular vibra para confirmar).</string>
+    <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança e continua atualizando a cada 5 minutos, até você tocar no cartão de novo para parar.\n\nSe algum contato não receber, o painel avisa e deixa tentar de novo. A notificação é discreta e não mostra a palavra SOS.\n\nAtalho rápido: nas telas de notas, aperte o volume para baixo 3 vezes e o SOS é enviado sem abrir o painel (o celular vibra para confirmar).\n\nPara enviar com o app fechado, use o atalho \"Notas\" das configurações rápidas (um toque) ou o widget \"Notas\" da tela inicial (dois toques).</string>
     <string name="guide4_title">SOS silencioso</string>
     <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nEm Gravações, você pode escolher uma pasta de backup (de preferência sincronizada com a nuvem): cada gravação é copiada para lá quando termina.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.</string>
     <string name="guide5_title">Gravação e delegacia</string>
@@ -267,7 +267,7 @@
     <string name="search_hint">Buscar notas…</string>
     <string name="section_pinned">FIXADAS</string>
     <string name="section_recent">RECENTES</string>
-    <string name="shortcut_body">Nas telas de notas, aperte o botão de volume para baixo 3 vezes em até 2 segundos. O SOS é enviado aos seus contatos sem abrir o painel, e o celular vibra uma vez para confirmar. Duas vibrações curtas indicam que já há um SOS em andamento.\n\nSem contatos ou sem a permissão de SMS, o atalho abre o painel.</string>
+    <string name="shortcut_body">Nas telas de notas, aperte o botão de volume para baixo 3 vezes em até 2 segundos. O SOS é enviado aos seus contatos sem abrir o painel, e o celular vibra uma vez para confirmar. Duas vibrações curtas indicam que já há um SOS em andamento.\n\nSem contatos ou sem a permissão de SMS, o atalho abre o painel.\n\nCom o app fechado: adicione o atalho \"Notas\" às configurações rápidas (puxe a barra de notificações, toque no lápis ou em Editar e arraste o atalho) para enviar o SOS com um toque. Também há o widget \"Notas\" na tela inicial: dois toques em até 3 segundos enviam o SOS. Com o celular bloqueado, o atalho nunca abre o painel.</string>
     <string name="shortcut_state_off">Situação: desligado.</string>
     <string name="shortcut_state_on">Situação: ligado.</string>
     <string name="shortcut_title">Atalho de disparo rápido</string>
@@ -298,6 +298,7 @@
     <string name="sos_update_prefix">Atualização:</string>
     <string name="step_indicator">PASSO %1$d DE 3</string>
     <string name="tagline">Suas anotações, sempre com você</string>
+    <string name="tile_label">Notas</string>
     <string name="title_notes">Notas</string>
     <string name="today">hoje</string>
     <string name="trigger_dialog_help">Escolha um título que só você saiba e que pareça natural em uma nota, como o nome de uma receita. O padrão (...) é fácil de adivinhar.</string>
@@ -305,6 +306,8 @@
     <string name="trigger_dialog_title">Título de acesso</string>
     <string name="trigger_weak">Dica: o título padrão é fácil de adivinhar. Troque por um só seu.</string>
     <string name="untitled">(sem título)</string>
+    <string name="widget_description">Atalho</string>
+    <string name="widget_label">Notas</string>
     <string name="yesterday">ontem</string>
     <style name="Anote.Dialog.Dark" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/amber</item>
@@ -328,5 +331,12 @@
         <item name="android:navigationBarColor">@color/bg_bottom</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:textColorPrimary">@color/ink</item>
+    </style>
+    <style name="Theme.Anote.Invisible" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

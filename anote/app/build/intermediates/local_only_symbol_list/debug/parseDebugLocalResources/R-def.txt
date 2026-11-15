@@ -200,6 +200,7 @@ id tv_sos_subtitle
 id tv_sos_title
 id tv_step
 id tv_title
+id widget_root
 layout activity_contacts
 layout activity_emergency
 layout activity_guide
@@ -218,6 +219,7 @@ layout item_header
 layout item_menu
 layout item_note
 layout item_recording
+layout widget_sos
 menu menu_notes
 menu menu_panel
 mipmap ic_launcher
@@ -495,6 +497,7 @@ string sos_title
 string sos_update_prefix
 string step_indicator
 string tagline
+string tile_label
 string title_notes
 string today
 string trigger_dialog_help
@@ -502,8 +505,12 @@ string trigger_dialog_hint
 string trigger_dialog_title
 string trigger_weak
 string untitled
+string widget_description
+string widget_label
 string yesterday
 style Anote.Dialog.Dark
 style Anote.Dialog.Light
 style Theme.Anote
+style Theme.Anote.Invisible
 xml file_paths
+xml widget_sos_info

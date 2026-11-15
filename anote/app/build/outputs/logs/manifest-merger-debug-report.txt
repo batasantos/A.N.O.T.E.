@@ -11,10 +11,10 @@ INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.
 	android:name
 		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:82:13-62
 manifest
-ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-96:12
-INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-96:12
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-130:12
+INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-130:12
+INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-130:12
+INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:2:1-130:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\tha_b\.gradle\caches\transforms-4\30dbe09adc47a6fa3161e128d9fbb6b2\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\tha_b\.gradle\caches\transforms-4\269c9730016da6647904e71bb7dfb67f\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\tha_b\.gradle\caches\transforms-4\e97b8fec522e0237fe171c43b96f412b\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -138,8 +138,8 @@ ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml
 	android:name
 		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:15:19-60
 application
-ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:17:5-95:19
-INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:17:5-95:19
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:17:5-129:19
+INJECTED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:17:5-129:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\tha_b\.gradle\caches\transforms-4\30dbe09adc47a6fa3161e128d9fbb6b2\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\tha_b\.gradle\caches\transforms-4\30dbe09adc47a6fa3161e128d9fbb6b2\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\tha_b\.gradle\caches\transforms-4\269c9730016da6647904e71bb7dfb67f\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -284,14 +284,66 @@ ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml
 		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:77:13-37
 	android:name
 		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:76:13-47
-service#br.unesp.anote.SosService
-ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:91:9-94:67
+activity#br.unesp.anote.TriggerActivity
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:92:9-98:60
+	android:excludeFromRecents
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:95:13-46
+	android:noHistory
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:96:13-37
 	android:exported
-		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:93:13-37
-	android:foregroundServiceType
-		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:94:13-64
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:94:13-37
+	android:theme
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:98:13-57
+	android:taskAffinity
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:97:13-36
 	android:name
-		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:92:13-39
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:93:13-44
+service#br.unesp.anote.SosTileService
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:101:9-110:19
+	android:label
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:105:13-47
+	android:exported
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:103:13-36
+	android:permission
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:106:13-77
+	android:icon
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:104:13-45
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:102:13-43
+intent-filter#action:name:android.service.quicksettings.action.QS_TILE
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:107:13-109:29
+action#android.service.quicksettings.action.QS_TILE
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:108:17-87
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:108:25-84
+receiver#br.unesp.anote.SosWidget
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:113:9-123:20
+	android:label
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:116:13-49
+	android:exported
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:115:13-37
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:114:13-38
+intent-filter#action:name:android.appwidget.action.APPWIDGET_UPDATE
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:117:13-119:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:118:17-84
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:118:25-81
+meta-data#android.appwidget.provider
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:120:13-122:59
+	android:resource
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:122:17-56
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:121:17-58
+service#br.unesp.anote.SosService
+ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:125:9-128:67
+	android:exported
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:127:13-37
+	android:foregroundServiceType
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:128:13-64
+	android:name
+		ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:126:13-39
 meta-data#android.support.FILE_PROVIDER_PATHS
 ADDED from C:\Users\tha_b\Downloads\ANOTE\anote\app\src\main\AndroidManifest.xml:86:13-88:54
 	android:resource

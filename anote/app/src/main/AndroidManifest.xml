@@ -88,6 +88,40 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <!-- Tela invisivel do tile e do widget: dispara o SOS e fecha na hora -->
+        <activity
+            android:name=".TriggerActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Anote.Invisible" />
+
+        <!-- Atalho nas configuracoes rapidas, com nome neutro -->
+        <service
+            android:name=".SosTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_note"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- Widget da tela inicial, com nome neutro -->
+        <receiver
+            android:name=".SosWidget"
+            android:exported="false"
+            android:label="@string/widget_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sos_info" />
+        </receiver>
+
         <service
             android:name=".SosService"
             android:exported="false"

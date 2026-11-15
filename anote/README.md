@@ -25,6 +25,8 @@ O menu do painel tem: contatos, gravações, permissões, **atalho de disparo r�
 
 **Atalho de disparo rápido.** Nas telas de notas (e na tela de bloqueio), apertar o volume para baixo 3 vezes em até 2 segundos envia o SOS sem abrir o painel; o celular vibra para confirmar. Pode ser desligado no painel.
 
+**Disparo com o app fechado.** O atalho "Notas" das configurações rápidas (um toque) e o widget "Notas" da tela inicial (dois toques em até 3 segundos) enviam o SOS sem abrir o app. Os dois têm nome e ícone neutros. Com o celular bloqueado, nunca abrem o painel.
+
 ## Cuidados com a discrição e a segurança
 
 O painel e as telas de gravação não aceitam captura de tela e aparecem em branco nos apps recentes; fecham sozinhos quando a tela apaga ou a pessoa sai do app. A notificação do envio diz só "Sincronizando…", sem som e invisível na tela bloqueada; o aviso de falha também usa texto neutro. O backup automático do Android está desligado. A nota usada como gatilho nunca é gravada. O **bloqueio ao reabrir** (opcional) pede o desbloqueio do aparelho depois de 30 segundos fora do app. Recomenda-se trocar o título secreto padrão (`...`), que é fácil de adivinhar.

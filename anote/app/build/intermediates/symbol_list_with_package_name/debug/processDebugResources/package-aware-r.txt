@@ -3844,6 +3844,7 @@ id visible
 id visible_removing_fragment_view_tag
 id west
 id wide
+id widget_root
 id withText
 id with_icon
 id withinBounds
@@ -4066,6 +4067,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+layout widget_sos
 menu menu_notes
 menu menu_panel
 mipmap ic_launcher
@@ -4535,6 +4537,7 @@ string sos_update_prefix
 string status_bar_notification_info_overflow
 string step_indicator
 string tagline
+string tile_label
 string title_notes
 string today
 string trigger_dialog_help
@@ -4542,6 +4545,8 @@ string trigger_dialog_hint
 string trigger_dialog_title
 string trigger_weak
 string untitled
+string widget_description
+string widget_label
 string yesterday
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -5069,6 +5074,7 @@ style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
 style Theme_Anote
+style Theme_Anote_Invisible
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight
@@ -5831,3 +5837,4 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml file_paths
 xml image_share_filepaths
+xml widget_sos_info
