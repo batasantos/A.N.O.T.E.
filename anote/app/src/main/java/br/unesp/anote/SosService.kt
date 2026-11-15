@@ -282,9 +282,13 @@ class SosService : Service() {
         val userName = userPrefs.userName
         val text = buildString {
             if (update) append(getString(R.string.sos_update_prefix)).append(' ')
+            val custom = userPrefs.customMessage
             append(
-                if (userName.isNotBlank()) getString(R.string.sos_message_named, userName)
-                else getString(R.string.sos_message)
+                when {
+                    custom.isNotBlank() -> custom // texto escolhido pela pessoa (o link do mapa vem depois)
+                    userName.isNotBlank() -> getString(R.string.sos_message_named, userName)
+                    else -> getString(R.string.sos_message)
+                }
             )
             if (location != null) {
                 append(" https://maps.google.com/?q=${location.latitude},${location.longitude}")

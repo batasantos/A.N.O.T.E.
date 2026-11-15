@@ -97,6 +97,7 @@ class OnboardingActivity : AppCompatActivity() {
     // ---------- Continuar com o Google (so preenche nome e e-mail) ----------
 
     private fun setupGoogle() {
+        if (accountId == null && Cloud.isConfigured(this)) findViewById<View>(R.id.cloud_note).visibility = View.VISIBLE
         // So ao criar a conta e so se o Client ID foi configurado (res/values/google.xml).
         if (accountId != null || !GoogleSignIn.isConfigured(this)) return
         findViewById<View>(R.id.google_group).visibility = View.VISIBLE
@@ -151,16 +152,21 @@ class OnboardingActivity : AppCompatActivity() {
             else -> {
                 next1Button.isEnabled = false
                 // O hash da senha e lento de proposito: roda fora da thread da tela.
-                inBackground({ saveAccount(existing, name, email, password) }) { id ->
+                inBackground({
+                    val id = saveAccount(existing, name, email, password)
+                    // Conta nova: gera o codigo de recuperacao (mostrado uma vez so).
+                    id to (if (id != null && existing == null) Accounts.newRecoveryCode(this, id) else null)
+                }) { (id, code) ->
                     next1Button.isEnabled = true
                     if (id == null) {
                         emailField.error = getString(R.string.error_email_taken)
                     } else {
                         accountId = id
+                        if (existing == null) Cloud.linkIfNeeded(this, id, email, password) // servidor de recuperacao, se configurado
                         passwordField.text.clear()
                         password2Field.text.clear()
                         renderContacts()
-                        showStep(2)
+                        if (code != null) MenuDialogs.showRecoveryCode(this, code) { showStep(2) } else showStep(2)
                     }
                 }
             }

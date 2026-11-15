@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Recuperacao de senha por e-mail (Firebase Authentication). Enquanto QUALQUER um destes tres
+        valores estiver vazio, o app funciona so no aparelho (com o codigo de recuperacao) e nada e enviado
+        a servidor nenhum. Os tres valores saem do arquivo google-services.json baixado no Firebase Console:
+          firebase_api_key    -> client[0].api_key[0].current_key
+          firebase_app_id     -> client[0].client_info.mobilesdk_app_id   (ex.: 1:1234567890:android:abc123)
+          firebase_project_id -> project_info.project_id
+        Nao e preciso colocar o arquivo google-services.json no projeto nem aplicar o plugin do Google.
+    -->
+    <string name="firebase_api_key" translatable="false">AIzaSyAKPDaH_km1hCZI05wSVlyMHWiL_Y5Gk-g</string>
+    <string name="firebase_app_id" translatable="false">1:123558102283:android:fd62cf97f8c346f5930e0e</string>
+    <string name="firebase_project_id" translatable="false">anote-24839</string>
+</resources>

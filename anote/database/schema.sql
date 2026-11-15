@@ -29,6 +29,7 @@ UPDATE notes SET content = 'Pauta: relatório e metas.', updated_at = strftime('
 UPDATE notes SET pinned = 1 WHERE id = 3;
 DELETE FROM notes WHERE id = 3;
 
--- Observacao: o titulo-gatilho, os contatos de confianca e o estado de login NAO ficam
--- neste banco. Ficam em EncryptedSharedPreferences (criptografia AES-256), para nao
--- aparecerem em uma inspecao do arquivo notes.db.
+-- Observacao: cada conta tem o seu proprio banco (notes_<id da conta>.db), com este mesmo esquema.
+-- O titulo-gatilho, os contatos de confianca, a senha (so o hash) e a conta com sessao aberta
+-- NAO ficam neste banco. Ficam em EncryptedSharedPreferences (criptografia AES-256), para nao
+-- aparecerem em uma inspecao do arquivo .db.

@@ -10,10 +10,12 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.telephony" android:required="false" />
 
     <application
+        android:name=".AnoteApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -40,6 +42,12 @@
         <!-- Guia de primeiro uso: fora dos apps recentes porque cita o titulo secreto -->
         <activity
             android:name=".GuideActivity"
+            android:exported="false"
+            android:excludeFromRecents="true" />
+
+        <!-- Bloqueio ao reabrir: fora dos apps recentes -->
+        <activity
+            android:name=".LockActivity"
             android:exported="false"
             android:excludeFromRecents="true" />
 

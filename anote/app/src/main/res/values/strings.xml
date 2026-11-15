@@ -130,7 +130,7 @@
     <string name="login_locked">Muitas tentativas. Tente de novo em %1$d s</string>
     <string name="error_email_taken">Já existe uma conta com este e-mail</string>
     <string name="forgot_title">Esqueci minha senha</string>
-    <string name="forgot_message">Por segurança, não há como recuperar a senha. Se continuar, a conta com o e-mail informado e todos os dados dela neste aparelho (notas, contatos e gravações) serão apagados, e você poderá criar a conta de novo. Outras contas não são afetadas. Continuar?</string>
+    <string name="forgot_message">Sem o código de recuperação não há como recuperar a senha. Se continuar, a conta com o e-mail informado e todos os dados dela neste aparelho (notas, contatos e gravações) serão apagados, e você poderá criar a conta de novo. Outras contas não são afetadas. Continuar?</string>
     <string name="forgot_need_email">Digite acima o e-mail da conta que você quer apagar</string>
     <string name="forgot_done">Pronto. Se existia uma conta com esse e-mail, ela foi apagada.</string>
     <string name="forgot_confirm">Apagar conta</string>
@@ -222,13 +222,13 @@
     <string name="guide2_title">Suas notas</string>
     <string name="guide2_body">Toque no botão + para criar uma nota. Fixe as importantes, use a busca para achar rápido e o botão de ordenar para organizar.\n\nAs notas são de verdade e ficam só na sua conta, então o app parece sempre um bloco de notas normal.</string>
     <string name="guide3_title">Como abrir o painel</string>
-    <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nVocê pode trocar esse título no painel, em Título de acesso.</string>
+    <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nTroque esse título por um só seu, no painel, em Título de acesso: o padrão é fácil de adivinhar.</string>
     <string name="guide4_title">SOS silencioso</string>
     <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança e continua atualizando a cada 5 minutos, até você tocar no cartão de novo para parar.\n\nSe algum contato não receber, o painel avisa e deixa tentar de novo. A notificação é discreta e não mostra a palavra SOS.\n\nAtalho rápido: nas telas de notas, aperte o volume para baixo 3 vezes e o SOS é enviado sem abrir o painel (o celular vibra para confirmar).</string>
     <string name="guide5_title">Gravação e delegacia</string>
     <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nEm Gravações, você pode escolher uma pasta de backup (de preferência sincronizada com a nuvem): cada gravação é copiada para lá quando termina.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.</string>
     <string name="guide6_title">Sua privacidade</string>
-    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app.\n\nSua senha é protegida e cada conta tem dados separados. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
+    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app. Se quiser, ligue o bloqueio ao reabrir no menu da tela de notas.\n\nSua senha é protegida e cada conta tem dados separados. Anote o código de recuperação: ele é a única forma de criar uma nova senha sem perder seus dados. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
 
     <!-- Atalho, aviso de falha, envio repetido e backup -->
     <string name="sos_update_prefix">Atualização:</string>
@@ -263,4 +263,50 @@
     <string name="backup_running">Copiando gravações…</string>
     <string name="backup_done">%1$d gravação(ões) copiada(s)</string>
     <string name="backup_failed">%1$d gravação(ões) não puderam ser copiadas. Confira a pasta escolhida.</string>
+
+    <!-- Recuperacao de senha, bloqueio, mensagem do SOS, acessibilidade -->
+    <string name="recovery_title">Guarde o seu código de recuperação</string>
+    <string name="recovery_message">Se você esquecer a senha, este código é a única forma de criar uma nova sem perder as suas notas, contatos e gravações. Anote em papel e guarde em um lugar seguro, longe do celular. Ele não será mostrado de novo.</string>
+    <string name="recovery_ok">Anotei</string>
+    <string name="menu_recovery">Código de recuperação</string>
+    <string name="recovery_menu_title">Código de recuperação</string>
+    <string name="recovery_menu_create">Esta conta ainda não tem código de recuperação. Digite a sua senha para gerar um.</string>
+    <string name="recovery_menu_renew">Gerar um novo código faz o anterior deixar de valer. Digite a sua senha para continuar.</string>
+    <string name="recovery_generate">Gerar código</string>
+    <string name="forgot_use_code">Usar o código de recuperação</string>
+    <string name="forgot_erase">Não tenho o código: apagar a conta</string>
+    <string name="forgot_code_message">Informe o código que você anotou no cadastro e escolha uma nova senha. Suas notas e contatos continuam aqui.</string>
+    <string name="forgot_code_hint">Código (XXXX-XXXX-XXXX-XXXX)</string>
+    <string name="forgot_new_password_hint">Nova senha (mínimo 8 caracteres)</string>
+    <string name="forgot_code_confirm">Redefinir senha</string>
+    <string name="forgot_code_invalid">O código tem 16 letras e números</string>
+    <string name="forgot_reset_done">Senha redefinida. Entre com a nova senha e anote o novo código.</string>
+    <string name="forgot_reset_failed">Não foi possível redefinir. Confira o e-mail e o código.</string>
+    <string name="menu_app_lock">Bloqueio ao reabrir</string>
+    <string name="lock_title">Bloqueio ao reabrir</string>
+    <string name="lock_body">Quando o app ficar mais de 30 segundos fora da tela, ao voltar será pedido o desbloqueio do aparelho (senha, PIN, padrão ou biometria). O atalho de SOS continua funcionando na tela de bloqueio.</string>
+    <string name="lock_state_on">Situação: ligado.</string>
+    <string name="lock_state_off">Situação: desligado.</string>
+    <string name="lock_turn_on">Ligar</string>
+    <string name="lock_turn_off">Desligar</string>
+    <string name="lock_need_screen_lock">Defina uma senha, PIN ou padrão de bloqueio de tela nas configurações do Android para usar esta opção.</string>
+    <string name="lock_screen_title">App bloqueado</string>
+    <string name="lock_unlock">Desbloquear</string>
+    <string name="lock_logout">Sair da conta</string>
+    <string name="lock_prompt_title">Desbloquear</string>
+    <string name="lock_prompt_text">Confirme que é você para continuar.</string>
+    <string name="menu_sos_message">Mensagem do SOS</string>
+    <string name="sos_message_title">Mensagem do SOS</string>
+    <string name="sos_message_help">Escreva a frase enviada aos seus contatos (até 100 caracteres). O link do mapa é sempre acrescentado no fim. Deixe em branco para usar o texto padrão.</string>
+    <string name="sos_message_hint">Ex.: Preciso de ajuda, venha me buscar.</string>
+    <string name="sos_message_reset">Texto padrão</string>
+    <string name="trigger_dialog_help">Escolha um título que só você saiba e que pareça natural em uma nota, como o nome de uma receita. O padrão (...) é fácil de adivinhar.</string>
+    <string name="trigger_weak">Dica: o título padrão é fácil de adivinhar. Troque por um só seu.</string>
+
+    <!-- Recuperacao de senha por e-mail -->
+    <string name="cloud_note">Seu e-mail e sua senha também são guardados em um serviço seguro (Firebase), só para você poder recuperar a senha por e-mail. Suas notas, contatos e gravações ficam apenas neste celular.</string>
+    <string name="forgot_send_link">Enviar link de redefinição por e-mail</string>
+    <string name="forgot_link_sent">Se existir uma conta com esse e-mail, enviamos um link para criar uma nova senha. Confira a caixa de entrada e o spam. Depois, entre com a nova senha.</string>
+    <string name="forgot_link_offline">Sem conexão com a internet. Tente de novo quando estiver online ou use o código de recuperação.</string>
+    <string name="forgot_link_error">Não foi possível enviar o link agora. Tente mais tarde ou use o código de recuperação.</string>
 </resources>

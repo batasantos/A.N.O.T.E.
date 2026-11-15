@@ -102,6 +102,12 @@ class MainActivity : AppCompatActivity() {
                 Ui.MenuEntry(R.drawable.ic_lock, R.string.menu_change_password) {
                     MenuDialogs.showChangePassword(this)
                 },
+                Ui.MenuEntry(R.drawable.ic_key, R.string.menu_recovery) {
+                    MenuDialogs.showRecoveryMenu(this)
+                },
+                Ui.MenuEntry(R.drawable.ic_shield, R.string.menu_app_lock) {
+                    MenuDialogs.showAppLock(this)
+                },
                 Ui.MenuEntry(R.drawable.ic_filter, R.string.menu_sort) { showSortDialog() },
                 Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_all, danger = true) {
                     confirmDeleteAll()
@@ -111,7 +117,7 @@ class MainActivity : AppCompatActivity() {
                 },
                 Ui.MenuEntry(R.drawable.ic_logout, R.string.menu_logout) { confirmLogout() },
                 Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_account, danger = true) {
-                    MenuDialogs.showDeleteAccount(this) { deleteAccount() }
+                    MenuDialogs.showDeleteAccount(this) { typed -> deleteAccount(typed) }
                 }
             )
         )
@@ -147,8 +153,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     /** Chamado depois de a senha ser conferida: apaga a conta e tudo que ela guarda. */
-    private fun deleteAccount() {
+    private fun deleteAccount(typedPassword: String) {
         val id = Session.activeId(this) ?: return
+        Accounts.get(this, id)?.let { Cloud.deleteAccount(this, it.email, typedPassword) } // servidor, melhor esforco
         db.close()
         Session.logout(this)
         Accounts.delete(this, id)

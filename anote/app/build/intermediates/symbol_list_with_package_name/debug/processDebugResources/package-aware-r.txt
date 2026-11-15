@@ -1376,6 +1376,10 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color call_notification_answer_color
@@ -2222,6 +2226,8 @@ dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen appcompat_dialog_background_inset
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -3323,6 +3329,11 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id btn_add
 id btn_add_contact
 id btn_allow
@@ -3333,6 +3344,7 @@ id btn_delete
 id btn_done
 id btn_forgot
 id btn_google
+id btn_lock_logout
 id btn_login
 id btn_menu
 id btn_next
@@ -3342,6 +3354,7 @@ id btn_pin
 id btn_signup
 id btn_skip
 id btn_sort
+id btn_unlock
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3371,6 +3384,7 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id cloud_note
 id collapseActionView
 id compress
 id confirm_button
@@ -3956,11 +3970,14 @@ layout abc_tooltip
 layout activity_contacts
 layout activity_emergency
 layout activity_guide
+layout activity_lock
 layout activity_login
 layout activity_main
 layout activity_note_editor
 layout activity_onboarding
 layout activity_recordings
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4055,6 +4072,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 plurals backup_on_pending
 plurals mtrl_badge_content_description
+raw firebase_common_keep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -4134,6 +4152,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
 string close
+string cloud_note
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -4157,6 +4176,7 @@ string contact_phone
 string contacts_screen_hint
 string contacts_screen_title
 string contacts_title
+string copy_toast_msg
 string create_account
 string ddm_hint
 string ddm_name
@@ -4190,13 +4210,32 @@ string error_password_short
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fallback_menu_item_copy_link
+string fallback_menu_item_open_in_browser
+string fallback_menu_item_share_link
+string firebase_api_key
+string firebase_app_id
+string firebase_project_id
+string forgot_code_confirm
+string forgot_code_hint
+string forgot_code_invalid
+string forgot_code_message
 string forgot_confirm
 string forgot_done
+string forgot_erase
 string forgot_info
+string forgot_link_error
+string forgot_link_offline
+string forgot_link_sent
 string forgot_message
 string forgot_need_email
+string forgot_new_password_hint
 string forgot_password
+string forgot_reset_done
+string forgot_reset_failed
+string forgot_send_link
 string forgot_title
+string forgot_use_code
 string google
 string google_button
 string google_error
@@ -4238,6 +4277,18 @@ string label_password
 string label_password_confirm
 string label_password_current
 string label_password_new
+string lock_body
+string lock_logout
+string lock_need_screen_lock
+string lock_prompt_text
+string lock_prompt_title
+string lock_screen_title
+string lock_state_off
+string lock_state_on
+string lock_title
+string lock_turn_off
+string lock_turn_on
+string lock_unlock
 string login_button
 string login_forgot
 string login_locked
@@ -4286,6 +4337,7 @@ string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string menu_about
+string menu_app_lock
 string menu_change_password
 string menu_contacts
 string menu_delete_account
@@ -4296,8 +4348,10 @@ string menu_logout
 string menu_permissions
 string menu_profile
 string menu_recordings
+string menu_recovery
 string menu_shortcut
 string menu_sort
+string menu_sos_message
 string menu_trigger
 string more_options
 string mtrl_badge_numberless_content_description
@@ -4430,6 +4484,13 @@ string record_subtitle
 string recordings_empty
 string recordings_hint
 string recordings_title
+string recovery_generate
+string recovery_menu_create
+string recovery_menu_renew
+string recovery_menu_title
+string recovery_message
+string recovery_ok
+string recovery_title
 string remove
 string remove_contact
 string save
@@ -4460,7 +4521,11 @@ string sos_fail_body
 string sos_fail_sent
 string sos_fail_title
 string sos_message
+string sos_message_help
+string sos_message_hint
 string sos_message_named
+string sos_message_reset
+string sos_message_title
 string sos_retry
 string sos_stop
 string sos_stop_confirm
@@ -4472,8 +4537,10 @@ string step_indicator
 string tagline
 string title_notes
 string today
+string trigger_dialog_help
 string trigger_dialog_hint
 string trigger_dialog_title
+string trigger_weak
 string untitled
 string yesterday
 style AlertDialog_AppCompat
@@ -5108,6 +5175,7 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
+style Theme_PlayCore_Transparent
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark
@@ -5762,3 +5830,4 @@ styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
 xml file_paths
+xml image_share_filepaths

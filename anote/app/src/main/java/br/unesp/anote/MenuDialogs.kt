@@ -155,6 +155,7 @@ object MenuDialogs {
                 save.isEnabled = true
                 when (result) {
                     is Accounts.AuthResult.Success -> {
+                        Accounts.get(activity, accountId)?.let { Cloud.changePassword(activity, it.email, cur, new) }
                         Toast.makeText(activity, R.string.password_changed, Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }
@@ -176,7 +177,8 @@ object MenuDialogs {
      * Pede a senha antes de excluir a conta (evita exclusao por toque acidental ou por outra
      * pessoa com o celular desbloqueado). [onConfirmed] roda so se a senha estiver certa.
      */
-    fun showDeleteAccount(activity: AppCompatActivity, onConfirmed: () -> Unit) {
+    /** [onConfirmed] recebe a senha digitada (usada para apagar tambem a conta do servidor de recuperacao). */
+    fun showDeleteAccount(activity: AppCompatActivity, onConfirmed: (String) -> Unit) {
         val accountId = Session.activeId(activity) ?: return
         val builder = Ui.dialog(activity, dark = false)
         val field = EditText(builder.context).apply {
@@ -203,7 +205,7 @@ object MenuDialogs {
                     when (result) {
                         is Accounts.AuthResult.Success -> {
                             dialog.dismiss()
-                            onConfirmed()
+                            onConfirmed(typed)
                         }
                         is Accounts.AuthResult.Locked -> {
                             field.setText("")
@@ -218,6 +220,112 @@ object MenuDialogs {
             }
         }
         dialog.show()
+    }
+
+    /** Mostra o codigo de recuperacao UMA vez; a tela so segue depois que a pessoa confirma que anotou. */
+    fun showRecoveryCode(activity: AppCompatActivity, code: String, onDone: () -> Unit) {
+        val builder = Ui.dialog(activity, dark = false)
+        val box = LinearLayout(builder.context).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(64, 16, 64, 0)
+        }
+        box.addView(TextView(builder.context).apply {
+            text = activity.getString(R.string.recovery_message)
+            textSize = 14f
+        })
+        box.addView(TextView(builder.context).apply {
+            text = code
+            textSize = 22f
+            typeface = android.graphics.Typeface.MONOSPACE
+            setTypeface(typeface, android.graphics.Typeface.BOLD)
+            gravity = android.view.Gravity.CENTER
+            setPadding(0, 32, 0, 8)
+        })
+        val dialog = builder
+            .setTitle(R.string.recovery_title)
+            .setView(box)
+            .setCancelable(false)
+            .setPositiveButton(R.string.recovery_ok) { _, _ -> onDone() }
+            .create()
+        Ui.prepare(dialog, dark = false)
+        dialog.window?.setFlags(
+            android.view.WindowManager.LayoutParams.FLAG_SECURE,
+            android.view.WindowManager.LayoutParams.FLAG_SECURE
+        )
+        dialog.show()
+    }
+
+    /** Menu da conta: gera um codigo novo, depois de confirmar a senha (serve para contas antigas e para renovar). */
+    fun showRecoveryMenu(activity: AppCompatActivity) {
+        val accountId = Session.activeId(activity) ?: return
+        val builder = Ui.dialog(activity, dark = false)
+        val field = EditText(builder.context).apply {
+            hint = activity.getString(R.string.hint_password)
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            setSingleLine()
+        }
+        val container = LinearLayout(builder.context).apply {
+            setPadding(64, 24, 64, 0)
+            addView(field, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+        val has = Accounts.hasRecoveryCode(activity, accountId)
+        val dialog = builder
+            .setTitle(R.string.recovery_menu_title)
+            .setMessage(if (has) R.string.recovery_menu_renew else R.string.recovery_menu_create)
+            .setView(container)
+            .setPositiveButton(R.string.recovery_generate, null)
+            .setNegativeButton(R.string.cancel, null)
+            .create()
+        Ui.prepare(dialog, dark = false)
+        dialog.setOnShowListener {
+            dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                val typed = field.text.toString()
+                activity.inBackground({
+                    val result = Accounts.verifyPassword(activity, accountId, typed)
+                    result to (if (result is Accounts.AuthResult.Success) Accounts.newRecoveryCode(activity, accountId) else null)
+                }) { (result, code) ->
+                    when (result) {
+                        is Accounts.AuthResult.Success -> {
+                            dialog.dismiss()
+                            if (code != null) showRecoveryCode(activity, code) {}
+                        }
+                        is Accounts.AuthResult.Locked -> {
+                            field.setText("")
+                            field.error = activity.getString(R.string.login_locked, result.seconds)
+                        }
+                        Accounts.AuthResult.Wrong -> {
+                            field.setText("")
+                            field.error = activity.getString(R.string.delete_account_wrong)
+                        }
+                    }
+                }
+            }
+        }
+        dialog.show()
+    }
+
+    /** Liga ou desliga o bloqueio ao reabrir o app. */
+    fun showAppLock(activity: AppCompatActivity) {
+        val accountId = Session.activeId(activity) ?: return
+        val prefs = SecurePrefs(activity, accountId)
+        val on = prefs.appLock
+        Ui.show(
+            Ui.dialog(activity, dark = false)
+                .setTitle(R.string.lock_title)
+                .setMessage(
+                    activity.getString(R.string.lock_body) + "\n\n" +
+                        activity.getString(if (on) R.string.lock_state_on else R.string.lock_state_off)
+                )
+                .setPositiveButton(if (on) R.string.lock_turn_off else R.string.lock_turn_on) { _, _ ->
+                    if (!on && !AppLock.deviceIsSecure(activity)) {
+                        Toast.makeText(activity, R.string.lock_need_screen_lock, Toast.LENGTH_LONG).show()
+                    } else {
+                        prefs.appLock = !on
+                    }
+                }
+                .setNegativeButton(R.string.close, null),
+            dark = false
+        )
     }
 
     /** "Sobre" neutro: nao menciona a funcao de emergencia. */

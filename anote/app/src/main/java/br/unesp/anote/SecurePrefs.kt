@@ -60,6 +60,21 @@ class SecurePrefs(context: Context, val accountId: String) {
         get() = prefs.getBoolean(KEY_QUICK, true)
         set(value) = prefs.edit().putBoolean(KEY_QUICK, value).apply()
 
+    /** true depois que a conta foi cadastrada no servidor de recuperacao de senha (ver [Cloud]). */
+    var cloudLinked: Boolean
+        get() = prefs.getBoolean(KEY_CLOUD_LINKED, false)
+        set(value) = prefs.edit().putBoolean(KEY_CLOUD_LINKED, value).apply()
+
+    /** Bloqueio ao reabrir o app (pede o desbloqueio do aparelho). Desligado por padrao. */
+    var appLock: Boolean
+        get() = prefs.getBoolean(KEY_APP_LOCK, false)
+        set(value) = prefs.edit().putBoolean(KEY_APP_LOCK, value).apply()
+
+    /** Texto do SMS de SOS escolhido pela pessoa; vazio = texto padrao. */
+    var customMessage: String
+        get() = prefs.getString(KEY_CUSTOM_MESSAGE, "") ?: ""
+        set(value) = prefs.edit().putString(KEY_CUSTOM_MESSAGE, value.trim()).apply()
+
     /** Pasta escolhida pela pessoa para o backup das gravacoes (endereco SAF), ou null se desligado. */
     var backupFolder: String?
         get() = prefs.getString(KEY_BACKUP_FOLDER, null)
@@ -149,6 +164,9 @@ class SecurePrefs(context: Context, val accountId: String) {
         private const val KEY_CONTACTS = "contacts"
         private const val KEY_SORT_ALPHA = "sort_alpha"
         private const val KEY_ONBOARDING_DONE = "onboarding_done"
+        private const val KEY_CLOUD_LINKED = "cloud_linked"
+        private const val KEY_APP_LOCK = "app_lock"
+        private const val KEY_CUSTOM_MESSAGE = "custom_message"
         private const val KEY_QUICK = "quick_shortcut"
         private const val KEY_BACKUP_FOLDER = "backup_folder"
         private const val KEY_BACKED_UP = "backed_up"

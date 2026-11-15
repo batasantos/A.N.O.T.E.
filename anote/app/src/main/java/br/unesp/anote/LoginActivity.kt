@@ -15,8 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
  *  - nenhuma conta  -> primeiro cadastro;
  *  - senao          -> login com e-mail e senha, com opcao de criar outra conta.
  *
- * "Esqueci minha senha" nao recupera nada (os dados ficam so no aparelho): apaga a conta
- * daquele e-mail, com tudo que ela guarda, e leva ao cadastro de uma nova.
+ * "Esqueci minha senha": com o codigo de recuperacao (mostrado uma vez no cadastro) a pessoa define uma
+ * senha nova sem perder nada. Sem o codigo, a unica saida e apagar a conta daquele e-mail, com tudo
+ * que ela guarda, e criar uma nova (os dados ficam so no aparelho).
  */
 class LoginActivity : AppCompatActivity() {
 
@@ -66,15 +67,47 @@ class LoginActivity : AppCompatActivity() {
         inBackground({ Accounts.authenticate(this, mail, pw) }) { result ->
             setChecking(false)
             when (result) {
-                is Accounts.AuthResult.Success -> enter(result.accountId)
+                is Accounts.AuthResult.Success -> {
+                    Cloud.linkIfNeeded(this, result.accountId, mail.trim().lowercase(), pw)
+                    enter(result.accountId)
+                }
                 is Accounts.AuthResult.Locked -> {
                     password.text.clear()
                     showError(getString(R.string.login_locked, result.seconds))
                 }
                 Accounts.AuthResult.Wrong -> {
-                    password.text.clear()
-                    showError(getString(R.string.login_wrong))
+                    // A senha pode ter sido redefinida pelo link do e-mail: o servidor a conhece, o aparelho ainda nao.
+                    if (Cloud.isConfigured(this) && Accounts.findIdByEmail(this, mail) != null) {
+                        tryCloudPassword(mail, pw)
+                    } else {
+                        password.text.clear()
+                        showError(getString(R.string.login_wrong))
+                    }
                 }
+            }
+        }
+    }
+
+    /** Aceita a senha nova definida pelo link do e-mail e atualiza o hash guardado no aparelho. */
+    private fun tryCloudPassword(mail: String, pw: String) {
+        setChecking(true)
+        Cloud.signIn(this, mail.trim().lowercase(), pw) { ok ->
+            if (!ok) {
+                setChecking(false)
+                password.text.clear()
+                showError(getString(R.string.login_wrong))
+                return@signIn
+            }
+            inBackground({
+                val id = Accounts.findIdByEmail(this, mail)
+                if (id != null) {
+                    Accounts.setPassword(this, id, pw)
+                    Accounts.clearFailures(this)
+                }
+                id
+            }) { id ->
+                setChecking(false)
+                if (id != null) enter(id) else showError(getString(R.string.login_wrong))
             }
         }
     }
@@ -109,9 +142,106 @@ class LoginActivity : AppCompatActivity() {
             showError(getString(R.string.forgot_need_email))
             return
         }
+        val cloud = Cloud.isConfigured(this)
+        val items = if (cloud) {
+            arrayOf(getString(R.string.forgot_send_link), getString(R.string.forgot_use_code), getString(R.string.forgot_erase))
+        } else {
+            arrayOf(getString(R.string.forgot_use_code), getString(R.string.forgot_erase))
+        }
         Ui.show(
             Ui.dialog(this, dark = false)
                 .setTitle(R.string.forgot_title)
+                .setItems(items) { _, which ->
+                    when (items[which]) {
+                        getString(R.string.forgot_send_link) -> sendResetLink(mail)
+                        getString(R.string.forgot_use_code) -> showCodeDialog(mail)
+                        else -> confirmErase(mail)
+                    }
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = false
+        )
+    }
+
+    /** Envia o link de redefinicao para o e-mail. A resposta e a mesma exista ou nao conta com esse e-mail. */
+    private fun sendResetLink(mail: String) {
+        setChecking(true)
+        Cloud.sendReset(this, mail.trim().lowercase()) { result ->
+            setChecking(false)
+            when (result) {
+                CloudResult.NETWORK -> showError(getString(R.string.forgot_link_offline))
+                CloudResult.ERROR -> showError(getString(R.string.forgot_link_error))
+                else -> Toast.makeText(this, R.string.forgot_link_sent, Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    /** Redefine a senha com o codigo de recuperacao: as notas e os contatos continuam ali. */
+    private fun showCodeDialog(mail: String) {
+        val builder = Ui.dialog(this, dark = false)
+        val codeField = EditText(builder.context).apply {
+            hint = getString(R.string.forgot_code_hint)
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or
+                android.text.InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS or
+                android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+            setSingleLine()
+        }
+        val newField = EditText(builder.context).apply {
+            hint = getString(R.string.forgot_new_password_hint)
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
+            setSingleLine()
+        }
+        val box = android.widget.LinearLayout(builder.context).apply {
+            orientation = android.widget.LinearLayout.VERTICAL
+            setPadding(64, 24, 64, 0)
+            addView(codeField, android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
+            addView(newField, android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+        val dialog = builder
+            .setTitle(R.string.forgot_use_code)
+            .setMessage(R.string.forgot_code_message)
+            .setView(box)
+            .setPositiveButton(R.string.forgot_code_confirm, null)
+            .setNegativeButton(R.string.cancel, null)
+            .create()
+        Ui.prepare(dialog, dark = false)
+        dialog.setOnShowListener {
+            dialog.getButton(android.content.DialogInterface.BUTTON_POSITIVE).setOnClickListener {
+                val code = codeField.text.toString()
+                val fresh = newField.text.toString()
+                if (RecoveryCode.normalize(code).length != RecoveryCode.LENGTH) {
+                    codeField.error = getString(R.string.forgot_code_invalid)
+                    return@setOnClickListener
+                }
+                if (fresh.length < Accounts.MIN_PASSWORD) {
+                    newField.error = getString(R.string.error_password_short)
+                    return@setOnClickListener
+                }
+                dialog.dismiss()
+                setChecking(true)
+                inBackground({ Accounts.resetWithCode(this, mail, code, fresh) }) { (result, newCode) ->
+                    setChecking(false)
+                    when (result) {
+                        is Accounts.AuthResult.Success -> {
+                            password.text.clear()
+                            error.visibility = View.GONE
+                            Toast.makeText(this, R.string.forgot_reset_done, Toast.LENGTH_LONG).show()
+                            if (newCode != null) MenuDialogs.showRecoveryCode(this, newCode) {}
+                        }
+                        is Accounts.AuthResult.Locked -> showError(getString(R.string.login_locked, result.seconds))
+                        // Mesma resposta para e-mail inexistente, conta sem codigo e codigo errado.
+                        Accounts.AuthResult.Wrong -> showError(getString(R.string.forgot_reset_failed))
+                    }
+                }
+            }
+        }
+        dialog.show()
+    }
+
+    private fun confirmErase(mail: String) {
+        Ui.show(
+            Ui.dialog(this, dark = false)
+                .setTitle(R.string.forgot_erase)
                 .setMessage(R.string.forgot_message)
                 .setPositiveButton(R.string.forgot_confirm) { _, _ -> deleteAndSignUp(mail) }
                 .setNegativeButton(R.string.cancel, null),

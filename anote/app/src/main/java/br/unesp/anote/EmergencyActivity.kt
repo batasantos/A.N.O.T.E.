@@ -119,6 +119,7 @@ class EmergencyActivity : GuardedActivity() {
                     MenuDialogs.showPermissions(this) { keepOnStop = true }
                 },
                 Ui.MenuEntry(R.drawable.ic_send, R.string.menu_shortcut) { showShortcutDialog() },
+                Ui.MenuEntry(R.drawable.ic_message, R.string.menu_sos_message) { showSosMessageDialog() },
                 Ui.MenuEntry(R.drawable.ic_info, R.string.menu_guide) {
                     keepOnStop = true
                     startActivity(
@@ -210,6 +211,31 @@ class EmergencyActivity : GuardedActivity() {
         )
     }
 
+    /** Texto do SMS de SOS: a pessoa pode trocar a frase; o link do mapa e sempre acrescentado no fim. */
+    private fun showSosMessageDialog() {
+        val builder = Ui.dialog(this, dark = true)
+        val field = EditText(builder.context).apply {
+            setText(prefs.customMessage)
+            hint = getString(R.string.sos_message_hint)
+            filters = arrayOf(android.text.InputFilter.LengthFilter(100))
+            minLines = 2
+        }
+        val container = LinearLayout(builder.context).apply {
+            setPadding(64, 24, 64, 0)
+            addView(field, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        }
+        Ui.show(
+            builder
+                .setTitle(R.string.sos_message_title)
+                .setMessage(R.string.sos_message_help)
+                .setView(container)
+                .setPositiveButton(R.string.save) { _, _ -> prefs.customMessage = field.text.toString() }
+                .setNeutralButton(R.string.sos_message_reset) { _, _ -> prefs.customMessage = "" }
+                .setNegativeButton(R.string.cancel, null),
+            dark = true
+        )
+    }
+
     private fun showShortcutDialog() {
         val on = prefs.quickShortcut
         Ui.show(
@@ -296,10 +322,17 @@ class EmergencyActivity : GuardedActivity() {
         Ui.show(
             builder
                 .setTitle(R.string.trigger_dialog_title)
+                .setMessage(R.string.trigger_dialog_help)
                 .setView(container)
                 .setPositiveButton(R.string.save) { _, _ ->
                     val t = field.text.toString().trim()
-                    if (t.isNotEmpty()) prefs.triggerTitle = t
+                    if (t.isNotEmpty()) {
+                        prefs.triggerTitle = t
+                        // O padrao "..." e facil de adivinhar: lembra a pessoa de escolher um so dela.
+                        if (SecurePrefs.normalize(t) == SecurePrefs.DEFAULT_TRIGGER) {
+                            Toast.makeText(this, R.string.trigger_weak, Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
                 .setNegativeButton(R.string.cancel, null),
             dark = true
