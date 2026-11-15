@@ -97,6 +97,13 @@ class EmergencyActivity : GuardedActivity() {
                 Ui.MenuEntry(R.drawable.ic_shield, R.string.menu_permissions) {
                     MenuDialogs.showPermissions(this) { keepOnStop = true }
                 },
+                Ui.MenuEntry(R.drawable.ic_info, R.string.menu_guide) {
+                    keepOnStop = true
+                    startActivity(
+                        Intent(this, GuideActivity::class.java)
+                            .putExtra(GuideActivity.EXTRA_FROM_MENU, true)
+                    )
+                },
                 Ui.MenuEntry(R.drawable.ic_help, R.string.menu_help) {
                     MenuDialogs.showHelp(this)
                 },

@@ -102,6 +102,7 @@ id btn_forgot
 id btn_google
 id btn_login
 id btn_menu
+id btn_next
 id btn_next1
 id btn_next2
 id btn_pin
@@ -126,6 +127,7 @@ id dialog_phone
 id dot1
 id dot2
 id dot3
+id dots
 id edit_contact_name
 id edit_contact_phone
 id edit_content
@@ -140,6 +142,7 @@ id fab
 id google_group
 id google_note
 id header_text
+id img_icon
 id img_pin
 id img_record
 id login_email
@@ -180,6 +183,8 @@ id step1
 id step2
 id step3
 id tv_add_contact
+id tv_body
+id tv_counter
 id tv_ddm_open
 id tv_empty
 id tv_no_contacts
@@ -187,8 +192,10 @@ id tv_pin
 id tv_record_subtitle
 id tv_record_title
 id tv_step
+id tv_title
 layout activity_contacts
 layout activity_emergency
+layout activity_guide
 layout activity_login
 layout activity_main
 layout activity_note_editor
@@ -274,6 +281,23 @@ string google_error
 string google_note
 string google_or
 string google_web_client_id
+string guide1_body
+string guide1_title
+string guide2_body
+string guide2_title
+string guide3_body
+string guide3_title
+string guide4_body
+string guide4_title
+string guide5_body
+string guide5_title
+string guide6_body
+string guide6_title
+string guide_back
+string guide_counter
+string guide_done
+string guide_next
+string guide_skip
 string help_text
 string help_title
 string hint_content
@@ -303,6 +327,7 @@ string menu_change_password
 string menu_contacts
 string menu_delete_account
 string menu_delete_all
+string menu_guide
 string menu_help
 string menu_logout
 string menu_permissions

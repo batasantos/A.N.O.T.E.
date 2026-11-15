@@ -54,6 +54,12 @@
             android:name="br.unesp.anote.OnboardingActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Guia de primeiro uso: fora dos apps recentes porque cita o titulo secreto -->
+        <activity
+            android:name="br.unesp.anote.GuideActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
         <activity
             android:name="br.unesp.anote.MainActivity"
             android:exported="false" />

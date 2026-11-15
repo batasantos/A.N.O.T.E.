@@ -36,6 +36,12 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Guia de primeiro uso: fora dos apps recentes porque cita o titulo secreto -->
+        <activity
+            android:name=".GuideActivity"
+            android:exported="false"
+            android:excludeFromRecents="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />

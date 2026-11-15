@@ -240,8 +240,9 @@ class OnboardingActivity : AppCompatActivity() {
         val id = accountId ?: return
         prefs.onboardingDone = true
         Session.login(this, id) // quem acabou de se cadastrar ja entra logada
+        // Logo apos o cadastro, mostra o guia de como o app funciona.
         startActivity(
-            Intent(this, MainActivity::class.java)
+            Intent(this, GuideActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         )
         finish()

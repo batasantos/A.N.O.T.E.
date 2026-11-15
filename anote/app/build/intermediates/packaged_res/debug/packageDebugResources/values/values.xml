@@ -89,6 +89,23 @@
     <string name="google_note">Nome e e-mail vieram da sua conta Google. A senha do app você cria aqui, só para este aparelho.</string>
     <string name="google_or">ou preencha manualmente</string>
     <string name="google_web_client_id" translatable="false"/>
+    <string name="guide1_body">Por fora, ele é um bloco de notas comum. Por dentro, guarda um painel de emergência que só você sabe abrir.\n\nVamos ver como tudo funciona em poucos passos.</string>
+    <string name="guide1_title">Bem-vinda ao A.N.O.T.E.</string>
+    <string name="guide2_body">Toque no botão + para criar uma nota. Fixe as importantes, use a busca para achar rápido e o botão de ordenar para organizar.\n\nAs notas são de verdade e ficam só na sua conta, então o app parece sempre um bloco de notas normal.</string>
+    <string name="guide2_title">Suas notas</string>
+    <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nVocê pode trocar esse título no painel, em Título de acesso.</string>
+    <string name="guide3_title">Como abrir o painel</string>
+    <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança.\n\nA notificação é discreta e não mostra a palavra SOS. Você também pode avisar só um contato, pelo botão Disparar ao lado dele.</string>
+    <string name="guide4_title">SOS silencioso</string>
+    <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.</string>
+    <string name="guide5_title">Gravação e delegacia</string>
+    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app.\n\nSua senha é protegida e cada conta tem dados separados. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
+    <string name="guide6_title">Sua privacidade</string>
+    <string name="guide_back">Voltar</string>
+    <string name="guide_counter">PASSO %1$d DE %2$d</string>
+    <string name="guide_done">Começar a usar</string>
+    <string name="guide_next">Próximo</string>
+    <string name="guide_skip">Pular</string>
     <string name="help_text">O A.N.O.T.E. manda a sua localização por SMS para os contatos de confiança e pode gravar o áudio do ambiente.\n\nEm perigo imediato, ligue:\n\n180 – Central de Atendimento à Mulher\n190 – Polícia Militar</string>
     <string name="help_title">Ajuda e telefones</string>
     <string name="hint_content">Comece a escrever…</string>
@@ -118,6 +135,7 @@
     <string name="menu_contacts">Contatos de confiança</string>
     <string name="menu_delete_account">Excluir minha conta</string>
     <string name="menu_delete_all">Apagar todas as notas</string>
+    <string name="menu_guide">Como usar o app</string>
     <string name="menu_help">Ajuda e telefones</string>
     <string name="menu_logout">Sair da conta</string>
     <string name="menu_permissions">Permissões</string>
