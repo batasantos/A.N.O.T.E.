@@ -28,6 +28,12 @@ class NoteEditorActivity : AppCompatActivity() {
     private var noteId = 0L
     private var pinned = false
 
+    /** Atalho de disparo rapido: volume para baixo 3 vezes. */
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        if (::prefs.isInitialized && QuickSos.onKeyDown(this, keyCode, event, prefs.quickShortcut)) return true
+        return super.onKeyDown(keyCode, event)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!Session.isActive(this)) { // sessao encerrada: nao ha conta para mostrar

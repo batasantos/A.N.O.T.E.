@@ -9,6 +9,14 @@ import org.json.JSONObject
 
 data class TrustedContact(val name: String, val phone: String)
 
+/** Resultado de um envio de SOS: quem recebeu e quem nao (o SMS foi recusado ou falhou). */
+data class SosReport(
+    val time: Long,
+    val sent: List<TrustedContact>,
+    val failed: List<TrustedContact>,
+    val update: Boolean
+)
+
 /**
  * Preferencias criptografadas de UMA conta: titulo-gatilho, contatos de confianca, ordem das notas
  * e se o cadastro foi concluido. Cada conta tem o seu proprio arquivo, entao uma conta nunca enxerga
@@ -47,6 +55,63 @@ class SecurePrefs(context: Context, val accountId: String) {
         get() = prefs.getBoolean(KEY_ONBOARDING_DONE, false)
         set(value) = prefs.edit().putBoolean(KEY_ONBOARDING_DONE, value).apply()
 
+    /** Atalho de disparo rapido (volume para baixo 3 vezes nas telas de notas). Ligado por padrao. */
+    var quickShortcut: Boolean
+        get() = prefs.getBoolean(KEY_QUICK, true)
+        set(value) = prefs.edit().putBoolean(KEY_QUICK, value).apply()
+
+    /** Pasta escolhida pela pessoa para o backup das gravacoes (endereco SAF), ou null se desligado. */
+    var backupFolder: String?
+        get() = prefs.getString(KEY_BACKUP_FOLDER, null)
+        set(value) = prefs.edit().apply { if (value == null) remove(KEY_BACKUP_FOLDER) else putString(KEY_BACKUP_FOLDER, value) }.apply()
+
+    /** Nomes das gravacoes que ja foram copiadas para a pasta de backup. */
+    fun backedUpNames(): Set<String> {
+        val arr = JSONArray(prefs.getString(KEY_BACKED_UP, "[]") ?: "[]")
+        return (0 until arr.length()).map { arr.getString(it) }.toSet()
+    }
+
+    fun markBackedUp(name: String) {
+        val arr = JSONArray()
+        (backedUpNames() + name).forEach { arr.put(it) }
+        prefs.edit().putString(KEY_BACKED_UP, arr.toString()).apply()
+    }
+
+    /** Ultimo envio de SOS. [reportUnseen] fica true enquanto houver falha que o painel ainda nao mostrou. */
+    fun saveReport(report: SosReport) {
+        fun list(items: List<TrustedContact>) = JSONArray().also { a ->
+            items.forEach { a.put(JSONObject().put("name", it.name).put("phone", it.phone)) }
+        }
+        val json = JSONObject()
+            .put("time", report.time)
+            .put("update", report.update)
+            .put("sent", list(report.sent))
+            .put("failed", list(report.failed))
+        prefs.edit()
+            .putString(KEY_REPORT, json.toString())
+            .putBoolean(KEY_REPORT_UNSEEN, report.failed.isNotEmpty())
+            .apply()
+    }
+
+    fun lastReport(): SosReport? {
+        val raw = prefs.getString(KEY_REPORT, null) ?: return null
+        return runCatching {
+            val o = JSONObject(raw)
+            fun read(key: String): List<TrustedContact> {
+                val a = o.getJSONArray(key)
+                return (0 until a.length()).map {
+                    val c = a.getJSONObject(it)
+                    TrustedContact(c.getString("name"), c.getString("phone"))
+                }
+            }
+            SosReport(o.getLong("time"), read("sent"), read("failed"), o.optBoolean("update"))
+        }.getOrNull()
+    }
+
+    var reportUnseen: Boolean
+        get() = prefs.getBoolean(KEY_REPORT_UNSEEN, false)
+        set(value) = prefs.edit().putBoolean(KEY_REPORT_UNSEEN, value).apply()
+
     fun contacts(): List<TrustedContact> {
         val json = prefs.getString(KEY_CONTACTS, "[]") ?: "[]"
         val arr = JSONArray(json)
@@ -84,6 +149,11 @@ class SecurePrefs(context: Context, val accountId: String) {
         private const val KEY_CONTACTS = "contacts"
         private const val KEY_SORT_ALPHA = "sort_alpha"
         private const val KEY_ONBOARDING_DONE = "onboarding_done"
+        private const val KEY_QUICK = "quick_shortcut"
+        private const val KEY_BACKUP_FOLDER = "backup_folder"
+        private const val KEY_BACKED_UP = "backed_up"
+        private const val KEY_REPORT = "last_report"
+        private const val KEY_REPORT_UNSEEN = "report_unseen"
         const val DEFAULT_TRIGGER = "..."
 
         /** Nome do arquivo de preferencias de uma conta. */

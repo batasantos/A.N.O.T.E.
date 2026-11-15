@@ -32,6 +32,22 @@ class RecordingsActivity : GuardedActivity() {
     private var player: MediaPlayer? = null
     private var playingFile: File? = null
     private var exportFile: File? = null
+    private lateinit var backupStatus: TextView
+    private lateinit var prefs: SecurePrefs
+    private lateinit var account: String
+
+    /** Seletor de pasta do Android: a pessoa escolhe onde o backup das gravacoes sera feito. */
+    private val folderLauncher =
+        registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+            if (uri != null) {
+                contentResolver.takePersistableUriPermission(
+                    uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+                prefs.backupFolder = uri.toString()
+                renderBackup()
+                runBackupNow()
+            }
+        }
 
     /** Abre o seletor do Android para a pessoa escolher onde salvar a copia. */
     private val exportLauncher =
@@ -49,6 +65,10 @@ class RecordingsActivity : GuardedActivity() {
         }
         setContentView(R.layout.activity_recordings)
 
+        prefs = SecurePrefs(this)
+        account = prefs.accountId
+        backupStatus = findViewById(R.id.tv_backup_status)
+        findViewById<View>(R.id.card_backup).setOnClickListener { showBackupOptions() }
         list = findViewById(R.id.recordings_list)
         empty = findViewById(R.id.tv_empty)
         findViewById<View>(R.id.btn_back).setOnClickListener { finish() }
@@ -70,9 +90,67 @@ class RecordingsActivity : GuardedActivity() {
         super.onDestroy()
     }
 
+    // ---------- Backup ----------
+
+    private fun renderBackup() {
+        if (prefs.backupFolder == null) {
+            backupStatus.setText(R.string.backup_off)
+        } else {
+            val pending = Backup.pending(this, account).size
+            backupStatus.text =
+                if (pending == 0) getString(R.string.backup_on_done)
+                else resources.getQuantityString(R.plurals.backup_on_pending, pending, pending)
+        }
+    }
+
+    private fun showBackupOptions() {
+        val on = prefs.backupFolder != null
+        val items = if (on) {
+            arrayOf(getString(R.string.backup_now), getString(R.string.backup_choose), getString(R.string.backup_disable))
+        } else {
+            arrayOf(getString(R.string.backup_choose))
+        }
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setTitle(R.string.backup_title)
+                .setItems(items) { _, which ->
+                    when (items[which]) {
+                        getString(R.string.backup_now) -> runBackupNow()
+                        getString(R.string.backup_choose) -> {
+                            keepOnStop = true // o seletor de pastas do Android nao deve fechar esta tela
+                            folderLauncher.launch(null)
+                        }
+                        else -> {
+                            prefs.backupFolder = null
+                            renderBackup()
+                        }
+                    }
+                },
+            dark = true
+        )
+    }
+
+    private fun runBackupNow() {
+        Toast.makeText(this, R.string.backup_running, Toast.LENGTH_SHORT).show()
+        Backup.executor.execute {
+            val (ok, failed) = Backup.copyAllPending(applicationContext, account)
+            runOnUiThread {
+                if (isFinishing) return@runOnUiThread
+                Toast.makeText(
+                    this,
+                    if (failed > 0) getString(R.string.backup_failed, failed)
+                    else getString(R.string.backup_done, ok),
+                    Toast.LENGTH_LONG
+                ).show()
+                renderBackup()
+            }
+        }
+    }
+
     // ---------- Lista ----------
 
     private fun render() {
+        renderBackup()
         list.removeAllViews()
         val files = Recordings.list(this)
         empty.visibility = if (files.isEmpty()) View.VISIBLE else View.GONE

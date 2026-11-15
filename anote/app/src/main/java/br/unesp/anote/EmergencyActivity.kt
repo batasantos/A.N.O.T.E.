@@ -14,6 +14,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -33,6 +36,8 @@ class EmergencyActivity : GuardedActivity() {
     private lateinit var recordTitle: TextView
     private lateinit var recordSubtitle: TextView
     private lateinit var recordIcon: ImageView
+    private lateinit var sosTitle: TextView
+    private lateinit var sosSubtitle: TextView
 
     private var pending: Pending? = null
     private var pendingPhone: String? = null
@@ -51,10 +56,14 @@ class EmergencyActivity : GuardedActivity() {
         recordTitle = findViewById(R.id.tv_record_title)
         recordSubtitle = findViewById(R.id.tv_record_subtitle)
         recordIcon = findViewById(R.id.img_record)
+        sosTitle = findViewById(R.id.tv_sos_title)
+        sosSubtitle = findViewById(R.id.tv_sos_subtitle)
 
         findViewById<View>(R.id.btn_close).setOnClickListener { finishAndRemoveTask() }
         findViewById<View>(R.id.btn_menu).setOnClickListener { showMenu(it) }
-        findViewById<View>(R.id.card_sos).setOnClickListener { requestThen(Pending.SOS) }
+        findViewById<View>(R.id.card_sos).setOnClickListener {
+            if (SosService.isSosActive) confirmStopSos() else requestThen(Pending.SOS)
+        }
         findViewById<View>(R.id.card_record).setOnClickListener {
             if (SosService.isRecording) {
                 startService(Intent(this, SosService::class.java).setAction(SosService.ACTION_STOP_RECORD))
@@ -78,6 +87,18 @@ class EmergencyActivity : GuardedActivity() {
         // Ao voltar da tela de contatos a lista pode ter mudado.
         renderContacts()
         renderRecording()
+        renderSos()
+        showFailureIfAny()
+        // Se um envio terminar com o painel aberto, avisa na hora.
+        SosService.onReport = { _ ->
+            renderSos()
+            showFailureIfAny()
+        }
+    }
+
+    override fun onPause() {
+        SosService.onReport = null
+        super.onPause()
     }
 
     // ---------- Menu ----------
@@ -97,6 +118,7 @@ class EmergencyActivity : GuardedActivity() {
                 Ui.MenuEntry(R.drawable.ic_shield, R.string.menu_permissions) {
                     MenuDialogs.showPermissions(this) { keepOnStop = true }
                 },
+                Ui.MenuEntry(R.drawable.ic_send, R.string.menu_shortcut) { showShortcutDialog() },
                 Ui.MenuEntry(R.drawable.ic_info, R.string.menu_guide) {
                     keepOnStop = true
                     startActivity(
@@ -120,6 +142,88 @@ class EmergencyActivity : GuardedActivity() {
         recordSubtitle.setText(if (rec) R.string.record_running else R.string.record_subtitle)
         recordIcon.setColorFilter(
             ContextCompat.getColor(this, if (rec) R.color.danger else R.color.purple_light)
+        )
+    }
+
+    /** Cartao SOS: mostra "ativo" enquanto a localizacao esta sendo reenviada, com o ultimo resultado. */
+    private fun renderSos() {
+        if (!SosService.isSosActive) {
+            sosTitle.setText(R.string.sos_title)
+            sosSubtitle.setText(R.string.sos_subtitle)
+            return
+        }
+        sosTitle.setText(R.string.sos_active_title)
+        val report = prefs.lastReport()
+        sosSubtitle.text = if (report == null) {
+            getString(R.string.sos_active_subtitle, SosService.REPEAT_MINUTES)
+        } else {
+            val time = SimpleDateFormat("HH:mm", Locale("pt", "BR")).format(Date(report.time))
+            getString(
+                R.string.sos_active_last, SosService.REPEAT_MINUTES, time,
+                report.sent.size, report.sent.size + report.failed.size
+            )
+        }
+    }
+
+    private fun confirmStopSos() {
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setMessage(R.string.sos_stop_confirm)
+                .setPositiveButton(R.string.sos_stop) { _, _ ->
+                    startService(Intent(this, SosService::class.java).setAction(SosService.ACTION_STOP_SOS))
+                    SosService.isSosActive = false
+                    renderSos()
+                }
+                .setNegativeButton(R.string.cancel, null),
+            dark = true
+        )
+    }
+
+    /** Se o ultimo envio teve contatos sem receber, mostra quem falhou e oferece tentar de novo. */
+    private fun showFailureIfAny() {
+        if (isFinishing || !prefs.reportUnseen) return
+        val report = prefs.lastReport() ?: return
+        if (report.failed.isEmpty()) return
+        prefs.reportUnseen = false
+        val message = buildString {
+            append(getString(R.string.sos_fail_body, report.failed.joinToString("\n") { "• ${it.name}" }))
+            if (report.sent.isNotEmpty()) {
+                append("\n\n").append(getString(R.string.sos_fail_sent, report.sent.joinToString(", ") { it.name }))
+            }
+        }
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setTitle(R.string.sos_fail_title)
+                .setMessage(message)
+                .setPositiveButton(R.string.sos_retry) { _, _ ->
+                    report.failed.forEach { contact ->
+                        ContextCompat.startForegroundService(
+                            this,
+                            Intent(this, SosService::class.java)
+                                .setAction(SosService.ACTION_SOS_ONE)
+                                .putExtra(SosService.EXTRA_PHONE, contact.phone)
+                        )
+                    }
+                }
+                .setNegativeButton(R.string.close, null),
+            dark = true
+        )
+    }
+
+    private fun showShortcutDialog() {
+        val on = prefs.quickShortcut
+        Ui.show(
+            Ui.dialog(this, dark = true)
+                .setTitle(R.string.shortcut_title)
+                .setMessage(
+                    getString(R.string.shortcut_body) + "\n\n" +
+                        getString(if (on) R.string.shortcut_state_on else R.string.shortcut_state_off)
+                )
+                .setPositiveButton(if (on) R.string.shortcut_turn_off else R.string.shortcut_turn_on) { _, _ ->
+                    prefs.quickShortcut = !on
+                }
+                .setNegativeButton(R.string.close, null),
+            dark = true
         )
     }
 

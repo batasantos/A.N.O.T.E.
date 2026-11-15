@@ -62,6 +62,12 @@ class MainActivity : AppCompatActivity() {
         refresh()
     }
 
+    /** Atalho de disparo rapido: volume para baixo 3 vezes. */
+    override fun onKeyDown(keyCode: Int, event: android.view.KeyEvent): Boolean {
+        if (::prefs.isInitialized && QuickSos.onKeyDown(this, keyCode, event, prefs.quickShortcut)) return true
+        return super.onKeyDown(keyCode, event)
+    }
+
     private fun refresh() {
         val q = search.text.toString().trim().lowercase()
         var notes = db.listAll().filter {
