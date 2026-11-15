@@ -50,6 +50,7 @@ object GoogleSignIn {
                 }
 
                 override fun onError(e: GetCredentialException) {
+                    android.util.Log.e("ANOTE_GOOGLE", "tipo=${e.type} msg=${e.message}")
                     done(if (e is GetCredentialCancellationException) Result.Cancelled else Result.Failed)
                 }
             }
