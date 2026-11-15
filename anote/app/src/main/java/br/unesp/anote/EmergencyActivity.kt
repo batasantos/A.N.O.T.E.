@@ -119,6 +119,9 @@ class EmergencyActivity : GuardedActivity() {
                     MenuDialogs.showPermissions(this) { keepOnStop = true }
                 },
                 Ui.MenuEntry(R.drawable.ic_send, R.string.menu_shortcut) { showShortcutDialog() },
+                Ui.MenuEntry(R.drawable.ic_lock, R.string.menu_app_lock) {
+                    MenuDialogs.showAppLock(this, dark = true)
+                },
                 Ui.MenuEntry(R.drawable.ic_message, R.string.menu_sos_message) { showSosMessageDialog() },
                 Ui.MenuEntry(R.drawable.ic_info, R.string.menu_guide) {
                     keepOnStop = true

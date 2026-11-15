@@ -305,12 +305,12 @@ object MenuDialogs {
     }
 
     /** Liga ou desliga o bloqueio ao reabrir o app. */
-    fun showAppLock(activity: AppCompatActivity) {
+    fun showAppLock(activity: AppCompatActivity, dark: Boolean = false) {
         val accountId = Session.activeId(activity) ?: return
         val prefs = SecurePrefs(activity, accountId)
         val on = prefs.appLock
         Ui.show(
-            Ui.dialog(activity, dark = false)
+            Ui.dialog(activity, dark = dark)
                 .setTitle(R.string.lock_title)
                 .setMessage(
                     activity.getString(R.string.lock_body) + "\n\n" +
@@ -324,7 +324,7 @@ object MenuDialogs {
                     }
                 }
                 .setNegativeButton(R.string.close, null),
-            dark = false
+            dark = dark
         )
     }
 

@@ -12,7 +12,7 @@ Quem olhar por cima do ombro vê só uma lista de notas. Para chegar ao painel d
 
 As senhas nunca são guardadas: só um hash PBKDF2-HMAC-SHA256 com sal próprio (310 mil iterações). Todos os dados de conta ficam em EncryptedSharedPreferences (AES-256, chave no Android Keystore). Depois de 5 erros seguidos o login é bloqueado por 30 segundos, e o tempo dobra a cada novo erro, até 15 minutos; o contador sobrevive ao fechamento do app. Quem esquece a senha pode pedir um **link de redefinição por e-mail** (se o Firebase estiver configurado), usar o **código de recuperação** (as notas continuam nos dois casos) ou, sem nenhum dos dois, apagar a conta e recomeçar.
 
-**Notas.** Funcionam como em qualquer app: criar, editar, fixar, apagar, buscar e ordenar. O menu (⋮) da lista tem **Meu perfil**, **Alterar senha**, **Código de recuperação**, **Bloqueio ao reabrir**, **Ordenar notas**, **Apagar todas as notas**, **Sobre o app**, **Sair da conta** e **Excluir minha conta**. Nada ali fala de emergência, de propósito.
+**Notas.** Funcionam como em qualquer app: criar, editar, fixar, apagar, buscar e ordenar. O menu (⋮) da lista tem **Meu perfil**, **Alterar senha**, **Código de recuperação**, **Ordenar notas**, **Apagar todas as notas**, **Sobre o app**, **Sair da conta** e **Excluir minha conta**. Nada ali fala de emergência, de propósito.
 
 **Painel de emergência.** Abre quando a nota tem o título secreto. Tem:
 
@@ -21,7 +21,7 @@ As senhas nunca são guardadas: só um hash PBKDF2-HMAC-SHA256 com sal próprio 
 - **Delegacia mais próxima:** abre no Google Maps a rota a pé, de carro ou de ônibus.
 - **Contatos de confiança**, com o botão Disparar para avisar só uma pessoa.
 
-O menu do painel tem: contatos, gravações, permissões, **atalho de disparo rápido**, **mensagem do SOS**, **como usar o app**, ajuda e telefones (180 e 190) e **título de acesso**.
+O menu do painel tem: contatos, gravações, permissões, **atalho de disparo rápido**, **bloqueio ao reabrir**, **mensagem do SOS**, **como usar o app**, ajuda e telefones (180 e 190) e **título de acesso**.
 
 **Atalho de disparo rápido.** Nas telas de notas (e na tela de bloqueio), apertar o volume para baixo 3 vezes em até 2 segundos envia o SOS sem abrir o painel; o celular vibra para confirmar. Pode ser desligado no painel.
 
