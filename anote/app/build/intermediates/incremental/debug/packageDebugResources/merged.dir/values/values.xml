@@ -88,7 +88,7 @@
     <string name="google_error">Não foi possível usar sua conta Google agora. Verifique a conexão e tente de novo.</string>
     <string name="google_note">Nome e e-mail vieram da sua conta Google. A senha do app você cria aqui, só para este aparelho.</string>
     <string name="google_or">ou preencha manualmente</string>
-    <string name="google_web_client_id" translatable="false"/>
+    <string name="google_web_client_id" translatable="false">717655947892-d88hk5ictvu9gjmo4ul38sdonbsj1tvm.apps.googleusercontent.com</string>
     <string name="guide1_body">Por fora, ele é um bloco de notas comum. Por dentro, guarda um painel de emergência que só você sabe abrir.\n\nVamos ver como tudo funciona em poucos passos.</string>
     <string name="guide1_title">Bem-vinda ao A.N.O.T.E.</string>
     <string name="guide2_body">Toque no botão + para criar uma nota. Fixe as importantes, use a busca para achar rápido e o botão de ordenar para organizar.\n\nAs notas são de verdade e ficam só na sua conta, então o app parece sempre um bloco de notas normal.</string>

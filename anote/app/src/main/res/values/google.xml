@@ -6,5 +6,5 @@
         "Continuar com o Google" nao aparece e o cadastro funciona so com e-mail e senha.
         Esse identificador nao e segredo (so identifica o app), mas NAO use o Client ID do tipo Android aqui.
     -->
-    <string name="google_web_client_id" translatable="false"></string>
+    <string name="google_web_client_id" translatable="false">717655947892-d88hk5ictvu9gjmo4ul38sdonbsj1tvm.apps.googleusercontent.com</string>
 </resources>
