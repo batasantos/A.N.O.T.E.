@@ -6,6 +6,8 @@ O A.N.O.T.E. é um aplicativo Android que se apresenta como um bloco de notas co
 
 Para quem observa o aparelho, o app mostra apenas uma lista de notas. O painel de emergência só é aberto quando se cria uma nota com um título combinado (por padrão, três pontos: `...`) e se toca em Concluído. Nesse caso, a nota não é salva e o painel aparece no lugar dela.
 
+Este é o README detalhado do projeto. Um resumo está no [README da raiz do repositório](../README.md).
+
 O trabalho foi desenvolvido na disciplina Projetos em Computação II, do curso de Ciências da Computação da Unesp, e é um complemento aos canais oficiais de atendimento (190 e Ligue 180), nunca um substituto.
 
 ## Funcionamento

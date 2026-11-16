@@ -2,69 +2,52 @@
   <img src="anote/docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
 </p>
 
-A.N.O.T.E. é um aplicativo Android que parece um bloco de notas comum, mas guarda dentro dele um pedido de socorro discreto. Pensei nele para mulheres em situação de violência doméstica, que muitas vezes não podem abrir um aplicativo de emergência sem que o agressor perceba.
+# A.N.O.T.E.
 
-Quem olhar por cima do ombro vê só uma lista de notas. Para chegar ao painel de emergência, é preciso criar uma nota com um título combinado (por padrão, três pontos: `...`) e tocar em Concluído. Em vez de salvar a nota, o app abre o painel.
+**Aplicativo de Notificação Oculta e Transmissão de Emergência.**
+
+O A.N.O.T.E. é um aplicativo Android que se apresenta como um bloco de notas comum e guarda, em seu interior, um pedido de socorro discreto. Foi pensado para mulheres em situação de violência doméstica, que muitas vezes não conseguem abrir um aplicativo de emergência sem que o agressor perceba.
 
 ## Como funciona
 
-Na primeira vez que abre, o app pede três coisas, uma de cada vez: um cadastro rápido (nome e e-mail), pelo menos um contato de confiança e as permissões de localização, microfone, SMS e notificações. Depois disso ele abre direto nas notas e nunca mais mostra essas telas.
+- **Fachada de notas.** Para quem observa o celular, o app é apenas uma lista de notas, com criação, edição, busca e ordenação.
+- **Painel oculto.** Ao criar uma nota com um título combinado (por padrão, `...`) e tocar em Concluído, o painel de emergência é aberto no lugar de salvar a nota.
+- **SOS silencioso.** Envia por SMS a localização aos contatos de confiança e repete o envio a cada 5 minutos, até a pessoa interromper.
+- **Gravação de áudio** do ambiente, com cópia de segurança opcional em uma pasta escolhida.
+- **Delegacia mais próxima.** Abre o Google Maps com a rota até a Delegacia de Defesa da Mulher mais próxima.
+- **Disparo rápido.** O SOS também pode ser enviado pelo volume (três toques), por um atalho nas configurações rápidas ou por um widget, ambos com nome e ícone neutros.
+- **Privacidade.** Sem captura de tela, fora da lista de apps recentes, com notificações neutras e bloqueio opcional ao reabrir o app.
 
-As notas funcionam como em qualquer app: dá para criar, editar, fixar, apagar, buscar e mudar a ordem. Tudo fica salvo no próprio celular.
+## Dados e segurança
 
-No topo da lista de notas há um menu (⋮) com o que se espera de um app de notas: **Meu perfil** (para corrigir nome e e-mail), **Ordenar notas** (mais recentes ou ordem alfabética, e o app lembra a escolha), **Apagar todas as notas** e **Sobre o app**. Nada ali fala de emergência, de propósito.
+Os dados ficam no próprio aparelho, e cada conta tem os seus. As senhas são guardadas apenas como hash (PBKDF2), em armazenamento criptografado. A recuperação de senha pode ser feita por um código de recuperação ou, se configurado, por e-mail, com o Firebase Authentication. Notas, contatos e gravações nunca saem do aparelho.
 
-O painel de emergência tem quatro coisas:
+## Tecnologias
 
-- **SOS Silencioso**, que manda um SMS com o link da localização para todos os contatos. A mensagem começa com o nome cadastrado.
-- **Gravação de áudio**, que grava o ambiente. O arquivo fica guardado dentro do app, sem aparecer na galeria.
-- **Delegacia mais próxima**, com atalhos para abrir no Google Maps a rota a pé, de carro ou de ônibus até a Delegacia de Defesa da Mulher mais próxima.
-- **Contatos de confiança**, onde dá adicionar mais gente, remover (segurando o dedo no contato) ou usar o botão Disparar para avisar só uma pessoa.
+| Item | Detalhe |
+| --- | --- |
+| Plataforma | Android 8.0 (API 26) ou superior |
+| Linguagem | Kotlin |
+| Interface | XML com Material 3 |
+| Armazenamento | SQLite e EncryptedSharedPreferences |
+| Serviços opcionais | Firebase Authentication (recuperação de senha) e Login com Google (preenchimento do cadastro) |
 
-O painel tem o seu próprio menu (⋮), só com o que é da emergência:
+## Como executar
 
-- **Contatos de confiança:** uma tela para adicionar, editar e remover contatos.
-- **Gravações:** lista os áudios gravados (data, duração e tamanho) e deixa ouvir, exportar, compartilhar ou apagar. Os áudios ficam privados dentro do app; só saem dele quando a pessoa decide: em **Exportar** ela escolhe a pasta do celular onde salvar a cópia, e em **Compartilhar** manda por qualquer app (WhatsApp, e-mail...).
-- **Permissões:** mostra o que está liberado (localização, microfone, SMS e notificações), deixa pedir o que falta e abre as configurações do Android quando o sistema já não pergunta mais.
-- **Ajuda e telefones:** explica rapidamente o que o app faz e abre o discador já com o 180 ou o 190.
-- **Título de acesso:** troca a palavra secreta que abre o painel.
+1. Abra a pasta [`anote`](anote) no Android Studio.
+2. Use o JDK 17 ou 21 como Gradle JDK.
+3. Execute em um emulador ou em um celular com a depuração USB ativada.
 
-## Cuidados com a discrição
+As instruções completas, incluindo a configuração do Firebase e do login com Google, estão no [README detalhado](anote/README.md).
 
-Algumas escolhas foram feitas só para o app passar despercebido. O painel não aceita captura de tela e aparece em branco na lista de apps recentes. Ele se fecha sozinho quando a tela apaga ou quando a pessoa sai do app. A notificação que aparece durante o envio diz só "Sincronizando…", sem som e sem aparecer na tela de bloqueio. O backup automático do Android está desligado, e o título secreto, os contatos e o cadastro ficam criptografados. A nota usada como gatilho nunca é gravada no banco.
+## Estado do projeto
 
-## Como rodar
+A versão atual é a 1.0. O código foi escrito e verificado por leitura, mas a maior parte dos testes manuais ainda precisa ser executada em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
 
-1. Instale o Android Studio e abra a pasta do projeto (File → Open).
-2. Espere o Gradle terminar de sincronizar. Se aparecer o erro "Invalid Gradle JDK configuration", clique em "Use Embedded JDK".
-3. Instale o SDK do Android 14 (API 34) em Settings → Languages & Frameworks → Android SDK, se ainda não tiver.
-4. Rode em um emulador ou em um celular com depuração USB ligada.
+## Contexto acadêmico
 
-Dá para testar quase tudo no emulador, mas ele não manda SMS de verdade e o GPS é simulado (menu de três pontinhos → Location). Para ver o alerta funcionando de ponta a ponta, use um celular e coloque o seu próprio número como contato.
+Trabalho de conclusão desenvolvido na disciplina Projetos em Computação II, do Bacharelado em Ciências da Computação da Unesp, com orientação de Alexandro Jose Baldassin. O projeto se alinha aos Objetivos de Desenvolvimento Sustentável 5 (Igualdade de Gênero), 9 (Indústria, Inovação e Infraestrutura) e 16 (Paz, Justiça e Instituições Eficazes).
 
-Para ver o primeiro acesso de novo, limpe os dados do app em Configurações → Apps → A.N.O.T.E. → Armazenamento.
+## Aviso
 
-## Onde está cada coisa
-
-O código fica em `app/src/main/java/br/unesp/anote/`. Os arquivos principais são:
-
-- `OnboardingActivity`: os três passos do primeiro acesso.
-- `MainActivity` e `NoteEditorActivity`: a lista de notas e o editor, que também detecta o título secreto.
-- `EmergencyActivity` e `ContactsActivity`: o painel de emergência e a tela de contatos. As duas herdam de `GuardedActivity`, que cuida da proteção (sem captura de tela, fecha ao apagar a tela ou sair do app).
-- `MenuDialogs`: os diálogos dos menus (perfil, sobre, permissões e ajuda).
-- `RecordingsActivity` e `Recordings`: a tela de gravações e o acesso à pasta privada onde os áudios ficam.
-- `SosService`: o serviço que pega a localização, manda os SMS e grava o áudio em segundo plano.
-- `NotesDbHelper`: o banco SQLite das notas.
-- `SecurePrefs`: onde ficam, criptografados, o cadastro, os contatos e o título secreto.
-
-Os scripts do banco (criação das tabelas e exemplos de inserção, consulta, atualização e exclusão) estão em `database/schema.sql`. O logo e o ícone do app, em SVG e PNG, estão em `docs/logo/`.
-
-## O que ficou diferente do protótipo
-
-No protótipo, o card da delegacia mostra endereço, distância e tempo de trajeto. Para isso eu precisaria de uma API de mapas com chave de acesso, então por enquanto o card usa uma ilustração e os botões abrem o Google Maps, que calcula a rota de verdade.
-
-O editor de notas tem só os botões de fixar e excluir. Negrito, itálico e os outros ícones do protótipo não foram feitos. Também não existe login com senha: o app não tem servidor, então o cadastro serve só para personalizar a mensagem de alerta.
-
-## Limitações
-
-Em alguns aparelhos e operadoras o envio de SMS pode ser bloqueado, por isso vale testar em mais de um celular. Se o celular desligar ou o app for encerrado à força no meio de uma gravação, esse arquivo pode ficar incompleto e não tocar. Os áudios também são apagados se o app for desinstalado, então exporte o que for importante. E o app é um complemento: em perigo, os canais oficiais continuam sendo o 190 e o Ligue 180.
+O aplicativo é um complemento e não substitui os canais oficiais de atendimento. Em situação de perigo, ligue **190** (polícia) ou **180** (Central de Atendimento à Mulher).
