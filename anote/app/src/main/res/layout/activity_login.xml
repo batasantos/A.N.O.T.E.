@@ -166,6 +166,7 @@
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
+            android:text="@string/login_button"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />

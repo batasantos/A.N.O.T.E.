@@ -8,12 +8,12 @@
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_chevron_left.xml"
     },
     {
-        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_ic_mic.xml.flat",
-        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_mic.xml"
-    },
-    {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\menu_menu_panel.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\menu\\menu_panel.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_ic_mic.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_mic.xml"
     },
     {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -112,6 +112,10 @@
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\layout\\activity_main.xml"
     },
     {
+        "merged": "br.unesp.anote.app-debug-41:/layout_activity_login.xml.flat",
+        "source": "br.unesp.anote.app-main-43:/layout/activity_login.xml"
+    },
+    {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_bg_dot_on.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\bg_dot_on.xml"
     },
@@ -184,6 +188,10 @@
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_filter.xml"
     },
     {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\xml_widget_sos_info.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\xml\\widget_sos_info.xml"
+    },
+    {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_ic_close.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_close.xml"
     },
@@ -228,10 +236,6 @@
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "br.unesp.anote.app-debug-41:/layout_widget_sos.xml.flat",
-        "source": "br.unesp.anote.app-main-43:/layout/widget_sos.xml"
-    },
-    {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\layout_activity_note_editor.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\layout\\activity_note_editor.xml"
     },
@@ -246,6 +250,10 @@
     {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\layout_activity_emergency.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\layout\\activity_emergency.xml"
+    },
+    {
+        "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\layout_widget_sos.xml.flat",
+        "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\layout\\widget_sos.xml"
     },
     {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\layout_activity_recordings.xml.flat",
@@ -270,10 +278,6 @@
     {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_ic_help.xml.flat",
         "source": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-main-43:\\drawable\\ic_help.xml"
-    },
-    {
-        "merged": "br.unesp.anote.app-debug-41:/xml_widget_sos_info.xml.flat",
-        "source": "br.unesp.anote.app-main-43:/xml/widget_sos_info.xml"
     },
     {
         "merged": "C:\\Users\\tha_b\\.gradle\\daemon\\8.7\\br.unesp.anote.app-debug-41:\\drawable_ic_play.xml.flat",
