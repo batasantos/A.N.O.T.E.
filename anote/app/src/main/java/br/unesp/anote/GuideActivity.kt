@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 /**
  * Guia "como o app funciona": aparece uma vez, logo depois do cadastro, e pode ser reaberto
- * pelo menu do painel de emergencia. Explica as notas, o titulo secreto, o SOS, a gravacao e a privacidade.
+ * pelo menu do painel de emergencia. Explica as notas, o titulo secreto, o SOS, os atalhos, a gravacao e a privacidade.
  * Mostra o titulo de acesso real da conta no passo do painel.
  */
 class GuideActivity : AppCompatActivity() {
@@ -27,6 +27,7 @@ class GuideActivity : AppCompatActivity() {
         Step(R.drawable.ic_pin, R.string.guide2_title, R.string.guide2_body),
         Step(R.drawable.ic_key, R.string.guide3_title, R.string.guide3_body),
         Step(R.drawable.ic_message, R.string.guide4_title, R.string.guide4_body),
+        Step(R.drawable.ic_send, R.string.guide_shortcuts_title, R.string.guide_shortcuts_body),
         Step(R.drawable.ic_mic, R.string.guide5_title, R.string.guide5_body),
         Step(R.drawable.ic_lock, R.string.guide6_title, R.string.guide6_body)
     )

@@ -126,7 +126,7 @@
     <string name="guide2_title">Suas notas</string>
     <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nTroque esse título por um só seu, no painel, em Título de acesso: o padrão é fácil de adivinhar.</string>
     <string name="guide3_title">Como abrir o painel</string>
-    <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança e continua atualizando a cada 5 minutos, até você tocar no cartão de novo para parar.\n\nSe algum contato não receber, o painel avisa e deixa tentar de novo. A notificação é discreta e não mostra a palavra SOS.\n\nAtalho rápido: nas telas de notas, aperte o volume para baixo 3 vezes e o SOS é enviado sem abrir o painel (o celular vibra para confirmar).\n\nPara enviar com o app fechado, use o atalho \"Notas\" das configurações rápidas (um toque) ou o widget \"Notas\" da tela inicial (dois toques).</string>
+    <string name="guide4_body">No painel, toque no cartão SOS silencioso. O app envia por SMS a sua localização e o link do mapa para os seus contatos de confiança e continua atualizando a cada 5 minutos, até você tocar no cartão de novo para parar.\n\nSe algum contato não receber, o painel avisa e deixa tentar de novo. A notificação é discreta e não mostra a palavra SOS.</string>
     <string name="guide4_title">SOS silencioso</string>
     <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nEm Gravações, você pode escolher uma pasta de backup (de preferência sincronizada com a nuvem): cada gravação é copiada para lá quando termina.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.\n\nNo menu do painel você também liga o bloqueio ao reabrir: depois de 30 segundos fora do app, ele pede o desbloqueio do celular.</string>
     <string name="guide5_title">Gravação e delegacia</string>
@@ -136,6 +136,8 @@
     <string name="guide_counter">PASSO %1$d DE %2$d</string>
     <string name="guide_done">Começar a usar</string>
     <string name="guide_next">Próximo</string>
+    <string name="guide_shortcuts_body">Há três formas de enviar o SOS sem abrir o painel.\n\n1. Volume: nas telas de notas, aperte o volume para baixo 3 vezes em até 2 segundos. O celular vibra uma vez para confirmar. Esse atalho já vem ligado e pode ser desligado no menu do painel.\n\n2. Atalho \"Notas\" nas configurações rápidas: puxe a barra de notificações, toque no lápis (ou em Editar) e arraste o atalho \"Notas\" para a área ativa. Depois disso, um toque envia o SOS, mesmo com o app fechado.\n\n3. Widget \"Notas\": na tela inicial, segure o dedo em um espaço vazio, escolha Widgets, procure \"Notas\" e coloque na tela. Dois toques seguidos, em até 3 segundos, enviam o SOS.\n\nCom o celular bloqueado, os atalhos nunca abrem o painel.</string>
+    <string name="guide_shortcuts_title">Atalhos para o SOS</string>
     <string name="guide_skip">Pular</string>
     <string name="help_text">O A.N.O.T.E. manda a sua localização por SMS para os contatos de confiança e pode gravar o áudio do ambiente.\n\nEm perigo imediato, ligue:\n\n180 – Central de Atendimento à Mulher\n190 – Polícia Militar</string>
     <string name="help_title">Ajuda e telefones</string>

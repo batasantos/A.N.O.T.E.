@@ -4259,6 +4259,8 @@ int string guide_back 0x7f1100b5
 int string guide_counter 0x7f1100b6
 int string guide_done 0x7f1100b7
 int string guide_next 0x7f1100b8
+int string guide_shortcuts_body 0x7f1101d9
+int string guide_shortcuts_title 0x7f1101da
 int string guide_skip 0x7f1100b9
 int string help_text 0x7f1100ba
 int string help_title 0x7f1100bb

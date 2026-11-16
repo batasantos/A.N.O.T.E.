@@ -335,6 +335,8 @@ string guide_back
 string guide_counter
 string guide_done
 string guide_next
+string guide_shortcuts_body
+string guide_shortcuts_title
 string guide_skip
 string help_text
 string help_title
