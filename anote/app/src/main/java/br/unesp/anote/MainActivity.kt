@@ -102,9 +102,6 @@ class MainActivity : AppCompatActivity() {
                 Ui.MenuEntry(R.drawable.ic_lock, R.string.menu_change_password) {
                     MenuDialogs.showChangePassword(this)
                 },
-                Ui.MenuEntry(R.drawable.ic_key, R.string.menu_recovery) {
-                    MenuDialogs.showRecoveryMenu(this)
-                },
                 Ui.MenuEntry(R.drawable.ic_filter, R.string.menu_sort) { showSortDialog() },
                 Ui.MenuEntry(R.drawable.ic_delete, R.string.menu_delete_all, danger = true) {
                     confirmDeleteAll()

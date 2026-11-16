@@ -4217,10 +4217,6 @@ int string fallback_menu_item_share_link 0x7f11008b
 int string firebase_api_key 0x7f11008c
 int string firebase_app_id 0x7f11008d
 int string firebase_project_id 0x7f11008e
-int string forgot_code_confirm 0x7f11008f
-int string forgot_code_hint 0x7f110090
-int string forgot_code_invalid 0x7f110091
-int string forgot_code_message 0x7f110092
 int string forgot_confirm 0x7f110093
 int string forgot_done 0x7f110094
 int string forgot_erase 0x7f110095
@@ -4230,13 +4226,9 @@ int string forgot_link_offline 0x7f110098
 int string forgot_link_sent 0x7f110099
 int string forgot_message 0x7f11009a
 int string forgot_need_email 0x7f11009b
-int string forgot_new_password_hint 0x7f11009c
 int string forgot_password 0x7f11009d
-int string forgot_reset_done 0x7f11009e
-int string forgot_reset_failed 0x7f11009f
 int string forgot_send_link 0x7f1100a0
 int string forgot_title 0x7f1100a1
-int string forgot_use_code 0x7f1100a2
 int string google 0x7f1100a3
 int string google_button 0x7f1100a4
 int string google_error 0x7f1100a5
@@ -4351,7 +4343,6 @@ int string menu_logout 0x7f11010f
 int string menu_permissions 0x7f110110
 int string menu_profile 0x7f110111
 int string menu_recordings 0x7f110112
-int string menu_recovery 0x7f110113
 int string menu_shortcut 0x7f110114
 int string menu_sort 0x7f110115
 int string menu_sos_message 0x7f110116
@@ -4487,13 +4478,6 @@ int string record_subtitle 0x7f110197
 int string recordings_empty 0x7f110198
 int string recordings_hint 0x7f110199
 int string recordings_title 0x7f11019a
-int string recovery_generate 0x7f11019b
-int string recovery_menu_create 0x7f11019c
-int string recovery_menu_renew 0x7f11019d
-int string recovery_menu_title 0x7f11019e
-int string recovery_message 0x7f11019f
-int string recovery_ok 0x7f1101a0
-int string recovery_title 0x7f1101a1
 int string remove 0x7f1101a2
 int string remove_contact 0x7f1101a3
 int string save 0x7f1101a4

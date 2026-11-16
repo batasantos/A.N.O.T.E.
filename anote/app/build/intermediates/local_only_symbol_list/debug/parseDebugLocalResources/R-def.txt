@@ -293,10 +293,6 @@ string error_password_short
 string firebase_api_key
 string firebase_app_id
 string firebase_project_id
-string forgot_code_confirm
-string forgot_code_hint
-string forgot_code_invalid
-string forgot_code_message
 string forgot_confirm
 string forgot_done
 string forgot_erase
@@ -306,13 +302,9 @@ string forgot_link_offline
 string forgot_link_sent
 string forgot_message
 string forgot_need_email
-string forgot_new_password_hint
 string forgot_password
-string forgot_reset_done
-string forgot_reset_failed
 string forgot_send_link
 string forgot_title
-string forgot_use_code
 string google
 string google_button
 string google_error
@@ -386,7 +378,6 @@ string menu_logout
 string menu_permissions
 string menu_profile
 string menu_recordings
-string menu_recovery
 string menu_shortcut
 string menu_sort
 string menu_sos_message
@@ -455,13 +446,6 @@ string record_subtitle
 string recordings_empty
 string recordings_hint
 string recordings_title
-string recovery_generate
-string recovery_menu_create
-string recovery_menu_renew
-string recovery_menu_title
-string recovery_message
-string recovery_ok
-string recovery_title
 string remove
 string remove_contact
 string save

@@ -63,9 +63,7 @@ object Accounts {
         val email: String,
         val salt: String,
         val hash: String,
-        val iterations: Int,
-        val rsalt: String = "", // sal e hash do codigo de recuperacao (vazios = conta sem codigo)
-        val rhash: String = ""
+        val iterations: Int
     )
 
     @Volatile
@@ -164,42 +162,6 @@ object Accounts {
         return result
     }
 
-    // ---------- Codigo de recuperacao ----------
-
-    fun hasRecoveryCode(context: Context, id: String): Boolean = synchronized(this) {
-        records(context).firstOrNull { it.id == id }?.rhash?.isNotEmpty() == true
-    }
-
-    /** Gera um codigo novo (o anterior deixa de valer), guarda so o hash e devolve o texto para a pessoa anotar. */
-    fun newRecoveryCode(context: Context, id: String): String {
-        val raw = RecoveryCode.generate()
-        val salt = newSalt()
-        val hash = hash(raw, salt, ITERATIONS)
-        synchronized(this) {
-            val list = records(context)
-            val index = list.indexOfFirst { it.id == id }
-            if (index >= 0) {
-                list[index] = list[index].copy(rsalt = b64(salt), rhash = b64(hash))
-                save(context, list)
-            }
-        }
-        return RecoveryCode.format(raw)
-    }
-
-    /**
-     * Esqueci a senha: com o e-mail e o codigo certos, define uma nova senha e gera um codigo novo
-     * (o usado deixa de valer). Conta como tentativa: erros seguidos bloqueiam, igual ao login.
-     * Devolve o resultado e, se deu certo, o novo codigo.
-     */
-    fun resetWithCode(context: Context, email: String, code: String, newPassword: String): Pair<AuthResult, String?> {
-        val mail = normalizeEmail(email)
-        val record = synchronized(this) { records(context).firstOrNull { it.email == mail } }
-        val result = attempt(context, record, RecoveryCode.normalize(code)) { r, c -> matchesCode(r, c) }
-        if (result !is AuthResult.Success) return result to null
-        setPassword(context, result.accountId, newPassword)
-        return result to newRecoveryCode(context, result.accountId)
-    }
-
     // ---------- Login ----------
 
     fun authenticate(context: Context, email: String, password: String): AuthResult {
@@ -283,16 +245,6 @@ object Accounts {
         return MessageDigest.isEqual(expected, hash(password, salt, record.iterations))
     }
 
-    private fun matchesCode(record: Record, code: String): Boolean {
-        if (record.rhash.isEmpty()) {
-            hash(code, DUMMY_SALT, ITERATIONS) // mesmo custo para quem nao tem codigo
-            return false
-        }
-        val salt = Base64.decode(record.rsalt, Base64.NO_WRAP)
-        val expected = Base64.decode(record.rhash, Base64.NO_WRAP)
-        return MessageDigest.isEqual(expected, hash(code, salt, ITERATIONS))
-    }
-
     private fun hash(password: String, salt: ByteArray, iterations: Int): ByteArray =
         SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256")
             .generateSecret(PBEKeySpec(password.toCharArray(), salt, iterations, 256)).encoded
@@ -311,9 +263,7 @@ object Accounts {
                 email = o.getString("email"),
                 salt = o.getString("salt"),
                 hash = o.getString("hash"),
-                iterations = o.getInt("iter"),
-                rsalt = o.optString("rsalt", ""),
-                rhash = o.optString("rhash", "")
+                iterations = o.getInt("iter")
             )
         }
     }
@@ -325,7 +275,6 @@ object Accounts {
                 JSONObject()
                     .put("id", it.id).put("name", it.name).put("email", it.email)
                     .put("salt", it.salt).put("hash", it.hash).put("iter", it.iterations)
-                    .put("rsalt", it.rsalt).put("rhash", it.rhash)
             )
         }
         prefs(context).edit().putString(KEY_LIST, arr.toString()).apply()

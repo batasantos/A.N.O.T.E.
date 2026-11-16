@@ -133,8 +133,8 @@
     <string name="login_locked">Muitas tentativas. Tente de novo em %1$d s</string>
     <string name="error_email_taken">Já existe uma conta com este e-mail</string>
     <string name="forgot_title">Esqueci minha senha</string>
-    <string name="forgot_message">Sem o código de recuperação não há como recuperar a senha. Se continuar, a conta com o e-mail informado e todos os dados dela neste aparelho (notas, contatos e gravações) serão apagados, e você poderá criar a conta de novo. Outras contas não são afetadas. Continuar?</string>
-    <string name="forgot_need_email">Digite acima o e-mail da conta que você quer apagar</string>
+    <string name="forgot_message">Sem o link por e-mail, não há como recuperar a senha. Se continuar, a conta com o e-mail informado e todos os dados dela neste aparelho (notas, contatos e gravações) serão apagados, e você poderá criar a conta de novo. Outras contas não são afetadas. Continuar?</string>
+    <string name="forgot_need_email">Digite acima o e-mail da conta</string>
     <string name="forgot_done">Pronto. Se existia uma conta com esse e-mail, ela foi apagada.</string>
     <string name="forgot_confirm">Apagar conta</string>
     <string name="menu_logout">Sair da conta</string>
@@ -233,7 +233,7 @@
     <string name="guide5_title">Gravação e delegacia</string>
     <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nEm Gravações, você pode escolher uma pasta de backup (de preferência sincronizada com a nuvem): cada gravação é copiada para lá quando termina.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.\n\nNo menu do painel você também liga o bloqueio ao reabrir: depois de 30 segundos fora do app, ele pede o desbloqueio do celular.</string>
     <string name="guide6_title">Sua privacidade</string>
-    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app. Se quiser, ligue o bloqueio ao reabrir no menu da tela de notas.\n\nSua senha é protegida e cada conta tem dados separados. Anote o código de recuperação: ele é a única forma de criar uma nova senha sem perder seus dados. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
+    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app. Se quiser, ligue o bloqueio ao reabrir no menu do painel.\n\nSua senha é protegida e cada conta tem dados separados. Se esquecer a senha, use Esqueci minha senha na tela de entrada para receber um link por e-mail. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
 
     <!-- Atalho, aviso de falha, envio repetido e backup -->
     <string name="sos_update_prefix">Atualização:</string>
@@ -270,23 +270,7 @@
     <string name="backup_failed">%1$d gravação(ões) não puderam ser copiadas. Confira a pasta escolhida.</string>
 
     <!-- Recuperacao de senha, bloqueio, mensagem do SOS, acessibilidade -->
-    <string name="recovery_title">Guarde o seu código de recuperação</string>
-    <string name="recovery_message">Se você esquecer a senha, este código é a única forma de criar uma nova sem perder as suas notas, contatos e gravações. Anote em papel e guarde em um lugar seguro, longe do celular. Ele não será mostrado de novo.</string>
-    <string name="recovery_ok">Anotei</string>
-    <string name="menu_recovery">Código de recuperação</string>
-    <string name="recovery_menu_title">Código de recuperação</string>
-    <string name="recovery_menu_create">Esta conta ainda não tem código de recuperação. Digite a sua senha para gerar um.</string>
-    <string name="recovery_menu_renew">Gerar um novo código faz o anterior deixar de valer. Digite a sua senha para continuar.</string>
-    <string name="recovery_generate">Gerar código</string>
-    <string name="forgot_use_code">Usar o código de recuperação</string>
-    <string name="forgot_erase">Não tenho o código: apagar a conta</string>
-    <string name="forgot_code_message">Informe o código que você anotou no cadastro e escolha uma nova senha. Suas notas e contatos continuam aqui.</string>
-    <string name="forgot_code_hint">Código (XXXX-XXXX-XXXX-XXXX)</string>
-    <string name="forgot_new_password_hint">Nova senha (mínimo 8 caracteres)</string>
-    <string name="forgot_code_confirm">Redefinir senha</string>
-    <string name="forgot_code_invalid">O código tem 16 letras e números</string>
-    <string name="forgot_reset_done">Senha redefinida. Entre com a nova senha e anote o novo código.</string>
-    <string name="forgot_reset_failed">Não foi possível redefinir. Confira o e-mail e o código.</string>
+    <string name="forgot_erase">Apagar a conta e recomeçar</string>
     <string name="menu_app_lock">Bloqueio ao reabrir</string>
     <string name="lock_title">Bloqueio ao reabrir</string>
     <string name="lock_body">Quando o app ficar mais de 30 segundos fora da tela, ao voltar será pedido o desbloqueio do aparelho (senha, PIN, padrão ou biometria). O atalho de SOS continua funcionando na tela de bloqueio.</string>
@@ -312,6 +296,6 @@
     <string name="cloud_note">Seu e-mail e sua senha também são guardados em um serviço seguro (Firebase), só para você poder recuperar a senha por e-mail. Suas notas, contatos e gravações ficam apenas neste celular.</string>
     <string name="forgot_send_link">Enviar link de redefinição por e-mail</string>
     <string name="forgot_link_sent">Se existir uma conta com esse e-mail, enviamos um link para criar uma nova senha. Confira a caixa de entrada e o spam. Depois, entre com a nova senha.</string>
-    <string name="forgot_link_offline">Sem conexão com a internet. Tente de novo quando estiver online ou use o código de recuperação.</string>
-    <string name="forgot_link_error">Não foi possível enviar o link agora. Tente mais tarde ou use o código de recuperação.</string>
+    <string name="forgot_link_offline">Sem conexão com a internet. Tente de novo quando estiver online.</string>
+    <string name="forgot_link_error">Não foi possível enviar o link agora. Tente mais tarde.</string>
 </resources>

@@ -142,21 +142,16 @@ class LoginActivity : AppCompatActivity() {
             showError(getString(R.string.forgot_need_email))
             return
         }
-        val cloud = Cloud.isConfigured(this)
-        val items = if (cloud) {
-            arrayOf(getString(R.string.forgot_send_link), getString(R.string.forgot_use_code), getString(R.string.forgot_erase))
-        } else {
-            arrayOf(getString(R.string.forgot_use_code), getString(R.string.forgot_erase))
+        if (!Cloud.isConfigured(this)) { // sem recuperacao por e-mail, so resta apagar a conta
+            confirmErase(mail)
+            return
         }
+        val items = arrayOf(getString(R.string.forgot_send_link), getString(R.string.forgot_erase))
         Ui.show(
             Ui.dialog(this, dark = false)
                 .setTitle(R.string.forgot_title)
                 .setItems(items) { _, which ->
-                    when (items[which]) {
-                        getString(R.string.forgot_send_link) -> sendResetLink(mail)
-                        getString(R.string.forgot_use_code) -> showCodeDialog(mail)
-                        else -> confirmErase(mail)
-                    }
+                    if (which == 0) sendResetLink(mail) else confirmErase(mail)
                 }
                 .setNegativeButton(R.string.cancel, null),
             dark = false
@@ -174,68 +169,6 @@ class LoginActivity : AppCompatActivity() {
                 else -> Toast.makeText(this, R.string.forgot_link_sent, Toast.LENGTH_LONG).show()
             }
         }
-    }
-
-    /** Redefine a senha com o codigo de recuperacao: as notas e os contatos continuam ali. */
-    private fun showCodeDialog(mail: String) {
-        val builder = Ui.dialog(this, dark = false)
-        val codeField = EditText(builder.context).apply {
-            hint = getString(R.string.forgot_code_hint)
-            inputType = android.text.InputType.TYPE_CLASS_TEXT or
-                android.text.InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS or
-                android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
-            setSingleLine()
-        }
-        val newField = EditText(builder.context).apply {
-            hint = getString(R.string.forgot_new_password_hint)
-            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
-            setSingleLine()
-        }
-        val box = android.widget.LinearLayout(builder.context).apply {
-            orientation = android.widget.LinearLayout.VERTICAL
-            setPadding(64, 24, 64, 0)
-            addView(codeField, android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
-            addView(newField, android.widget.LinearLayout.LayoutParams.MATCH_PARENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
-        }
-        val dialog = builder
-            .setTitle(R.string.forgot_use_code)
-            .setMessage(R.string.forgot_code_message)
-            .setView(box)
-            .setPositiveButton(R.string.forgot_code_confirm, null)
-            .setNegativeButton(R.string.cancel, null)
-            .create()
-        Ui.prepare(dialog, dark = false)
-        dialog.setOnShowListener {
-            dialog.getButton(android.content.DialogInterface.BUTTON_POSITIVE).setOnClickListener {
-                val code = codeField.text.toString()
-                val fresh = newField.text.toString()
-                if (RecoveryCode.normalize(code).length != RecoveryCode.LENGTH) {
-                    codeField.error = getString(R.string.forgot_code_invalid)
-                    return@setOnClickListener
-                }
-                if (fresh.length < Accounts.MIN_PASSWORD) {
-                    newField.error = getString(R.string.error_password_short)
-                    return@setOnClickListener
-                }
-                dialog.dismiss()
-                setChecking(true)
-                inBackground({ Accounts.resetWithCode(this, mail, code, fresh) }) { (result, newCode) ->
-                    setChecking(false)
-                    when (result) {
-                        is Accounts.AuthResult.Success -> {
-                            password.text.clear()
-                            error.visibility = View.GONE
-                            Toast.makeText(this, R.string.forgot_reset_done, Toast.LENGTH_LONG).show()
-                            if (newCode != null) MenuDialogs.showRecoveryCode(this, newCode) {}
-                        }
-                        is Accounts.AuthResult.Locked -> showError(getString(R.string.login_locked, result.seconds))
-                        // Mesma resposta para e-mail inexistente, conta sem codigo e codigo errado.
-                        Accounts.AuthResult.Wrong -> showError(getString(R.string.forgot_reset_failed))
-                    }
-                }
-            }
-        }
-        dialog.show()
     }
 
     private fun confirmErase(mail: String) {

@@ -152,11 +152,7 @@ class OnboardingActivity : AppCompatActivity() {
             else -> {
                 next1Button.isEnabled = false
                 // O hash da senha e lento de proposito: roda fora da thread da tela.
-                inBackground({
-                    val id = saveAccount(existing, name, email, password)
-                    // Conta nova: gera o codigo de recuperacao (mostrado uma vez so).
-                    id to (if (id != null && existing == null) Accounts.newRecoveryCode(this, id) else null)
-                }) { (id, code) ->
+                inBackground({ saveAccount(existing, name, email, password) }) { id ->
                     next1Button.isEnabled = true
                     if (id == null) {
                         emailField.error = getString(R.string.error_email_taken)
@@ -166,7 +162,7 @@ class OnboardingActivity : AppCompatActivity() {
                         passwordField.text.clear()
                         password2Field.text.clear()
                         renderContacts()
-                        if (code != null) MenuDialogs.showRecoveryCode(this, code) { showStep(2) } else showStep(2)
+                        showStep(2)
                     }
                 }
             }
