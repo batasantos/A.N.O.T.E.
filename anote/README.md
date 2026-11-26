@@ -1,12 +1,10 @@
-<p align="center">
-  <img src="docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
-</p>
+# A.N.O.T.E. — Aplicativo de Notificação Oculta e Transmissão de Emergência
 
 O A.N.O.T.E. é um aplicativo Android que se apresenta como um bloco de notas comum e guarda, em seu interior, um pedido de socorro discreto. Ele foi pensado para mulheres em situação de violência doméstica, que muitas vezes não conseguem abrir um aplicativo de emergência sem que o agressor perceba.
 
 Para quem observa o aparelho, o app mostra apenas uma lista de notas. O painel de emergência só é aberto quando se cria uma nota com um título combinado (por padrão, três pontos: `...`) e se toca em Concluído. Nesse caso, a nota não é salva e o painel aparece no lugar dela.
 
-Este é o README detalhado do projeto. Um resumo está no [README da raiz do repositório](../README.md).
+Este é o README detalhado do projeto. Um resumo está no README da raiz do repositório.
 
 O trabalho foi desenvolvido na disciplina Projetos em Computação II, do curso de Ciências da Computação da Unesp, e é um complemento aos canais oficiais de atendimento (190 e Ligue 180), nunca um substituto.
 
@@ -14,15 +12,15 @@ O trabalho foi desenvolvido na disciplina Projetos em Computação II, do curso 
 
 ### Contas e acesso
 
-O aplicativo aceita várias contas no mesmo aparelho, cada uma com notas, contatos e gravações próprios. No primeiro acesso, o cadastro tem três passos: dados da conta (nome, e-mail e senha, ou "Continuar com o Google", que apenas preenche nome e e-mail), contatos de confiança e permissões. Ao final do primeiro passo, o app exibe uma única vez um **código de recuperação**. Depois do cadastro, um guia explica o uso do app e pode ser consultado novamente pelo menu do painel.
+O aplicativo aceita várias contas no mesmo aparelho, cada uma com notas, contatos e gravações próprios. No primeiro acesso, o cadastro tem três passos: dados da conta (nome, e-mail e senha, ou "Continuar com o Google", que apenas preenche nome e e-mail), contatos de confiança e permissões. Depois do cadastro, um guia explica o uso do app e pode ser consultado novamente pelo menu do painel.
 
 As senhas nunca são armazenadas. Guarda-se apenas um hash PBKDF2-HMAC-SHA256, com sal próprio e 310 mil iterações, dentro de um armazenamento criptografado (EncryptedSharedPreferences, AES-256, com chave no Android Keystore). Após 5 erros seguidos, o login é bloqueado por 30 segundos, e o tempo dobra a cada novo erro, até 15 minutos. O contador permanece mesmo que o app seja fechado.
 
-Quem esquece a senha tem três caminhos: receber um **link de redefinição por e-mail** (se o Firebase estiver configurado), usar o **código de recuperação** ou, não dispondo de nenhum dos dois, apagar a conta e começar de novo. Nos dois primeiros casos, as notas são mantidas.
+Quem esquece a senha tem dois caminhos: receber um link de redefinição por e-mail (se o Firebase estiver configurado) ou apagar a conta e começar de novo. No primeiro caso, as notas são mantidas.
 
 ### Notas
 
-As notas funcionam como em qualquer aplicativo do tipo: criar, editar, fixar, apagar, buscar e ordenar. O menu da lista oferece apenas itens comuns: perfil, alteração de senha, código de recuperação, ordenação, exclusão de todas as notas, "Sobre", sair da conta e excluir a conta. Nenhum deles faz referência à emergência.
+As notas funcionam como em qualquer aplicativo do tipo: criar, editar, fixar, apagar, buscar e ordenar. O menu da lista oferece apenas itens comuns: perfil, alteração de senha, ordenação, exclusão de todas as notas, "Sobre", sair da conta e excluir a conta. Nenhum deles faz referência à emergência.
 
 ### Painel de emergência
 
@@ -45,7 +43,7 @@ O menu do painel contém: contatos, gravações, permissões, atalho de disparo 
 - O painel e as telas de gravação não permitem captura de tela e aparecem em branco na lista de apps recentes. Eles se fecham quando a tela se apaga ou quando a pessoa sai do app.
 - A notificação do envio diz apenas "Sincronizando…", sem som e invisível na tela bloqueada. O aviso de falha também usa texto neutro.
 - O backup automático do Android está desligado, e a nota usada como gatilho nunca é gravada.
-- O **bloqueio ao reabrir** é opcional e é ativado pelo menu do painel. Ele pede o desbloqueio do aparelho depois de 30 segundos fora do app.
+- O bloqueio ao reabrir é opcional e é ativado pelo menu do painel. Ele pede o desbloqueio do aparelho depois de 30 segundos fora do app.
 - Recomenda-se trocar o título secreto padrão (`...`), por ser fácil de adivinhar.
 
 ## Como executar
@@ -57,7 +55,13 @@ O menu do painel contém: contatos, gravações, permissões, atalho de disparo 
 
 O emulador não envia SMS de verdade e o GPS é simulado. Para ver o alerta completo, use um celular e cadastre o próprio número como contato.
 
-### Recuperação de senha por e-mail (opcional)
+## Instalação pelo APK
+
+O APK está disponível na página de Releases do repositório. Ao instalá-lo, o Android pede para permitir instalações de fonte desconhecida.
+
+No Android 13 ou superior, o sistema também pode bloquear a permissão de SMS de apps instalados por APK. Para liberar, abra Configurações, Apps, A.N.O.T.E., toque nos três pontos e escolha "Permitir configurações restritas". Depois, conceda a permissão de SMS.
+
+## Recuperação de senha por e-mail (opcional)
 
 Usa o Firebase Authentication e só é ativada quando os três valores de `app/src/main/res/values/firebase.xml` estão preenchidos. Eles vêm do arquivo `google-services.json`, que não precisa fazer parte do projeto; o plugin do Google também não é utilizado.
 
@@ -65,15 +69,15 @@ Usa o Firebase Authentication e só é ativada quando os três valores de `app/s
 2. Em Authentication, ative o método E-mail/senha.
 3. Copie para o `firebase.xml` a chave de API, o identificador do app e o identificador do projeto.
 
-O servidor guarda apenas o e-mail e a senha (como hash). Notas, contatos e gravações nunca saem do aparelho. Se o Console permitir, convém tornar neutros o remetente e o assunto do e-mail de redefinição. No projeto desenvolvido, o Console não permitiu editar o modelo, e o e-mail chegou à pasta de spam, de modo que o código de recuperação continua sendo a alternativa mais confiável.
+O servidor guarda apenas o e-mail e a senha (como hash). Notas, contatos e gravações nunca saem do aparelho. Se o Console permitir, convém tornar neutros o remetente e o assunto do e-mail de redefinição. No projeto desenvolvido, o Console não permitiu editar o modelo, e o e-mail chegou à pasta de spam. Por isso, convém avisar a pessoa para conferir essa pasta.
 
-### Login com Google (opcional)
+## Login com Google (opcional)
 
-O botão só aparece se houver um Client ID do tipo **Web** em `app/src/main/res/values/google.xml`. Para criá-lo e fazer o login funcionar:
+O botão só aparece se houver um Client ID do tipo Web em `app/src/main/res/values/google.xml`. Para criá-lo e fazer o login funcionar:
 
 1. No Google Cloud Console, configure a tela de permissão OAuth e inclua os e-mails de teste.
-2. Crie um ID de cliente OAuth do tipo **Android**, com o pacote `br.unesp.anote` e o SHA-1 da chave de depuração. Esse ID não vai para o código.
-3. Crie um ID de cliente OAuth do tipo **Aplicativo da Web** e copie o ID (termina em `.apps.googleusercontent.com`) para o `google.xml`.
+2. Crie um ID de cliente OAuth do tipo Android, com o pacote `br.unesp.anote` e o SHA-1 da chave de depuração. Esse ID não vai para o código.
+3. Crie um ID de cliente OAuth do tipo Aplicativo da Web e copie o ID (termina em `.apps.googleusercontent.com`) para o `google.xml`.
 
 O erro 28444 ("Developer console is not set up correctly") costuma indicar que o ID colocado no `google.xml` é o do tipo Android, ou que o pacote ou o SHA-1 cadastrados não conferem. A chave secreta do cliente Web não é usada pelo app e não deve ser incluída no projeto.
 
@@ -82,14 +86,14 @@ O erro 28444 ("Developer console is not set up correctly") costuma indicar que o
 O código fica em `app/src/main/java/br/unesp/anote/`:
 
 - `LoginActivity`, `OnboardingActivity`, `GuideActivity` e `LockActivity`: entrada, cadastro em três passos, guia de primeiro uso e bloqueio ao reabrir.
-- `Accounts`, `Session`, `RecoveryCode`, `Cloud` e `GoogleSignIn`: contas, sessão ativa, código de recuperação, recuperação por e-mail (Firebase) e botão do Google.
+- `Accounts`, `Session`, `Cloud` e `GoogleSignIn`: contas, sessão ativa, recuperação por e-mail (Firebase) e botão do Google.
 - `MainActivity` e `NoteEditorActivity`: lista de notas e editor, que detecta o título secreto.
 - `EmergencyActivity`, `ContactsActivity` e `RecordingsActivity`: o painel e suas telas, que herdam de `GuardedActivity` (proteções de privacidade).
 - `SosService`: localização, envio de SMS com acompanhamento de falhas, repetição do envio e gravação em segundo plano.
 - `QuickSos`, `TriggerActivity`, `SosTileService` e `SosWidget`: atalho de volume, tela invisível de disparo, atalho das configurações rápidas e widget.
 - `Backup` e `Recordings`: cópia de segurança para a pasta escolhida e pasta privada dos áudios.
 - `NotesDbHelper` e `SecurePrefs`: banco SQLite de cada conta e preferências criptografadas.
-- `MenuDialogs`, `Ui` e `AnoteApp`: diálogos, aparência dos menus e controle do bloqueio.
+- `MenuDialogs`, `Ui`, `Privacy` e `AnoteApp`: diálogos, aparência dos menus, proteção contra captura de tela e controle do bloqueio.
 
 Os testes de unidade estão em `app/src/test/`. Os scripts do banco de dados estão em `database/schema.sql` e o logo, em `docs/logo/`. A documentação completa e o registro de testes acompanham o trabalho.
 
@@ -99,7 +103,7 @@ O card da delegacia usa uma ilustração e abre o Google Maps, que calcula a rot
 
 ## Limitações
 
-- A recuperação por e-mail só existe se o Firebase for configurado e exige internet. Sem ela, quem perde a senha e o código perde os dados da conta. Quem controla o e-mail da conta também consegue redefinir a senha, e o código de recuperação não tem esse risco.
+- A recuperação por e-mail só existe se o Firebase for configurado e exige internet. Sem ela, quem perde a senha só consegue apagar a conta e perde os dados dela. Quem controla o e-mail da conta também consegue redefinir a senha.
 - O e-mail de redefinição usa o remetente padrão do Firebase e pode ir para a pasta de spam.
 - O atalho de volume funciona apenas dentro do app. Com o app fechado, é preciso usar o atalho das configurações rápidas ou o widget, e o comportamento deles com o celular bloqueado varia conforme o aparelho.
 - Em alguns aparelhos e operadoras, o envio de SMS pode ser bloqueado, e, no modo de economia de energia, o Android pode atrasar os reenvios de localização.
