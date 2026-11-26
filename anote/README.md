@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="320">
+</p>
+
 # A.N.O.T.E. — Aplicativo de Notificação Oculta e Transmissão de Emergência
 
 O A.N.O.T.E. é um aplicativo Android que se apresenta como um bloco de notas comum e guarda, em seu interior, um pedido de socorro discreto. Ele foi pensado para mulheres em situação de violência doméstica, que muitas vezes não conseguem abrir um aplicativo de emergência sem que o agressor perceba.
