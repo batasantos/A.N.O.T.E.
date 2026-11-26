@@ -42,7 +42,7 @@ As instruções completas, incluindo a configuração do Firebase e do login com
 
 ## Estado do projeto
 
-A versão atual é a 1.0. O código foi escrito e verificado por leitura, mas a maior parte dos testes manuais ainda precisa ser executada em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
+A versão atual é a 1.0. O código foi escrito e verificado por testes manuais em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
 
 ## Contexto acadêmico
 
