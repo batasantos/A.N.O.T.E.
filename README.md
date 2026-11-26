@@ -46,8 +46,8 @@ O APK está disponível na página de [Releases](../../releases) do repositório
 
 ## Documentação
 
-- [Documentação do aplicativo](anote/docs/A.N.O.T.E. -  Documentação do Aplicativo.pdf)
-- [Registro de testes](anote/docs/A.N.O.T.E. -  Registro de Testes.pdf)
+- [Documentação do aplicativo](<anote/docs/A.N.O.T.E. -  Documentação do Aplicativo.pdf>)
+- [Registro de Testes](<anote/docs/A.N.O.T.E. -  Registro de Testes.pdf>)
 - [Script do banco de dados](anote/database/schema.sql)
 
 ## Estado do projeto
