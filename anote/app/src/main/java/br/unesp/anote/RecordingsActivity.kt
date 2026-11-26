@@ -90,7 +90,7 @@ class RecordingsActivity : GuardedActivity() {
         super.onDestroy()
     }
 
-    // ---------- Backup ----------
+    // Backup
 
     private fun renderBackup() {
         if (prefs.backupFolder == null) {
@@ -147,7 +147,7 @@ class RecordingsActivity : GuardedActivity() {
         }
     }
 
-    // ---------- Lista ----------
+    // Lista
 
     private fun render() {
         renderBackup()
@@ -196,7 +196,7 @@ class RecordingsActivity : GuardedActivity() {
         }
     }
 
-    // ---------- Acoes ----------
+    // Acoes
 
     private fun showActions(file: File) {
         val items = arrayOf(

@@ -27,7 +27,7 @@
     <!-- Primeiro acesso (cadastro, contatos, permissoes) -->
     <string name="step_indicator">PASSO %1$d DE 3</string>
     <string name="onb1_title">Crie sua conta</string>
-    <string name="onb1_subtitle">Leva menos de um minuto. Seus dados ficam só neste celular.</string>
+    <string name="onb1_subtitle">Leva menos de um minuto.</string>
     <string name="label_name">NOME</string>
     <string name="hint_name">Como você se chama?</string>
     <string name="error_name">Informe seu nome</string>
@@ -128,7 +128,7 @@
     <string name="login_signup">Não tem conta? Criar conta</string>
     <string name="google_button">Continuar com o Google</string>
     <string name="google_or">ou preencha manualmente</string>
-    <string name="google_note">Nome e e-mail vieram da sua conta Google. A senha do app você cria aqui, só para este aparelho.</string>
+    <string name="google_note">Nome e e-mail vieram da sua conta Google. Crie aqui a senha do app.</string>
     <string name="google_error">Não foi possível usar sua conta Google agora. Verifique a conexão e tente de novo.</string>
     <string name="login_locked">Muitas tentativas. Tente de novo em %1$d s</string>
     <string name="error_email_taken">Já existe uma conta com este e-mail</string>
@@ -223,7 +223,7 @@
     <string name="guide1_title">Bem-vinda ao A.N.O.T.E.</string>
     <string name="guide1_body">Por fora, ele é um bloco de notas comum. Por dentro, guarda um painel de emergência que só você sabe abrir.\n\nVamos ver como tudo funciona em poucos passos.</string>
     <string name="guide2_title">Suas notas</string>
-    <string name="guide2_body">Toque no botão + para criar uma nota. Fixe as importantes, use a busca para achar rápido e o botão de ordenar para organizar.\n\nAs notas são de verdade e ficam só na sua conta, então o app parece sempre um bloco de notas normal.</string>
+    <string name="guide2_body">Toque no botão + para criar uma nota. Fixe as importantes, use a busca para achar rápido e o botão de ordenar para organizar.</string>
     <string name="guide3_title">Como abrir o painel</string>
     <string name="guide3_body">Crie uma nova nota, escreva no título «%1$s» e toque em Concluído.\n\nO painel de emergência abre e essa nota não é salva. Com qualquer outro título, a nota é salva normalmente.\n\nTroque esse título por um só seu, no painel, em Título de acesso: o padrão é fácil de adivinhar.</string>
     <string name="guide4_title">SOS silencioso</string>
@@ -233,7 +233,7 @@
     <string name="guide5_title">Gravação e delegacia</string>
     <string name="guide5_body">Toque em gravar para registrar o áudio do ambiente. Depois, ouça, exporte ou apague as gravações pelo menu do painel.\n\nEm Gravações, você pode escolher uma pasta de backup (de preferência sincronizada com a nuvem): cada gravação é copiada para lá quando termina.\n\nO atalho de delegacia abre o mapa com a mais próxima, e o menu Ajuda e telefones traz o 180 e o 190.\n\nNo menu do painel você também liga o bloqueio ao reabrir: depois de 30 segundos fora do app, ele pede o desbloqueio do celular.</string>
     <string name="guide6_title">Sua privacidade</string>
-    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app. Se quiser, ligue o bloqueio ao reabrir no menu do painel.\n\nSua senha é protegida e cada conta tem dados separados. Se esquecer a senha, use Esqueci minha senha na tela de entrada para receber um link por e-mail. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
+    <string name="guide6_body">O app não permite prints, não aparece nos apps recentes e fecha o painel quando a tela apaga ou você sai do app. Se quiser, ligue o bloqueio ao reabrir no menu do painel.\n\nSe esquecer a senha, use Esqueci minha senha na tela de entrada para receber um link por e-mail. Para sair da conta, use o menu da tela de notas.\n\nPara rever este guia, abra o painel e escolha Como usar o app no menu.</string>
 
     <!-- Atalho, aviso de falha, envio repetido e backup -->
     <string name="sos_update_prefix">Atualização:</string>
@@ -298,4 +298,6 @@
     <string name="forgot_link_sent">Se existir uma conta com esse e-mail, enviamos um link para criar uma nova senha. Confira a caixa de entrada e o spam. Depois, entre com a nova senha.</string>
     <string name="forgot_link_offline">Sem conexão com a internet. Tente de novo quando estiver online.</string>
     <string name="forgot_link_error">Não foi possível enviar o link agora. Tente mais tarde.</string>
+    <string name="perm_restricted_tip">Se o Android bloquear a permissão de SMS (isso acontece quando o app é instalado por um arquivo APK), abra as configurações do app, toque nos três pontinhos no canto superior e escolha \"Permitir configurações restritas\". Depois, volte e libere o SMS.</string>
+    <string name="perm_restricted_title">Permissão de SMS bloqueada?</string>
 </resources>

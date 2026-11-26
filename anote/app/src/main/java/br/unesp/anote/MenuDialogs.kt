@@ -27,7 +27,7 @@ object MenuDialogs {
 
     const val REQ_MENU_PERMS = 77
 
-    // ---------- Tela de notas ----------
+    // Tela de notas
 
     /** Edita o cadastro feito no primeiro acesso (nome e e-mail), com erros ao lado do campo. */
     fun showProfile(activity: AppCompatActivity) {
@@ -174,17 +174,20 @@ object MenuDialogs {
     }
 
     /**
-     * Pede a senha antes de excluir a conta (evita exclusao por toque acidental ou por outra
-     * pessoa com o celular desbloqueado). [onConfirmed] roda so se a senha estiver certa.
+     * Pede a senha antes de excluir a conta, para evitar exclusao acidental ou por outra pessoa
+     * com o celular desbloqueado. [onConfirmed] so roda se a senha estiver certa e recebe a senha
+     * digitada, usada para apagar tambem a conta do servidor de recuperacao.
      */
-    /** [onConfirmed] recebe a senha digitada (usada para apagar tambem a conta do servidor de recuperacao). */
     fun showDeleteAccount(activity: AppCompatActivity, onConfirmed: (String) -> Unit) {
         val accountId = Session.activeId(activity) ?: return
         val builder = Ui.dialog(activity, dark = false)
         val field = EditText(builder.context).apply {
             hint = activity.getString(R.string.hint_password)
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            // setSingleLine() antes do tipo: depois dele, troca o mascaramento e a senha aparece escrita.
             setSingleLine()
+            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            transformationMethod = android.text.method.PasswordTransformationMethod.getInstance()
+            importantForAutofill = android.view.View.IMPORTANT_FOR_AUTOFILL_NO
         }
         val container = LinearLayout(builder.context).apply {
             setPadding(64, 24, 64, 0)
@@ -263,7 +266,7 @@ object MenuDialogs {
         )
     }
 
-    // ---------- Painel de emergencia ----------
+    // Painel de emergencia
 
     /**
      * Mostra o que esta liberado e deixa pedir o que falta ou abrir as configuracoes do Android
@@ -285,9 +288,16 @@ object MenuDialogs {
             (if (ok) "✓  " else "✗  ") + activity.getString(label)
         }
         val missing = Permissions.missing(activity)
-        val footer = activity.getString(
+        var footer = activity.getString(
             if (missing.isEmpty()) R.string.permissions_all_ok else R.string.permissions_missing
         )
+        // Android 13+: apps instalados por APK tem o SMS bloqueado ate liberar as "configuracoes restritas".
+        if (Build.VERSION.SDK_INT >= 33 &&
+            ContextCompat.checkSelfPermission(activity, android.Manifest.permission.SEND_SMS) !=
+            android.content.pm.PackageManager.PERMISSION_GRANTED
+        ) {
+            footer += "\n\n" + activity.getString(R.string.perm_restricted_tip)
+        }
 
         val builder = Ui.dialog(activity, dark = true)
             .setTitle(R.string.permissions_title)

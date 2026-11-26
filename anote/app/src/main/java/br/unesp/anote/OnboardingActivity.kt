@@ -47,10 +47,7 @@ class OnboardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(
-            android.view.WindowManager.LayoutParams.FLAG_SECURE,
-            android.view.WindowManager.LayoutParams.FLAG_SECURE
-        )
+        Privacy.protect(window)
         setContentView(R.layout.activity_onboarding)
 
         accountId = savedInstanceState?.getString(STATE_ACCOUNT) ?: intent.getStringExtra(EXTRA_RESUME_ID)
@@ -94,7 +91,7 @@ class OnboardingActivity : AppCompatActivity() {
         showStep(savedInstanceState?.getInt(STATE_STEP) ?: if (accountId != null) 2 else 1)
     }
 
-    // ---------- Continuar com o Google (so preenche nome e e-mail) ----------
+    // Continuar com o Google (so preenche nome e e-mail)
 
     private fun setupGoogle() {
         if (accountId == null && Cloud.isConfigured(this)) findViewById<View>(R.id.cloud_note).visibility = View.VISIBLE
@@ -133,7 +130,7 @@ class OnboardingActivity : AppCompatActivity() {
         stepLabel.text = getString(R.string.step_indicator, n)
     }
 
-    // ---------- Passo 1: dados da conta ----------
+    // Passo 1: dados da conta
 
     private fun submitStep1() {
         val name = nameField.text.toString().trim()
@@ -177,7 +174,7 @@ class OnboardingActivity : AppCompatActivity() {
         return existing
     }
 
-    // ---------- Passo 2: contatos ----------
+    // Passo 2: contatos
 
     private fun addContact() {
         val name = contactNameField.text.toString().trim()
@@ -219,7 +216,7 @@ class OnboardingActivity : AppCompatActivity() {
         showStep(3)
     }
 
-    // ---------- Passo 3: permissoes ----------
+    // Passo 3: permissoes
 
     private fun askPermissions() {
         val missing = Permissions.missing(this)
@@ -235,7 +232,21 @@ class OnboardingActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         // Conceder ou negar, o cadastro termina; o painel pede de novo o que faltar na hora de usar.
-        if (requestCode == REQ_PERMS) finishOnboarding()
+        if (requestCode != REQ_PERMS) return
+        val smsDenied = android.os.Build.VERSION.SDK_INT >= 33 &&
+            androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) !=
+            android.content.pm.PackageManager.PERMISSION_GRANTED
+        if (!smsDenied) {
+            finishOnboarding()
+            return
+        }
+        // Pode ser o bloqueio do Android para apps instalados por APK: explica o caminho.
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(R.string.perm_restricted_title)
+            .setMessage(R.string.perm_restricted_tip)
+            .setCancelable(false)
+            .setPositiveButton(R.string.close) { _, _ -> finishOnboarding() }
+            .show()
     }
 
     private fun finishOnboarding() {

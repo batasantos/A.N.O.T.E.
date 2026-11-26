@@ -32,7 +32,7 @@ object Ui {
         val onClick: () -> Unit
     )
 
-    // ---------- Menu (⋮) ----------
+    // Menu (⋮)
 
     /** Abre um cartao arredondado, com sombra e icones, preso ao canto do [anchor]. */
     fun showMenu(anchor: View, dark: Boolean, entries: List<MenuEntry>) {
@@ -78,7 +78,7 @@ object Ui {
             card.addView(row)
         }
 
-        // Largura minima agradavel e alinhamento da borda direita do menu com a do botao.
+        // Largura minima e alinhamento da borda direita do menu com a do botao.
         card.minimumWidth = dp(230)
         root.measure(
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
@@ -87,7 +87,7 @@ object Ui {
         popup.showAsDropDown(anchor, anchor.width - root.measuredWidth + dp(12), -dp(4))
     }
 
-    // ---------- Dialogos ----------
+    // Dialogos
 
     fun dialog(context: Context, dark: Boolean): MaterialAlertDialogBuilder =
         MaterialAlertDialogBuilder(context, if (dark) R.style.Anote_Dialog_Dark else R.style.Anote_Dialog_Light)
@@ -99,7 +99,7 @@ object Ui {
     fun prepare(dialog: Dialog, dark: Boolean) {
         dialog.window?.apply {
             setBackgroundDrawableResource(if (dark) R.drawable.bg_dialog_dark else R.drawable.bg_dialog_light)
-            if (dark) setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+            if (dark) Privacy.protect(this)
         }
     }
 

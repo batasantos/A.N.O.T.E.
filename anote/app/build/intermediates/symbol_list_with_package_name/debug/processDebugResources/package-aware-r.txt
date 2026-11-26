@@ -4445,6 +4445,8 @@ string perm_mic
 string perm_mic_desc
 string perm_notif
 string perm_notif_desc
+string perm_restricted_tip
+string perm_restricted_title
 string perm_sms
 string perm_sms_desc
 string permissions_all_ok

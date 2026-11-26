@@ -1,0 +1,4 @@
+br.unesp.anote.test.app-androidTest-0 C:\Users\tha_b\Downloads\ANOTE\anote\app\build\generated\res\resValues\androidTest\debug
+br.unesp.anote.test.app-mergeDebugAndroidTestResources-1 C:\Users\tha_b\Downloads\ANOTE\anote\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+br.unesp.anote.test.app-mergeDebugAndroidTestResources-2 C:\Users\tha_b\Downloads\ANOTE\anote\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+br.unesp.anote.test.app-debugAndroidTest-3 C:\Users\tha_b\Downloads\ANOTE\anote\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

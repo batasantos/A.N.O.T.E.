@@ -26,7 +26,7 @@ class LockActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        Privacy.protect(window)
         setContentView(R.layout.activity_lock)
 
         if (!Session.isActive(this) || !AppLock.deviceIsSecure(this)) {

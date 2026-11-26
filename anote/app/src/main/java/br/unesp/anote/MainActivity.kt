@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         empty.visibility = if (notes.isEmpty()) View.VISIBLE else View.GONE
     }
 
-    // ---------- Menu (conta e ajustes das notas) ----------
+    // Menu (conta e ajustes das notas)
 
     private fun showMenu(anchor: View) {
         Ui.showMenu(

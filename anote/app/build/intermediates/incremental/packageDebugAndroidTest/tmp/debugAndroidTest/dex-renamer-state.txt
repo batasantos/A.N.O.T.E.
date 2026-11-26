@@ -1,0 +1,4 @@
+#Sun Nov 15 23:06:32 BRT 2026
+base.0=C\:\\Users\\tha_b\\Downloads\\ANOTE\\anote\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+path.0=0/classes.dex
+renamed.0=classes.dex

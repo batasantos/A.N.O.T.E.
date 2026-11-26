@@ -15,9 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
  *  - nenhuma conta  -> primeiro cadastro;
  *  - senao          -> login com e-mail e senha, com opcao de criar outra conta.
  *
- * "Esqueci minha senha": com o codigo de recuperacao (mostrado uma vez no cadastro) a pessoa define uma
- * senha nova sem perder nada. Sem o codigo, a unica saida e apagar a conta daquele e-mail, com tudo
- * que ela guarda, e criar uma nova (os dados ficam so no aparelho).
+ * "Esqueci minha senha": envia um link de redefinicao por e-mail. Sem a recuperacao por e-mail,
+ * a unica saida e apagar a conta daquele e-mail, com tudo que ela guarda, e criar uma nova.
  */
 class LoginActivity : AppCompatActivity() {
 
@@ -29,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        Privacy.protect(window)
 
         if (Session.isActive(this)) {
             startActivity(Intent(this, MainActivity::class.java))

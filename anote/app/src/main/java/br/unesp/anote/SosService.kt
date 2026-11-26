@@ -174,7 +174,7 @@ class SosService : Service() {
         finishIfIdle()
     }
 
-    // ---------- Envio repetido ----------
+    // Envio repetido
 
     private fun repeatIntent(): PendingIntent = PendingIntent.getForegroundService(
         this, REQ_REPEAT,
@@ -195,7 +195,7 @@ class SosService : Service() {
         alarms.cancel(repeatIntent())
     }
 
-    // ---------- Notificacoes / foreground ----------
+    // Notificacoes / foreground
 
     private fun notificationManager() = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -242,7 +242,7 @@ class SosService : Service() {
         runCatching { notificationManager().notify(NOTIF_FAIL_ID, notification) }
     }
 
-    // ---------- Localizacao + SMS ----------
+    // Localizacao + SMS
 
     @SuppressLint("MissingPermission")
     private fun sendAlert(onlyPhone: String?, update: Boolean) {
@@ -352,7 +352,7 @@ class SosService : Service() {
         finishIfIdle()
     }
 
-    // ---------- Gravacao de audio ----------
+    // Gravacao de audio
 
     private fun startRecording() {
         if (recorder != null || !hasPermission(Manifest.permission.RECORD_AUDIO)) {

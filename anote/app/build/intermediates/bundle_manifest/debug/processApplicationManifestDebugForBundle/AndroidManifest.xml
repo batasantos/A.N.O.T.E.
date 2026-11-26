@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.unesp.anote"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="br.unesp.anote.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="br.unesp.anote.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:name="br.unesp.anote.AnoteApp"
+        android:allowBackup="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Anote" >
+
+        <!-- Porta de entrada: abre as notas (sessao aberta), o login ou o primeiro cadastro -->
+        <activity
+            android:name="br.unesp.anote.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.unesp.anote.OnboardingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Guia de primeiro uso: fora dos apps recentes porque cita o titulo secreto -->
+        <activity
+            android:name="br.unesp.anote.GuideActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+
+        <!-- Bloqueio ao reabrir: fora dos apps recentes -->
+        <activity
+            android:name="br.unesp.anote.LockActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="br.unesp.anote.MainActivity"
+            android:exported="false" />
+
+        <!-- excludeFromRecents: a tela nao aparece na lista de apps recentes -->
+        <activity
+            android:name="br.unesp.anote.NoteEditorActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="br.unesp.anote.EmergencyActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="br.unesp.anote.ContactsActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+        <activity
+            android:name="br.unesp.anote.RecordingsActivity"
+            android:excludeFromRecents="true"
+            android:exported="false" />
+
+        <!-- Permite compartilhar um audio gravado (e so ele) com outro app, de forma temporaria -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="br.unesp.anote.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- Tela invisivel do tile e do widget: dispara o SOS e fecha na hora -->
+        <activity
+            android:name="br.unesp.anote.TriggerActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Anote.Invisible" />
+
+        <!-- Atalho nas configuracoes rapidas, com nome neutro -->
+        <service
+            android:name="br.unesp.anote.SosTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_note"
+            android:label="@string/tile_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+        <!-- Widget da tela inicial, com nome neutro -->
+        <receiver
+            android:name="br.unesp.anote.SosWidget"
+            android:exported="false"
+            android:label="@string/widget_label" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sos_info" />
+        </receiver>
+
+        <service
+            android:name="br.unesp.anote.SosService"
+            android:exported="false"
+            android:foregroundServiceType="location|microphone" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="br.unesp.anote.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="genericidp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="recaptcha" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <service
+            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+            android:enabled="true"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+        </service>
+
+        <activity
+            android:name="androidx.credentials.playservices.HiddenActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:enabled="true"
+            android:exported="false"
+            android:fitsSystemWindows="true"
+            android:theme="@style/Theme.Hidden" >
+        </activity>
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:visibleToInstantApps="true" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="br.unesp.anote.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.DUMP" >
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+        <activity
+            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+            android:exported="false"
+            android:stateNotNeeded="true"
+            android:theme="@style/Theme.PlayCore.Transparent" />
+    </application>
+
+</manifest>

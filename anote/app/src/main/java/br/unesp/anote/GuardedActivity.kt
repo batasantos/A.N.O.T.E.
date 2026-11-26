@@ -32,7 +32,7 @@ abstract class GuardedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        Privacy.protect(window)
         window.statusBarColor = Color.parseColor("#0E0A1F")
         window.navigationBarColor = Color.parseColor("#1B1236")
         WindowInsetsControllerCompat(window, window.decorView).apply {

@@ -101,7 +101,7 @@ class EmergencyActivity : GuardedActivity() {
         super.onPause()
     }
 
-    // ---------- Menu ----------
+    // Menu
 
     private fun showMenu(anchor: View) {
         Ui.showMenu(
@@ -138,7 +138,7 @@ class EmergencyActivity : GuardedActivity() {
         )
     }
 
-    // ---------- Interface ----------
+    // Interface
 
     private fun renderRecording() {
         val rec = SosService.isRecording
@@ -342,7 +342,7 @@ class EmergencyActivity : GuardedActivity() {
         )
     }
 
-    // ---------- Permissoes e acoes ----------
+    // Permissoes e acoes
 
     private fun requestThen(action: Pending, phone: String? = null) {
         if (action != Pending.RECORD && prefs.contacts().isEmpty()) {
@@ -403,7 +403,7 @@ class EmergencyActivity : GuardedActivity() {
         pendingPhone = null
     }
 
-    // ---------- Rede de apoio ----------
+    // Rede de apoio
 
     /**
      * Abre o app de mapas com a rota ate a Delegacia de Defesa da Mulher mais proxima da

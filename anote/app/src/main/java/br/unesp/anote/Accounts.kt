@@ -82,7 +82,7 @@ object Accounts {
         ).also { cached = it }
     }
 
-    // ---------- Consultas ----------
+    // Consultas
 
     fun normalizeEmail(email: String): String = email.trim().lowercase()
 
@@ -97,7 +97,7 @@ object Accounts {
         records(context).firstOrNull { it.id == id }?.let { Account(it.id, it.name, it.email) }
     }
 
-    // ---------- Cadastro ----------
+    // Cadastro
 
     /** Cria a conta e devolve o id; devolve null se ja existe uma conta com esse e-mail. */
     fun create(context: Context, name: String, email: String, password: String): String? {
@@ -162,7 +162,7 @@ object Accounts {
         return result
     }
 
-    // ---------- Login ----------
+    // Login
 
     fun authenticate(context: Context, email: String, password: String): AuthResult {
         val mail = normalizeEmail(email)
@@ -222,7 +222,7 @@ object Accounts {
         if (left > 0) (left + 999) / 1000 else 0L
     }
 
-    // ---------- Exclusao ----------
+    // Exclusao
 
     /** Remove a conta e TODOS os dados dela (preferencias, notas e gravacoes). Nao tem volta. */
     fun delete(context: Context, id: String) {
@@ -237,7 +237,7 @@ object Accounts {
         Recordings.dir(app, id).deleteRecursively()
     }
 
-    // ---------- Internos ----------
+    // Internos
 
     private fun matches(record: Record, password: String): Boolean {
         val salt = Base64.decode(record.salt, Base64.NO_WRAP)
@@ -282,7 +282,7 @@ object Accounts {
 }
 
 /**
- * Roda um trabalho pesado (o hash da senha leva alguns centenas de ms de proposito)
+ * Roda um trabalho pesado (o hash da senha leva algumas centenas de ms de proposito)
  * fora da thread da tela e entrega o resultado de volta nela, se a tela ainda existir.
  */
 fun <T> AppCompatActivity.inBackground(work: () -> T, done: (T) -> Unit) {

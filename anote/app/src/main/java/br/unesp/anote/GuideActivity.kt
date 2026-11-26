@@ -52,7 +52,7 @@ class GuideActivity : AppCompatActivity() {
             return
         }
         // O guia cita o titulo secreto: sem print e fora dos apps recentes.
-        window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+        Privacy.protect(window)
         setContentView(R.layout.activity_guide)
 
         fromMenu = intent.getBooleanExtra(EXTRA_FROM_MENU, false)
