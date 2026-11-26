@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="anote/docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="520">
+  <img src="anote/docs/logo/anote-logo.png" alt="Logo do A.N.O.T.E." width="320">
 </p>
 
 # A.N.O.T.E.
@@ -20,12 +20,12 @@ O A.N.O.T.E. é um aplicativo Android que se apresenta como um bloco de notas co
 
 ## Dados e segurança
 
-Os dados ficam no próprio aparelho, e cada conta tem os seus. As senhas são guardadas apenas como hash (PBKDF2), em armazenamento criptografado. A recuperação de senha pode ser feita por um código de recuperação ou, se configurado, por e-mail, com o Firebase Authentication. Notas, contatos e gravações nunca saem do aparelho.
+Os dados ficam no próprio aparelho, e cada conta tem os seus. As senhas são guardadas apenas como hash (PBKDF2), em armazenamento criptografado. Se o Firebase Authentication estiver configurado, a recuperação de senha é feita por um link enviado por e-mail; sem ele, a única saída é apagar a conta e criar outra. Notas, contatos e gravações nunca saem do aparelho.
 
 ## Tecnologias
 
 | Item | Detalhe |
-| --- | --- |
+|---|---|
 | Plataforma | Android 8.0 (API 26) ou superior |
 | Linguagem | Kotlin |
 | Interface | XML com Material 3 |
@@ -34,15 +34,19 @@ Os dados ficam no próprio aparelho, e cada conta tem os seus. As senhas são gu
 
 ## Como executar
 
-1. Abra a pasta [`anote`](anote) no Android Studio.
+1. Abra a pasta [anote](anote) no Android Studio.
 2. Use o JDK 17 ou 21 como Gradle JDK.
 3. Execute em um emulador ou em um celular com a depuração USB ativada.
 
 As instruções completas, incluindo a configuração do Firebase e do login com Google, estão no [README detalhado](anote/README.md).
 
+## Instalação pelo APK
+
+O APK está disponível na página de [Releases](../../releases) do repositório. No Android 13 ou superior, pode ser necessário liberar as "configurações restritas" do app para que o Android permita o envio de SMS. Os passos estão no README detalhado.
+
 ## Estado do projeto
 
-A versão atual é a 1.0. O código foi escrito e verificado por testes manuais em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
+A versão atual é a 1.0. As funções principais foram testadas em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
 
 ## Contexto acadêmico
 
@@ -50,4 +54,4 @@ Trabalho de conclusão desenvolvido na disciplina Projetos em Computação II, d
 
 ## Aviso
 
-O aplicativo é um complemento e não substitui os canais oficiais de atendimento. Em situação de perigo, ligue **190** (polícia) ou **180** (Central de Atendimento à Mulher).
+O aplicativo é um complemento e não substitui os canais oficiais de atendimento. Em situação de perigo, ligue 190 (polícia) ou 180 (Central de Atendimento à Mulher).
