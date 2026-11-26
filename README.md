@@ -44,6 +44,12 @@ As instruções completas, incluindo a configuração do Firebase e do login com
 
 O APK está disponível na página de [Releases](../../releases) do repositório. No Android 13 ou superior, pode ser necessário liberar as "configurações restritas" do app para que o Android permita o envio de SMS. Os passos estão no README detalhado.
 
+## Documentação
+
+- [Documentação do aplicativo](anote/docs/documentacao-anote.pdf)
+- [Registro de testes](anote/docs/registro-de-testes.pdf)
+- [Script do banco de dados](anote/database/schema.sql)
+
 ## Estado do projeto
 
 A versão atual é a 1.0. As funções principais foram testadas em aparelho real. O registro de testes e a documentação completa acompanham o trabalho.
